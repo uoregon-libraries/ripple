@@ -1,0 +1,85 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/dataTables.css">
+<div id="people">
+  <h1><%= title %></h1>
+
+  <div class="well">
+
+    <% include partials/person-btn-group %>
+
+    <hr/>
+    <table id="user-list" class="table table-striped table-bordered">
+      <thead>
+        <tr class="person-header">
+          <th>Name</th>
+          <th>User</th>
+          <th>Email</th>
+          <th>Elevated Roles</th>
+        </tr>  
+      </thead>
+      <tbody>
+<%
+// Determine Granted Permissions
+docArray.forEach(function(item,index){
+  var name = item.name
+    , username = item.user
+    , email = item.email
+    , roles = ""
+    , id = item._id;
+    
+  // Only use docArray item that have 'roles' defined
+  if( item.hasOwnProperty('roles') ) {
+    item.roles.forEach(function(role, index){
+      if(index === 0) roles = role;
+      else roles += ", " + role;
+    })
+  }
+
+  // Display User Info
+%>
+
+        <tr id="<%= id %>" class="person" data-person-role="<%= roles %>" tabindex="0" >
+          <td><%= name %></td>
+          <td><%= username %></td>
+          <td><%= email %></td>
+          <td><% if(roles !== "") {%> <%= roles %> <%} %></td>
+        </tr>
+      
+<%
+});  
+%>
+      </tbody>
+    </table>
+    <hr />
+
+    <% include partials/person-btn-group %>  
+
+  </div><!-- END .well -->
+  <div id="account-template">
+    <% include ../partials/account.ejs %>
+  </div>
+</div><!-- END #people -->
+
+<!-- Turn docArray into js variable -->
+<script type="text/javascript">
+var docArray = <%- JSON.stringify(docArray) %>;
+var systemRoles = <%- JSON.stringify(systemRoles) %>;
+</script>
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/accessController.js'
+    , 'controllers/peopleController.js'
+    , 'controllers/notify.js'
+    , 'views/access.js'
+    , 'views/admin-people.js'
+    , 'jquery.jgrowl.min.js'
+    , 'jquery.dataTables.min.js'
+    , 'jquery.dataTables.bootstrap.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>
+
+
+

@@ -1,0 +1,19 @@
+<% include ./partials/alert %>
+
+<div id="page">
+  <div id="content">
+    <br />
+    <% include partials/reset-password %>    
+  </div>
+</div>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'jquery.form.js'
+    , 'form-validators/resetValidator.js'
+    , 'views/reset.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

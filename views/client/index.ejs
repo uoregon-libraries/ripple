@@ -1,0 +1,119 @@
+<% include ../partials/form-errors %>
+<input type='hidden' value="<%= roomNum %>" id="room" />
+<a id="skip-to-content" href="#content">Skip to Main Content</a>
+
+<div id="viewport" class="client-view">
+
+<!-- 	<div id="jPanelMenu-menu" />
+		<aside id="slidebar" role="complementary">
+	    <header class="slide-branding"></header>
+	    <h3 class="client-name">Participant <span id="clientName"></span></h3>
+			<div class="buffer10 chat-wrap">
+				<h3>Messages:</h3>
+				<div id="messages" class="well"></div>
+				<input type="textbox" value="" id="message-txt" />
+				<button id="message-btn" class="btn btn-submit">Send <i class="icon-white icon-comment"></i></button>
+			</div>
+		</aside>
+	</div> -->
+
+	<div id="page" class="client-page">
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+		  <div class="navbar-inner">
+        <div id="nav-logo"></div>
+		  	<!-- Temporary Removed because we have no other menu items -->
+      	<!-- Chat is temporary removed until implement in a better way -->
+      	<!--
+	      <ul id="global-nav" class="nav pull-left">
+	      	<li>
+			  	  <i id="slidebar-btn" class="btn btn-navbar">
+		          <span class="icon-bar icon-white"></span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		        </i>
+	      	</li>
+	        <li>
+	        	<div id="chat-notify" tabIndex="0">
+	        		<i class="icon-comments-alt" rel="tooltip" data-placement="bottom" data-original-title="Chat"></i>
+	        		<div class="accessibility-label">Chat button</div>
+	        	</div>
+	        	<div id="chat-count" class="badge badge-info">0</div>
+	        </li>
+	      </ul>
+	    -->
+	      <ul class="nav pull-right">
+	      	<li>
+	      		<div id="roomDisplay" class="btn btn-inverse disabled"></div>
+	      	</li>
+<% if( locals.hasOwnProperty('auth') || locals.auth == true ) {%>
+		      <li>
+		        <a id="btn-logout" href="/logout" class="navicon" data-placement="bottom" title="Logout" rel="tooltip">
+		          <i class="icon-lock"></i>
+		          <span class="accessibility-label">Logout</span>
+		        </a>          
+		      </li>
+<% } %>		      
+		    </ul>
+		  </div>
+
+		</nav><!-- End navbar -->
+
+		<div role="main" id="content" tabindex='-1'><!-- Main content -->
+			<div id="question">
+				<h2>The room is setting up, please give us a second.</h2>
+			</div>
+      <div id="alert"></div>
+
+			<div id="answer"></div>
+			<input type="button" value="Send" id="send-button" class="btn btn-primary">
+		</div><!-- #content -->
+
+	</div><!-- #page -->
+
+</div><!-- #viewport -->
+
+<div id="response-hold-modal" class="modal hide fade">
+	<div class="modal-body">
+		The presenter is not currently taking responses.
+	</div>
+</div>
+<!-- Load Question Type Definitions -->
+<% 
+  // Convert Array to Object for easier use
+  var questionTypesObj = convertArrToObj(questionTypes, 'name');
+  var jsPassObj = JSON.stringify(questionTypesObj);
+%>
+<script>
+GLOBALS.questionTypes = <%- jsPassObj  %>;
+</script>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/accessController.js'
+    , 'controllers/chatController.js'
+    , 'controllers/clientController.js'
+    , 'form-validators/clientValidator.js'
+    , 'views/access.js'
+    , 'views/client.js'
+    , 'jquery.jgrowl.min.js'
+    , 'jquery.cookie.min.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>
+
+<% include ../partials/nowjs-init %>
+
+<!-- <script src="/js/transform.js"></script>
+<script src="/js/knobKnob.jquery.js"></script>
+<script src="/js/jquery.jgrowl.min.js"></script> -->
+
+<!-- Question Type Scripts -->
+<%
+  var jsPathArr = [];
+  for(item in questionTypesObj){
+    jsPathArr.push( questionTypesObj[item].js );
+  }
+%>
+<%- autoLoadScriptPaths(jsPathArr) %>

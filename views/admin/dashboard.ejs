@@ -1,0 +1,77 @@
+
+<% include ./partials/header %>
+<%
+if( system['system-alert'] ){
+%>
+            <div id="system-alert">ALERT: <%- system['system-alert'] %></div>
+<% } %>
+
+<h1><%= title %></h1>
+
+<div id="dashboard" class="row-fluid">
+	<div class="span6">
+		<div class="well">
+      <div class="row-fluid">
+        <h2>Start a New Session</h2>
+        <div class="span6 span-center start-session">
+          <a id="session-start" href="/admin/session" class="btn btn-primary"  rel="tooltip" data-placement="bottom" title="Start Session Now">Start Now <i class="icon icon-share-alt"></i></a>
+        </div>
+        <div class="span6">
+          <div class="vert-wrap start-session-desc">
+            <p class="vert-center">Don't wait! Create questions as you go.</p>       
+          </div>
+        </div>        
+      </div>
+      <% if( docArray.length ) { %>
+        <hr />
+        <h2>Latest Question Sets</h2>
+        <div class="question-set-section">Listed below are the latest question sets that you have created.
+        </div>
+        <div class="row question-set-section">
+          <div class="span12">
+            <% include partials/set-listing %>
+          </div>
+          <div class="span12">
+            <a href="/admin/set/list" class="btn btn-submit pull-right set-list-view-btn" rel="tooltip" data-placement="bottom" title="View All Sets">View All</a>
+          </div>        
+        </div>
+      <% } %>
+		</div>
+	</div>
+
+	<div class="span6">
+		<div  class="well question-set-wrap">
+      <div class="row-fluid">
+        <h2>Create New Question Set</h2>
+        <div class="span6">
+          <form id="set-create-form" method="post" action="/admin/set/start">
+            <label for='setName-tf'>Set Name <span class='required'> (required)</span></label>
+            <input type="text" name="name" id='setName-tf' class="span11"/>
+            <label for='className-tf'>Presentation / Class</label>
+            <input type="text" name="class" id="className-tf" class="span11" />
+            <div>
+              <button type="submit" id="btn-login" class="btn btn-primary" rel="tooltip" data-placement="bottom" title="Create a new Question Set">Create</button>  
+            </div>    
+          </form>         
+        </div>
+        <div class="span6">
+          <div class="vert-wrap set-create-desc">
+            <p class="vert-center">Question sets allow you to save a grouping of questions for use in a session.</p>
+          </div>  
+        </div>
+      </div>	
+		</div>
+	</div>	
+</div>
+
+<% include ./partials/footer %>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+  'form-validators/setValidator.js'
+  , 'views/admin-dashboard.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

@@ -1,0 +1,64 @@
+<% include ./partials/header %>
+
+<h1>Plugin Configuration for <% if( locals.pluginName ) { %> <%=  locals.pluginName  %> <% } %></h1>
+	
+<div class="well">
+	<form id="pluginConfig" method="post">
+
+		<% if( locals.inputs ) {%>
+
+			<% for ( var i in inputs ) { %>
+				<label for="<%= inputs[i]['key'] %>"><%= inputs[i]["label"] %></label>
+				<input type="text" id="<%= inputs[i]['key'] %>" name="<%= inputs[i]['key'] %>" value="<%= inputs[i]['value'] %>" placeholder="<%= inputs[i]['placeholder'] %>"/>
+			<% }; %>
+			<div>
+				<button type="reset" class="btn">
+					<i class=""></i> Clear
+				</button>
+				<button id="pluginConfigSubmit" type='submit' class="btn btn-primary">
+					<i class=""></i> Save
+				</button>
+			</div>
+
+		<% } else { %>
+			<div>The plugin does not have any configuration.</div>
+		<%}; %>
+
+	</form><!-- End form -->
+</div>
+
+<% include ./partials/footer %>
+
+<!-- include all plugin specific scripts -->
+<% if( locals.plugins && locals.plugins.js && locals.plugins.js.length > 0) { %>
+    <% for( var j in locals.plugins.js ) { %>
+        <script src='<%= locals.plugins.js[j] %>'></script>
+    <% }; %>
+<% }; %>
+
+<% if( locals.plugins && locals.plugins.css && locals.plugins.css.length > 0) { %>
+    <% for( var c in locals.plugins.css ) { %>
+        <link rel="stylesheet" type="text/css" href="<%= locals.plugins.css[c] %>">
+    <% }; %>
+<% }; %>
+
+<% if( locals.plugins && locals.plugins.variables) { %>
+    <script type="application/javascript">
+        <% if( locals.plugins.variables['clientIP'] ) { %>
+        var clientIP = '<%= locals.plugins.variables['clientIP'] %>';
+        <% } %>
+    </script>
+<% }; %>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/notify.js'
+    , 'views/admin-pluginConfig.js'
+    , 'jquery.jgrowl.min.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>
+
+<% include ../partials/nowjs-init %>

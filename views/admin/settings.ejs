@@ -1,0 +1,146 @@
+<% include ./partials/header %>
+
+<h1><%= title %></h1>
+
+<div id="settings" class="well">
+  <div class="row">
+<% 
+// console.log("Settings ::", settings);
+// console.log("Categories ::", categories);
+// console.log("Variables ::", variables);
+%>
+    <ul id="categories" class="nav nav-tabs nav-stacked span4" role="navigation">
+<%
+categories.forEach(
+  function(item,index){
+%>
+      <li>
+        <a href="#<%= item.categoryType %>"><%=item.display%></a>
+      </li>  
+<%
+  }
+);
+%>  
+    </ul><!-- END #categories -->
+    <form id="variable-container" method="post" class="span8">
+<%
+var currentCategory = ""
+  , varLength = variables.length - 1;
+
+// console.log(varLength);
+// Sort for Display Name
+function compare(a,b) {
+  if (a.display < b.display)
+     return -1;
+  if (a.display > b.display)
+    return 1;
+  return 0;
+}
+// Sort for CategoryType
+function compare2(a,b) {
+  if (a.categoryType < b.categoryType)
+     return -1;
+  if (a.categoryType > b.categoryType)
+    return 1;
+  return 0;
+}
+
+// Sort Variables to display 
+variables.sort(compare);
+variables.sort(compare2);
+
+variables.forEach(
+  function(variable,index){
+    var isNewCategory = (variable.categoryType !== currentCategory)
+      , parentCategory = "";
+
+    // Determine if new categoryType
+    if(isNewCategory) {
+      currentCategory = variable.categoryType;
+
+      // Get Parent Catergory
+      categories.forEach(function(item,index){
+        if(item.categoryType === variable.categoryType) parentCategory = item;
+      })
+
+      // Create Container Div
+      if( index !== 0){
+%>
+        </fieldset>
+      </div>
+<%        
+      }
+%>      
+      <div id="<%= variable.categoryType %>" class="variable-settings">
+<%
+
+%>
+        <fieldset>
+          <legend><%= parentCategory.display %> Settings</legend>
+<%      
+
+    }
+
+    //Display Variables
+    var inputType = variable.inputType || "";
+    switch (inputType){
+      case "button":
+        var enable = ( variable.value === "1" ) ? "btn-primary btn-active" : "";
+        var disable = ( variable.value === "0" ) ? "btn-primary btn-active" : "";
+%>
+        <div class="button-input">
+          <label><%= variable.display %></label>
+          <div class="btn-group" data-toggle="buttons-radio" data-ref="<%= variable._id %>">
+              <button class="btn toggle-control <%= enable %>" data-state="1">On</button>
+              <button class="btn toggle-control <%= disable %>" data-state="0">Off</button>
+          </div> 
+<%
+        break;
+      default:
+%>
+        <div class="txt-input">
+          <label><%= variable.display %></label>
+          <input id="<%= variable._id %>" name="<%= variable._id %>" type="text" value="<%= variable.value %>">        
+<% 
+    }
+
+    // Add Notes & hints
+    var hasNote = variable.hasOwnProperty('displayNote') && variable.displayNote !== "";
+    if ( hasNote ) { 
+%>
+          <div class="display-note label label-info"><%= variable.displayNote %></div>
+<%  } 
+
+        // Close Input Container
+%>
+        </div><!-- End .button-input or .txt-input -->
+<%
+    // Close Container Div
+    if(varLength === index) {
+%>
+      </div> 
+<%    
+    }
+  }
+)
+%>
+      <hr />
+      <div class="button-controls">
+        <input id="save-btn" type="button" value="Save" class="btn btn-primary"/>
+        <input id="cancel-btn" type="button" value="Cancel" class="btn"/>
+      </div>
+    </form><!-- END variable-container -->
+  </div>
+</div><!-- END #settings -->
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/notify.js'
+    , 'views/admin-settings.js'
+    , 'jquery.jgrowl.min.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>
+

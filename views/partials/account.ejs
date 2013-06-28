@@ -1,0 +1,69 @@
+<% 
+  // preset form values if we receive a userdata object
+  var userInfo = typeof(udata) != 'undefined' ? udata : {};
+%>
+
+<% // store the userId on the client side in a hidden input field // %>
+<input type='hidden' value="<% if( userInfo.hasOwnProperty('_id') ) userInfo._id %>" id="userId">
+
+<div id="account-form-container">
+  <form method="post" id="account-form" class="form-horizontal well span12">
+    <h1></h1>
+    <p id="sub1" class="subheading">Please tell us a little about yourself.</p>
+    <fieldset>
+      <div id="name-cg" class="control-group">
+        <label for="name-tf" class="control-label">Name</label>
+        <div class="controls">
+          <input type='text' name='name' value="<%= (userInfo.name) ? userInfo.name : '' %>" id="name-tf" class="input-xlarge" placeholder="First & Last Name"/>
+        </div>
+      </div>
+      <div id="email-cg" class="control-group">
+        <label for="email-tf" class="control-label">Email</label>
+        <div class="controls">
+          <input type='email' name='email' value="<%= ( userInfo.email ) ? userInfo.email : '' %>" id="email-tf" class="input-xlarge" placeholder="johndoe@gmail.com">
+        </div>
+      </div>
+    </fieldset>
+    <p id="sub2" class="subheading"></p>
+    <div id="user-cg" class="control-group">
+      <label for="user-tf" class="control-label">Username</label>
+      <div class="controls">
+        <input type='text' name='user' value="<%= (userInfo.user) ? userInfo.user : '' %>" id="user-tf" class="input-xlarge disabled" placeholder="Provide Username">
+      </div>
+    </div>
+<% 
+if( locals.variables['password-change'] === "1") {
+%>
+    <div id="pass-cg" class="control-group">
+      <label for="pass-tf" class="control-label">Password</label>
+      <div class="controls">
+        <input type='password' name='pass' value='' id="pass-tf" class="input-xlarge"  placeholder="Provide Password">
+      </div>
+    </div>
+    <div id="confirm-cg" class="control-group">
+      <label for="confirm-tf" class="control-label">Confirm Password</label>
+      <div class="controls">
+        <input type='password' value='' id="confirm-tf" class="input-xlarge"  placeholder="Confirm Password">
+      </div>
+    </div>
+<% } %>
+    <div class='account-roles'></div>
+    <div class="form-actions">
+      <button type='submit' id="account-form-btn2" class="btn">Submit</button>
+      <button type='button' id="account-form-btn1" class="btn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts2 = [
+    'jquery.form.js'
+    , 'form-validators/accountValidator.js'
+]
+var jsSrc2 = locals.concatFiles(jsScripts2);
+%>
+<script src="/static/js?<%= jsSrc2 %>" /></script>
+
+
+

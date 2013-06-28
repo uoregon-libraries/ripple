@@ -1,0 +1,270 @@
+// Variables 
+@import "variables.less";
+@import "mixins.less";
+@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
+
+// Prevent any object from being highlighted upon touch event
+// Bug Fix for Android and slider
+* {-webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+#alert{
+  color:#CCC;
+}
+
+#question {
+  font-size: 2em;
+  color:#DDD;
+  margin: 0 20px 20px;
+}
+.buttonAnswers{
+  list-style:none;
+  width:80%;
+  font-size:1.25em;
+}
+.buttonAnswers .true-btn-wrap .btn{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  width:4em;
+}
+.highlight{
+  background:#FFF48F;
+}
+.highlight li{
+  background:#CCC;
+}
+#messages{
+  height:200px;
+  overflow: auto;
+  font-size:14px;
+  padding-top:0;
+}
+#message-txt{
+  width: 80%;
+  font-size: .75em;
+}
+.navbar {
+  #chat-notify{
+    font-size: 34px;
+    margin-top:12px;
+  }
+  #nav-logo {
+    margin-left:20px;
+    width:80px;
+  }
+}
+#roomDisplay{
+  color:#FFF;
+  opacity: 1;
+  filter: ~"alpha(opacity=100)";
+}
+.submitted-answer{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+// *----------------------------
+// True False
+// -----------------------------*/
+#T, 
+#F{
+  font-size:1.5em;
+}
+
+// *----------------------------
+//  Multiple Choice
+// -----------------------------*/
+.button-answer{
+  /*min-height: 3em;*/
+  position: relative;
+}
+
+.input-full-height{
+  display: inline-block;
+  height:100%;
+
+  .mc-btn{
+    font-size: 1.5em;
+    padding:0.5em 0.75em;
+  }
+}
+.text-wrap{
+  display: inline-block;
+}
+
+// *----------------------------
+//  Open Response
+// -----------------------------*/
+#open-wrap{
+  margin-top:1em;
+}
+#open-response{
+  width:90%;
+}
+
+
+// *----------------------------
+//  Slider
+// -----------------------------*/
+#slider-wrap {
+  position: relative;
+  margin:0 2em 3em 2em;
+
+  .label{
+    font-size: 1.5em;
+    padding: 0.3em;
+  }
+  .start-index,
+  .stop-index{
+    position:absolute;
+    top:-2em;
+  }
+  .stop-index{
+    right:0;
+  }
+}
+#slider{
+  margin-top:4em;
+
+  .slider-tip {
+    opacity:1;
+    bottom:120%;
+    margin-left: 0.25em;
+  }
+  .tickmark-wrap{
+    position:relative;
+    left:-0.45em;
+  }
+  .tickmark{
+    font-size:1.75em;
+    font-weight: bold;
+    top:-0.65em;
+    color: #000;
+  }
+  .tick-values{
+    font-size:0.5em;
+    color:#DDD;
+  }
+  .single-digit{
+    margin-left:0.25em;
+  }
+  .double-digit{
+    margin-left:-0.25em;
+  }
+  .triple-digit{
+    margin-left:-0.5em;
+  }
+
+  &.ui-slider .ui-slider-handle {
+    height:2em;
+    width:2em;
+    top:-0.75em;
+    margin-left: -1em;
+  }
+}
+
+
+// *----------------------------
+//  Numeric
+// -----------------------------*/  
+#numeric-wrap {
+  margin-bottom: 1em;
+}
+#keypad {
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+
+  .row{
+    margin-left:0;
+  }
+  .btn{
+    .border-radius(0);
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  .btn:focus{
+    margin-bottom: -4px;
+  }
+  .btn-top-left{
+    border-top-left-radius: 0.5em;
+  }
+  .btn-top-right{
+    border-top-right-radius: 0.5em;
+  }
+  .btn-bottom-left{
+    border-bottom-left-radius: 0.5em;
+  }
+  .btn-bottom-right{
+    border-bottom-right-radius: 0.5em;
+  }
+}
+// *----------------------------
+//  Cloud
+// -----------------------------*/ 
+.cloud-wrap input,
+.cloud-wrap .word-note{
+  width:200px;
+  display:block;
+}
+.cloud-wrap .word-note{
+  margin: 0;
+  color:#CCC;
+  font-size:0.85em;
+}
+
+
+// *----------------------------
+//  Client Viewport
+// -----------------------------*/
+#message-txt{
+  width:235px;
+}
+
+
+// *----------------------------
+//  Growl Notification
+// -----------------------------*/
+#jGrowl{
+  .answer-sent i{
+    font-size: 2em;
+    margin-right:0.5em;
+  }
+  .answer-sent i.icon-ok-sign{
+    color:green;
+  }
+}
+
+
+// *----------------------------
+//  Responsive
+// -----------------------------*/
+@media (max-width: 767px) {
+  .buttonAnswers{
+    width:inherit;
+    margin-right:100px;
+  }
+
+  #keypad{
+    .btn{
+      box-sizing:border-box;
+      width:20%;
+      float:left;
+    }
+  }    
+
+}
+
+@media (max-width: 400px) {
+  .buttonAnswers{
+    margin-right:40px;
+  }
+  
+  #keypad{
+    .btn{
+      width:30%;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<div id="question-choices-wrap" class="well" tabindex="-1">
+  <div class="question-choices">
+    <% for(item in questionTypesObj ) { %>
+      <%
+        var currType = questionTypesObj[item] 
+          , icon = currType.icon || ""
+          , iconTxt = currType.iconTxt || "";
+          //console.log(currType);
+      %>
+      <div class="row">
+        <button class="btn question-type" data-qtype="<%= item %>" tabindex='0'>
+          <i class="icon <%=icon%> icon-med">
+            <span class="iconText"><%= iconTxt %></span>
+          </i> <%= questionTypesObj[item].title %>
+        </button>
+      </div>
+    <% } %>
+  </div>
+</div>

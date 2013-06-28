@@ -1,0 +1,45 @@
+<% include time-formater %>
+<% 
+  for(item in docArray) { 
+    // Create Readable Date Stamp
+    var timeStamp = formatDate( 'fullStamp',  docArray[item]['startTime'] )
+      , session = docArray[item];
+
+    // Create index number
+    var intOfSession = parseInt(item) + 1;
+%>
+  <div class="row report-list"> 
+    <div class="well well-list">
+      <div class="span8">
+        Session #<%= intOfSession %> | <strong><%= timeStamp %></strong>
+<%
+    // Clean array of null values
+    if(item === 1 ) console.log(session.questions)
+    if( session.hasOwnProperty('questions') && session.questions.length > 0 ) {
+%>
+        <span class="question-cnt label pull-right"><%= session.questions.length %> Questions</span>
+<%  } %>
+      </div>
+      <div class="span2">
+        <a href="/admin/report/<%=session["_id"]%>" class="btn btn-primary" rel="tooltip" data-placement="bottom" title="View Report for Session #<%= intOfSession %>">
+          View <i class="icon icon-share-alt icon-med"></i>
+        </a>           
+      </div>
+      <div class="span2">        
+        <form method="post">
+          <input type="hidden" name="sessionID" value="<%=session["_id"]%>">
+          <input type="hidden" name="sessionNum" value="<%= intOfSession %>">
+          <label for="submit-<%= intOfSession %>" class="accessibility-label">Delete Session #<%= intOfSession %></label>
+          <button id="submit-<%= intOfSession %>" type="submit" class="btn btn-submit" rel="tooltip" data-placement="bottom" title="Delete Session #<%= intOfSession %>">
+            <i class="icon icon-remove icon-med"></i>
+          </button>
+        </form>                    
+      </div>
+    </div>
+  </div>
+<% 
+  } 
+  if( docArray.length === 0 ){
+%>
+  <div class="well">You currently do not have any reports available</div>
+<% } %>

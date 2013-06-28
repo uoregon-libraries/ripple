@@ -1,0 +1,176 @@
+<% include ./partials/session-header %>
+<% 
+  // Convert Array to Object for easier use
+  var questionTypesObj = convertArrToObj(questionTypes, 'name');
+  var jsPassObj = JSON.stringify(questionTypesObj);
+%>
+<script>
+GLOBALS.questionTypes = <%- jsPassObj  %>;
+GLOBALS.reload = <%- locals.hasOwnProperty('sessionReload') ? sessionReload : false %>;
+</script>
+
+<script>
+var setQuestions = {}
+<% 
+  qArray = [];
+  for(var i=0, len=qSortedArray.length ; i<len; i++) {
+    var sortID = qSortedArray[i]['_id'];
+    qArray[i] = JSON.stringify(qSortedArray[i]); 
+%>
+  setQuestions["<%= sortID %>"] = <%- qArray[i] %>;
+  //console.log("ID","<%= sortID %>");
+<% 
+  } 
+%>
+//console.log("setQuestions:", setQuestions);
+</script>
+
+<div id="loading" class="well">
+  <div>Please wait while we set up the room for you...</div>
+  <div class="loader"></div>
+</div>
+<!-- <h1><%= title %> - <%= name %></h1> -->
+<div id="question-response-wrap" class="row-fluid clear-header">
+  <div id="question-wrap" class="span6">
+    <div>
+      <% 
+      if( qSortedArray.length ){ 
+      %>
+        <select id="set-questions">
+          <option value="">Load Question from Set</option>
+          <% 
+            for(item in qSortedArray) { 
+              var type = qSortedArray[item]['type']
+                , typeLabel = "???"
+                , cnt = parseInt(item) + 1
+                , qTitle = "";
+
+              // Determine label
+              hasLabel = questionTypesObj.hasOwnProperty( type ) && questionTypesObj[type].hasOwnProperty('shortTitle');
+              if( hasLabel) typeLabel = questionTypesObj[type].shortTitle.toUpperCase();
+
+              if (qSortedArray[item]['qTxt']) {
+                var qTxt = qSortedArray[item]['qTxt']
+                  , qTxtStripped = "";
+                // Strip Tags
+                qTxtStripped = locals.stripTags( qTxt );
+                qTitle = ( qTxtStripped.length < 40 ) ? qTxtStripped : qTxtStripped.substring(0, 40)+'...';
+              } else qTitle = "Question " + cnt;
+          %>
+          <option value="<%= qSortedArray[item]['_id'] %>" data-type="<%= type %>" ><%= typeLabel %>: <%= qTitle %></option> 
+        <% } %>
+        </select>
+        <!-- Next / Prev Buttons -->
+        <%
+          var btnText = "Question from Set"
+            , prevBtnTitle = "Previous " + btnText
+            , nextBtnTitle = "Next " + btnText;
+        %>
+        <label for="set-prev-btn" class="accessibility-label"><%= prevBtnTitle %></label> 
+        <button href="#" id="set-prev-btn" class="btn btn-submit" title="<%= prevBtnTitle %>" tabindex="0" rel="tooltip" data-placement="bottom">
+          <i class="icon-chevron-left"></i>
+        </button>
+        <label for="set-next-btn" class="accessibility-label"><%= nextBtnTitle %></label> 
+        <button href="#" id="set-next-btn" class="btn btn-submit" title="<%= nextBtnTitle %>" tabindex="0" rel="tooltip" data-placement="bottom">
+          <i class="icon-chevron-right"></i>
+        </button>
+        <!-- Add A Question Bar -->
+        <div class="span12 span-center start-session row">
+          
+          <span class="add-new-title">Add New Question: </span>
+          <button id="btn-question-choice" class="btn btn-submit" data-title="Add New Question" rel="tooltip" data-placement="right">
+            <i class="icon icon-signout icon-white icon-large"></i>
+          </button>
+        </div>  
+
+      <% } %>
+
+      <!-- Hidden Div with Popover info -->
+      <% include ./partials/question-types %>
+
+      <select id="type">
+        <% for(item in questionTypesObj ) { %>
+          <option value="<%= item %>"><%= questionTypesObj[item].title %></option>
+        <% } %>
+      </select>
+    </div>
+
+    <div id="notify">
+      <h4>
+        <span id="type-header"></span> question below:
+      </h4>
+    </div>
+    <div id="question">
+      <textarea id='qTxt' class="noSwipe"></textarea>
+    </div>
+    <h4 class="answer-options">Answer Options: <i id="qOption-chevron" class="btn btn-mini icon icon-chevron-down" rel="tooltip" data-placement="right" title="Display Answer Options"></i></h4>
+    <div id="qOptions" class="answer-options noSwipe"></div> 
+    <div id="send-btn-wrap">
+      <button id="send-btn" class="btn btn-primary pull-left">Send <i class="icon-white icon-share-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="span6">
+    <div id="response-wrap" class="well">
+      <div id="polling-controls" class="btn-group pull-right">
+        <button id="client-status-btn" class="btn btn-submit hide" data-action="stop">Stop <i class="icon-remove"></i></button>
+<!--         <button id="stop-btn" class="btn btn-submit hide">Stop <i class="icon-remove"></i></button>
+        <button id="start-btn" class="btn btn-submit hide">Start <i class="icon-repeat"></i></button> -->
+        <button id="clear-btn" class="btn btn-submit hide">Clear <i class="icon-trash"></i></button>
+      </div>
+      <div id="totalContainer"> 
+        <button id="response-resizer" class="btn btn-submit" rel="tooltip" data-placement="bottom" title="Expand Responses"><i class="icon icon-resize-full"></i></button>
+<!--         <button id="max-responses" class="btn btn-submit" rel="tooltip" data-placement="bottom" title="Expand Responses"><i class="icon icon-resize-full"></i></button>
+        <button id="min-responses" class="btn btn-sumbit" rel="tooltip" data-placement="bottom" title="Minimize Responses"><i class="icon icon-resize-small"></i></button> -->
+        <span class="total-label">Total Responses: </span><span id="total" class="label label-info"></span>
+      </div>
+      <hr/>
+      <div id="answers" class="noSwipe"></div>
+    </div>    
+  </div>
+</div>
+
+<% include ./partials/footer %>
+<!-- Wysiwig Editor-->
+<%
+var cssScripts = [
+  'vendor/x-editable/bootstrap-editable/css/bootstrap-editable.css'
+  , 'vendor/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css'
+]
+var cssSrc = locals.concatFiles(cssScripts);
+%>
+<link href="/static?<%= cssSrc %>" rel="stylesheet" />
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'js/controllers/chatController.js'
+    , 'js/controllers/sessionMainController.js'
+    , 'js/controllers/sessionDisplayController.js'
+    , 'js/views/admin-session.js'
+    , 'vendor/x-editable/bootstrap-editable/js/bootstrap-editable.js'
+    , 'vendor/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js'
+    , 'vendor/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js'
+    , 'vendor/x-editable/inputs-ext/wysihtml5/wysihtml5.js'
+    , 'js/jquery.jgrowl.min.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static?<%= jsSrc %>"></script>
+
+<% include ../partials/nowjs-init %>
+
+<!-- Can not Consolidate these js files -->
+<script src="/js/dygraph-combined.js"></script>
+<script src="/js/jquery.dynacloud-5.js"></script>
+
+<!-- Question Type Scripts -->
+<%
+  var jsPathArr = [];
+  for(item in questionTypesObj){
+    jsPathArr.push( questionTypesObj[item].js );
+  }
+%>
+<%- autoLoadScriptPaths(jsPathArr) %>
+
+

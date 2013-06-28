@@ -1,0 +1,42 @@
+<nav id="main-menu" class="navbar navbar-fixed-top navbar-inverse" role="navigation" aria-label="main menu">
+  <div class="navbar-inner">
+    <div id="nav-logo"></div>
+    <ul id="global-nav" class="nav">
+      <li>
+        <label for="slidebar-btn" class="accessibility-label">Menu Access</label>
+        <button id="slidebar-btn" class="btn btn-navbar pull-right" rel="tooltip" data-placement="bottom" title="Menu">
+          <span class="icon-bar icon-white"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </li>
+      <li>
+        <label for="window-resizer" class="accessibility-label">Change Window Size</label>
+        <button id="window-resizer" class="btn btn-inverse" rel="tooltip" data-placement="bottom" title="Minimize Window" tabindex="1"><i class="icon-resize-small icon-med"></i></button>        
+      </li>
+      <!-- Chat is temporary removed until implement in a better way -->
+      <!--
+      <ul id="global-nav" class="nav">
+        <li>
+          <div id="chat-notify" tabindex="1"><i class="icon-comments-alt" rel="tooltip" data-placement="bottom" title="Chat"></i></div>
+          <div id="chat-count" class="badge badge-info">0</div>
+        </li>        
+      </ul>
+      -->
+    </ul>
+    <ul class="nav pull-right">
+      <li>
+        <a id="btn-close-session" class="navicon" data-placement="bottom" title="End Session" rel="tooltip" tabindex="0">
+          <i class="icon-remove" ></i>
+        </a>          
+      </li>
+    </ul>
+    <button id="room-fullscreen" class="btn btn-inverse pull-right" rel="tooltip" data-placement="bottom" title="Display Room Number">
+      <span>
+        <i class="icon-fullscreen icon-white"></i>
+      </span>
+      <span class="hidden-phone">Room ID: </span>
+      <span id="roomDisplay" class="hidden-400"></span>
+    </button>
+  </div>
+</nav><!-- End navbar -->

@@ -1,0 +1,28 @@
+<div id="page" style="padding:1em;">
+	<br />
+	<div class="well">
+		You have been logged out. You will be redirected to the login page in <span id="timer">10</span> seconds.
+	  <hr />
+	  <button id="redirect" class="btn btn-primary">Redirect Now</button>
+	</div>		 
+</div>
+<script>
+var timer = $('#timer')
+//Run Timer
+var clock = setInterval(function(){
+    var sec = parseInt( timer.text())
+    , newTime = sec - 1;
+
+  timer.text(newTime);
+
+}, 1000);
+
+// Redirect
+setTimeout(function(){
+  window.location = "/";
+}, 10000)
+
+$('#redirect').click(function(){
+	window.location = "/";
+})
+</script>

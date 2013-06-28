@@ -1,0 +1,58 @@
+<div id="jPanelMenu-menu" />
+	<aside id="slidebar" role="complementary"><!-- slidebar -->
+		<header class="slide-branding" role="banner"></header>
+    <nav aria-label="side menu">
+    	<h3>Sessions</h3>
+    	<ul class="subset">
+    		<li><a id="nav-session" href="/admin/session"><i class="icon-share-alt"></i> Start Now</a></li>
+        <li><a href="/admin/reports"><i class="icon-file"></i> Session Reports</a></li>
+    	</ul>
+    	<h3>Question Sets</h3>
+    	<ul class="subset">
+        <li><a href="/admin/set/start"><i class="icon-plus-sign"></i> Create New Set</a></li>
+    		<li><a href="/admin/set/list"><i class="icon-list-ul"></i> View All Sets</a></li>
+    	</ul>  	
+
+      <% if (typeof menuRights !== "undefined" && menuRights.length !== 0) { %>
+        <h3>Admin</h3>
+      	<ul class="subset">
+          <% 
+          if( menuRights.indexOf('people') !== -1 ) { 
+          %>
+
+            <li><a href="/admin/people"><i class="icon-group"></i> People</a></li> 
+          
+          <% }
+
+          if( menuRights.indexOf('grant') !== -1 ) { 
+          %>
+
+            <li><a href="/admin/permissions"><i class="icon-lock"></i> Permissions</a></li> 
+          
+          <% } 
+
+          if( menuRights.indexOf('settings') !== -1 ) { 
+          %>
+
+            <li><a href="/admin/settings"><i class="icon-list-alt"></i> Settings</a></li> 
+          
+          <% } 
+          
+          if( menuRights.indexOf('plugin') !== -1 ) { 
+          %>
+
+      		  <li><a href="/admin/plugins"><i class="icon-off"></i> Plugins</a></li>
+          
+          <% } %>
+
+        </ul>
+
+      <% } %>
+
+      <div class="spacer"></div>
+      <ul class="subset">
+    		<li><a href="/admin/profile"><i class="icon-user"></i> Profile</a></li>
+    	</ul>
+    </nav>
+	</aside><!-- end slidebar -->
+</div>

@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+<div id="set-controls" class="pull-right">
+  <label for="create-set" class="accessibility-label">Create New Set</label>
+  <a href="/admin/set/start" id="create-set" class="btn" title="Create New Set" tabindex="0" rel="tooltip" data-placement="bottom">
+      Create Set
+      <i class="icon-plus-sign"></i>
+  </a>
+</div>
+<h1><%= title %></h1>
+
+<div class="row-fluid">
+  <div id="sets">
+    <% include partials/set-listing %>
+    <% if( docArray.length < 1 ) { %>
+    	<div class="well">
+    		<h3>Currently you do not have any sets.</h3>
+    		<hr>
+    		<h4>Create a set below to get started</h4>
+    		<% include ./partials/set-start-form %>
+    	</div>
+    <% } %>
+  </div>
+</div>
+
+<% include ./partials/footer %>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/notify.js'
+    , 'views/admin-dashboard.js'
+    , 'views/admin-set-list.js'
+    , '/form-validators/setValidator.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

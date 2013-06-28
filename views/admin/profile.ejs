@@ -1,0 +1,16 @@
+<% include ./partials/header %>
+
+<br />
+<% include ../partials/account.ejs %>
+
+<% include ./partials/footer %>
+
+<%
+var jsScripts = [
+    'controllers/accessController.js'
+    , 'views/access.js'
+    , 'views/profile.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

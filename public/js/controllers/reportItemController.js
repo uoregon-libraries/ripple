@@ -1,0 +1,3 @@
+function ReportItemController() {	
+	var locals = {};
+};

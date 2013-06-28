@@ -1,0 +1,83 @@
+<div id="page">
+    <div id="content">
+<%
+if( variables['system-alert'] ){
+%>
+            <div id="system-alert">ALERT: <%- variables['system-alert'] %></div>
+<% } %>
+        <div id="loader-placeholder" class="well">  
+            Loading...
+            <div class="loader"></div>
+        </div>
+        <div id="login-container" class="row-fluid">          
+            <form method="post" id="room-access-form" class="well span6">
+              <input type="hidden" name="login-type" value="client" />
+              <div id="student-login">
+                <h2><%- variables['audience-name'] %></h2> 
+                <label for="room-num">Room</label>
+                <input type="text" id='room-num' name="room-num" for="room-num" class="span4 required" autocapitalize="off" autocorrect="off"/>
+                <% if( locals.auth == true ) {%>
+                    <label for='client-tf'>Username</label>
+                    <input type="text" name="client" id='client-tf' class="span4 required"  autocapitalize="off" autocorrect="off"/>
+                    <span class="login-suffix"></span>
+                    <label for='client-pass-tf'>Password</label>
+                    <input type="password" name="client-pass" id="client-pass-tf" class="span4 required" />
+                <% } %>
+                <div>
+                    <button id="aud-login-btn" class="btn btn-primary">
+                        <i class="icon-share icon-white"></i> Enter
+                    </button>
+                </div>
+              </div>
+            </form>
+
+            <form method="post" id="login-form" class="well span6">
+                <input type="hidden" name="login-type" value="presenter" />
+<% 
+if( variables['allow-registration'] === "1") {
+%>
+                <div class="pull-right small-print">
+                    <a href="/signup" id="create-account">Create An Account</a>      
+                </div>
+<% } %>
+                <h2>Presenter</h2>
+                <p class="subheading">Please Login To Your Account</p>
+                <label for='user-tf'>Username</label>
+                <input type="text" name="user" id='user-tf' class="span4 required" autocapitalize="off" autocorrect="off" value=""/>
+                <span class="login-suffix"></span>
+                <label for='pass-tf'>Password</label>
+                <input type="password" name="pass" id="pass-tf" class="span4 required" />
+<% 
+if( variables['password-recovery'] === "1") {
+%>
+                <a href="#" id="forgot-password" class="small-print">Forgot Your Password?</a><br />
+<% } %>                
+                <label for="remMe" id="remember-me" class="checkbox">Remember Me <input type="checkbox" name="remMe" /></label>
+                <button type="submit" id="btn-login" class="btn btn-primary">
+                    <i class="icon-lock icon-white"></i> Sign in
+                </button>
+                <div class="clear-fix"></div>
+            </form> 
+        </div>  <!-- End #login-container -->           
+    </div> <!--- End #content -->
+</div> <!-- End #page -->
+
+<% 
+// Only Show Modal if System Setting allows
+if( variables['password-recovery'] === "1") {
+%>  
+<% include partials/modal-lost-password %>
+<% } %>
+
+<% include partials/modal-alert %>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'jquery.form.js'
+    , 'form-validators/emailValidator.js'
+    , 'views/login.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

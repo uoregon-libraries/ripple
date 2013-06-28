@@ -1,0 +1,40 @@
+<% 
+  for(item in docArray) { 
+    qNum = (docArray[item]["question"]) ? Object.keys(docArray[item]["question"]).length : 0;
+    // console.log(qNum);
+    var itemURL = docArray[item]['name'].replace(/^\s*/, '').replace(/\s*$/, '')
+    // URL Encoded
+    itemURL = encodeURIComponent(itemURL);
+    // Replace all spaces with "_"
+    itemURL = itemURL.replace(/\%20/g, "_");
+%>
+  <div class="row set-list"> 
+    <div class="well well-list">
+      <div class="set-name">
+        <%= docArray[item]["name"] %>
+        <% if(docArray[item]["class"]) { %>
+          - <%= docArray[item]['class'] %>
+        <% } %>
+      </div>
+      <div class="set-info">
+        <div class="set-label">
+          <% if(qNum !== 0) { %>
+            <span class='badge'><%= qNum %> Questions</span>
+          <% } %>        
+        </div>
+        <div class="set-edit">
+          <a href="/admin/set/edit/<%= docArray[item]['_id'] %>~<%= itemURL %>" class="btn"  rel="tooltip" data-placement="bottom" title="Edit Set">
+            <i class="icon icon-med icon-edit"></i>
+            <span class="accessibility-label">Edit</span>
+          </a>      
+        </div>
+        <div class="set-start">
+          <a href="/admin/session/<%=docArray[item]["_id"]%>" class="btn btn-primary session-start" rel="tooltip" data-placement="bottom" title="Start Session with Set">
+            Start 
+            <i class="icon icon-share-alt icon-med"></i>
+          </a>      
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>

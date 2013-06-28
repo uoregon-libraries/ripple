@@ -1,0 +1,68 @@
+<% include ./partials/header %>
+
+<h1><%= title %></h1>
+
+<div id="permissions" class="well">
+  <h3>Adjust a role's privileges</h3>
+  <div class="permission-header">
+    <div class="permission-name" class="span2">Name</div>
+    
+<% 
+// Create Header for Permissions
+systemRoles.forEach(function(item,index){
+%>
+    <div class="roles"><%=item%></div>
+<%  
+});
+%>  
+  </div>
+<%
+// Determine Granted Permissions
+docArray.forEach(function(item,index){
+  // Only use docArray item that have 'roles' defined
+  if( item.hasOwnProperty('roles') ) {
+    var id = String( item._id );
+
+    //Display Name of Permission
+%>
+  <div class="granted-role">
+    <div class="permission-name"><%= item.name %></div>
+<%    
+    //Show current value of role
+    systemRoles.forEach(function(systemRole, systemIndex){
+      var lock = ""
+        , checked = ""; 
+      console.log("Checking role for " + item.name + "::", systemRole);
+      console.log("Check:: ",item.roles.indexOf(systemRole));
+      if( item.roles.indexOf(systemRole) !== -1 ) checked = "checked";
+      if( item.hasOwnProperty('roleLock') 
+        && item.adminLock === 1 ) 
+          lock = "disabled";
+      if( systemRole === 'admin' 
+        && item.hasOwnProperty('adminLock') 
+        && item.adminLock === 1 ) 
+          lock = "disabled";
+%>
+    <div class="roles"><label for"<%= id %>" class="accessibility-label"><%=systemRole%></label><input type="checkbox" id="<%= id %>" <%=checked%> <%=lock%> data-role="<%=systemRole%>"/></div> 
+<%        
+    });
+%>
+  </div><!-- END Role  -->
+<%    
+  }
+})
+%>
+</div><!-- END #permissions -->
+
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/notify.js'
+    , 'views/admin-permissions.js'
+    , 'jquery.jgrowl.min.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+console.log("jsSrc", jsSrc)
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

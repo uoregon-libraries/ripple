@@ -1,0 +1,18 @@
+<input type='hidden' value="<%= name %>" id="presenterName" />
+<input type='hidden' id="room" />
+
+<% include ../../partials/alert %>
+<% include ../../partials/confirm %>
+<% include ../../partials/fullscreen %>
+<% include ../../partials/form-errors %>
+
+<a id="skip-to-content" href="#content">Skip to Main Content</a>
+
+<div id="viewport">
+
+  <% include sidebar %>
+  
+  <div id="page" class="admin-page"><!-- Main content -->
+  	<div id="page-bg"></div>
+    <% include navbar %>
+    <div role="main" id="content" tabindex='-1'>

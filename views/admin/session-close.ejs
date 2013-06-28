@@ -1,0 +1,28 @@
+<div id="page" style="padding:1em;">
+	<br />
+	<div class="well">
+		Your session has been closed. This window will close in <span id="timer">10</span> seconds.
+	  <hr />
+	  <button id="redirect" class="btn btn-primary">Close Now</button>
+	</div>		 
+</div>
+<script>
+var timer = $('#timer')
+//Run Timer
+var clock = setInterval(function(){
+    var sec = parseInt( timer.text())
+    , newTime = sec - 1;
+
+  timer.text(newTime);
+
+}, 1000);
+
+// Redirect
+setTimeout(function(){
+  window.close();
+}, 10000)
+
+$('#redirect').click(function(){
+	window.close();
+})
+</script>

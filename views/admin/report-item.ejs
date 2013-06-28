@@ -1,0 +1,158 @@
+
+<% include partials/header %>
+<% include partials/time-formater %>
+<h1>Report for <%= formatDate( 'fullStamp', sessionObj.startTime ) %></h1>
+
+<!-- JSON Data used for csv -->
+<script>
+var session = <%- JSON.stringify(sessionObj) %>;
+var responses = <%- JSON.stringify(locals.docArray) %>;
+</script>
+<div id="report-item-wrap">
+
+<% if( typeof locals.docArray[0] === "undefined" ) { %>
+  <div class="well">There were no responses submitted for this session</div>
+<% } else { %>
+
+	<div id="csv-link"><a href="<%= url%>/csv">Download CSV</a></div>
+	<div class="row-fluid">
+<%
+    // Convert Array to Object for easier use
+    var questionTypesObj = convertArrToObj(questionTypes, 'name')
+      , qCNT = 0
+      , bodyContent = ''
+      , responseContent = '';
+
+    // Display a Question
+    var displayQuestion = function(question){
+      if( !question ) {
+        console.error('[ejs-displayQuestion] No question object provided');
+        return false
+      }
+      var qTxt = question.qTxt 
+          , qType = question.type
+          , html = ""
+          , qOptionsHtml = ""
+          , currType = questionTypesObj[ qType ]
+          , qTypeTitle = currType.title
+          , qIcon = currType.icon
+          , qIconTxt = currType.iconTxt ? currType.iconTxt : ''
+          , labelCnt = qCNT + 1;
+
+      // Create Question Header
+      html = "<div class='well'>";
+      html += "<div class='q-type-label'><i class='" + qIcon + " icon-large'><span class='iconText'>" + qIconTxt + "</span></i> " + qTypeTitle + "</div>";
+      html += "<div class='question-title'>Q" + labelCnt +" " + qTxt + "</div>";
+  
+      var hasOptions = question.hasOwnProperty('qOptions') && question.qOptions.length > 0;
+      if( hasOptions ){
+        var optionsLength = question.qOptions.length;
+        question.qOptions.forEach(function(option, index){
+          if( option.value === "") return false;
+          var val = option.value
+            , name = option.name
+            , cnt = index + 1;
+
+          switch (question.type) {
+            case "multiple-choice":
+              name = name.slice(-1);
+              break;
+            case "slider":
+              if( name === 'submitOption') name = "Submit";
+              break;
+          }
+          name = name.charAt(0).toUpperCase() + name.slice(1);
+          qOptionsHtml += "<span> " + name + " - " + val + "</span>";
+          if( cnt != optionsLength ) qOptionsHtml += "<span class='pipe'> | </span>";
+        });
+        qOptionsHtml = "<div><strong>Options:</strong>" + qOptionsHtml + "</div>"
+        html += qOptionsHtml; 
+      } 
+
+      // Parse Individual Responses
+      html += parseResponses(question.qID);
+
+      // Footer
+      html += "</div><!-- End Question #" + qCNT + " -->";
+
+      // Increment Count
+      qCNT++
+
+      bodyContent += html;
+    };
+
+    var parseResponses = function(qID){
+      var responseCnt = 0
+        , responseHeader = ''
+        , responseFooter = '';
+      if( !qID ){
+        console.error('[ejs-parseResponses] No question ID provided');
+        return false
+      }
+
+      // Clear Response Body
+      responseContent = '';
+
+      // Parse Responses
+      for( index in docArray ){
+        var response = docArray[index];
+
+        if( String(response.qID) === String(qID) ){
+          var responseItem = "";
+          responseCnt++
+          createResponseItem(response);
+          // Reduce Responses Array to increase performance;
+          delete docArray[index];
+        } else break;
+        
+      }
+      
+      if( responseCnt !== 0 ){
+        responseHeader += "<div class='label-responses'>Individual Answers: ";
+        responseHeader += "<i class='responses-chevron btn btn-submit icon icon-chevron-right' rel='tooltip' data-placement='right' title='' data-original-title='Toggle Individual Responses' tabindex='0'></i></div>";
+        responseHeader += "<div class='individual-responses'>";
+        responseHeader += "<hr />";
+        responseHeader += "<table class='report-items'>";
+        responseHeader += "<tr><th class='time-col'>Time</th><th class='client-col'>Individual</th><th class='answer-col'>Response</th>";  
+        responseFooter += "</table></div><!-- End Responses " + qID + "-->";
+
+        return responseHeader + responseContent + responseFooter;
+      } else {
+        // No Responses
+        return "<div class='label-responses'><i>No Answers Received</i></div>";
+      }
+
+    };
+
+    var createResponseItem = function(response){
+      var time = formatDate( 'timeAmPm', response.time );
+      
+      responseContent += '<tr class="item-response">';
+      responseContent += '<td class="time-cell">' + time + '</td>';  
+      responseContent += '<td class="name-cell"><span class="label">' + response.clientName + '</span></td>';
+      responseContent += '<td class="answer-cell">' + response.answer + '</td>';
+      responseContent += '</tr>';
+    }
+
+    // Iterate over Questions
+    for( index in sessionObj.questions ) { 
+      displayQuestion(sessionObj.questions[index]);
+    }
+  }
+
+%>
+  <%- bodyContent %>
+  </div>
+</div> <!-- END #report-item-wrap -->
+
+<% include ./partials/footer %>
+
+<!-- Consolidate all the internal js files -->			
+<%
+var jsScripts = [
+    'controllers/reportItemController.js'
+    , 'views/admin-report-item.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

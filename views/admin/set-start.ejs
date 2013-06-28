@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+
+<h1><%= title %></h1>
+
+<div class="row-fluid">
+	<div class="well">
+	<% include ./partials/set-start-form %>	
+	</div>
+</div>
+
+<% include ./partials/footer %>
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'controllers/notify.js'
+    , 'form-validators/setValidator.js'
+    , 'views/admin-dashboard.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>

@@ -1,0 +1,1207 @@
+// Variables 
+@import "variables.less";
+@import "mixins.less";
+@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
+
+.admin-page{
+  legend{
+    margin: 0 0 0.5em;
+  }
+  fieldset:not(:first-of-type){
+    margin-top:0.5em;
+  }
+
+  /*** progression bar ***/
+  /** http://www.catswhocode.com/blog/how-to-create-a-kick-ass-css3-progress-bar **/
+  /** https://github.com/ivanvanderbyl/ui-progress-bar **/
+  .ui-progress-bar {
+    margin-bottom: 1.5em;
+  } 
+
+  .ui-progress span.ui-label {
+    font-size: 1.2em;
+    position: absolute;
+    right: 0;
+    line-height: 33px;
+    padding-right: 12px;
+    color: #FFF;
+    text-shadow: 0px -1px 2px #000;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  @-webkit-keyframes animate-stripes {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+     background-position: 44px 0;
+    }
+  }      
+
+  .ui-progress-bar {
+    position: relative;
+    height: 35px;
+    padding-right: 2px;
+    background-color: #abb2bc;
+    -moz-border-bottom-right-radius: 35px;
+    -webkit-border-bottom-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    -moz-border-top-right-radius: 35px;
+    -webkit-border-top-right-radius: 35px;
+    border-top-right-radius: 35px;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b6bcc6), color-stop(1, #9da5b0));
+    background: -moz-linear-gradient(#9da5b0 0%, #b6bcc6 100%);
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
+    -moz-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px #FFF;
+  }        
+
+  .ui-progress {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 33px;
+    -moz-border-bottom-right-radius: 35px;
+    -webkit-border-bottom-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    -moz-border-top-right-radius: 35px;
+    -webkit-border-top-right-radius: 35px;
+    border-top-right-radius: 35px;
+    -webkit-background-size: 44px 44px;
+    background-color: @baseUIAlt;
+    background-color: @baseUIColor;
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, @baseUIColor),
+      color-stop(1, @baseUIAlt)
+     );
+    background-image: -webkit-linear-gradient(
+      center bottom,
+      @baseUIColor,
+      @baseUIAlt
+     );
+    background-image: -moz-linear-gradient(
+      center bottom,
+      @baseUIColor,
+      @baseUIAlt
+     );
+    background-image: -ms-linear-gradient(
+      center bottom,
+      @baseUIColor,
+      @baseUIAlt
+     );
+    background-image: -o-linear-gradient(
+      center bottom,
+      @baseUIColor,
+      @baseUIAlt
+     );
+    -webkit-box-shadow: inset 0px 1px 0px 0px #00E873, inset 0px -1px 1px @baseUIAlt;
+    -moz-box-shadow: inset 0px 1px 0px 0px #00E873, inset 0px -1px 1px @baseUIAlt;
+    box-shadow: inset 0px 1px 0px 0px #00E873, inset 0px -1px 1px @baseUIAlt;
+    border: 1px solid #4c8932;
+    -webkit-animation: animate-stripes 2s linear infinite;
+  }
+  .ui-progress:after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-image: 
+       -webkit-gradient(linear, 0 0, 100% 100%, 
+          color-stop(.25, rgba(255, 255, 255, .2)), 
+          color-stop(.25, transparent), color-stop(.5, transparent), 
+          color-stop(.5, rgba(255, 255, 255, .2)), 
+          color-stop(.75, rgba(255, 255, 255, .2)), 
+          color-stop(.75, transparent), to(transparent)
+       );
+    background-image: 
+      -webkit-linear-gradient(
+        -45deg, 
+          rgba(255, 255, 255, .2) 25%, 
+          transparent 25%, 
+          transparent 50%, 
+          rgba(255, 255, 255, .2) 50%, 
+          rgba(255, 255, 255, .2) 75%, 
+          transparent 75%, 
+          transparent
+       );
+    background-image: 
+      -moz-linear-gradient(
+        -45deg, 
+          rgba(255, 255, 255, .2) 25%, 
+          transparent 25%, 
+          transparent 50%, 
+          rgba(255, 255, 255, .2) 50%, 
+          rgba(255, 255, 255, .2) 75%, 
+          transparent 75%, 
+          transparent
+       );
+    background-image: 
+      -ms-linear-gradient(
+        -45deg, 
+          rgba(255, 255, 255, .2) 25%, 
+          transparent 25%, 
+          transparent 50%, 
+          rgba(255, 255, 255, .2) 50%, 
+          rgba(255, 255, 255, .2) 75%, 
+          transparent 75%, 
+          transparent
+       );
+    background-image: 
+      -o-linear-gradient(
+        -45deg, 
+          rgba(255, 255, 255, .2) 25%, 
+          transparent 25%, 
+          transparent 50%, 
+          rgba(255, 255, 255, .2) 50%, 
+          rgba(255, 255, 255, .2) 75%, 
+          transparent 75%, 
+          transparent
+       );
+    z-index: 1;
+    -webkit-background-size: 50px 50px;
+    -moz-background-size:    50px 50px;
+    background-size:         50px 50px;
+    -webkit-animation: move 2s linear infinite;
+    -moz-border-bottom-right-radius: 35px;
+    -webkit-border-bottom-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+    -moz-border-top-right-radius: 35px;
+    -webkit-border-top-right-radius: 35px;
+    border-top-right-radius: 35px;
+    overflow: hidden;
+  }
+  .ui-progress .progress-value{
+    font-size:0.75em;
+  }
+
+  /*.btn.btn-mini {
+      padding: 2px 6px;
+      font-size: 11px;
+      line-height: 13px;
+  }*/
+  .roomLinkDisplay {
+    font-size: 36px;
+    text-align: center;
+      margin-bottom: 72px;
+      padding: 36px 20px 0 20px;
+  }
+
+  .numeric-options{
+    
+    label{
+      cursor:default;
+      width:250px;
+      display:inline-block;
+    }
+    label:hover{
+      background-color: transparent;
+    }
+    input{
+      width:50px;
+    }
+  }
+  .question-choices i .iconText{
+    font-weight: bold;
+  }
+
+  #room-fullscreen{
+    position: absolute;
+    top:0;
+    right:4em;
+  }
+
+  #system-alert{
+    margin-bottom: 1em;
+  }
+  /* -----------------------------------*/
+  /* -------->>> Wysihtml Toolbar <<<--------*/
+  /* -----------------------------------*/
+  .wysihtml5-toolbar{
+    .icon-share:before {
+      content: "\f0c1";
+    }
+    .icon-th-list:before {
+      content: "\f0cb";
+    }
+    .icon-indent-right:before {
+      content: "\f03b";
+    }
+    .icon-indent-left:before {
+      content: "\f03c";
+    }
+  }
+
+  /* -----------------------------------*/
+  /* -------->>> Dashboard <<<--------*/
+  /* -----------------------------------*/
+  #dashboard{
+
+    .start-session-desc{
+      height:6em;
+      width:100%;
+    }
+
+    .set-create-desc{
+      height:8em;
+    }
+  }
+
+  .start-session a.btn{
+    font-size: 1.25em;
+    margin:1.25em;
+    padding:0.75em;
+  } 
+
+  .question-set-wrap a.btn{
+    font-size:1em;
+    padding:0.5em;
+    min-width: 7em;
+  }
+  .question-set-section{
+    margin: 10px 0;
+
+    .well-list{
+      padding:0.75em;
+    }
+    .well{
+      margin-bottom: 9px;
+      background: #CCC;
+    }
+  }
+
+  #sign-out-title{
+    display:inline-block;
+    overflow: hidden; 
+    white-space: nowrap;
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Session <<<----*/
+  /* -----------------------------------*/
+  #question-response-wrap{
+    margin-top:1em;
+    position: relative;
+
+    .start-session{
+      margin-bottom: 2em;
+      text-align: left;
+      margin-left:0;
+    }
+    .add-new-title{
+      color:#DDD;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: bold;
+      font-family: inherit;
+      margin-right: 1em;
+    }
+    h4.answer-options {
+      margin-bottom: 0.5em;
+    }
+
+    #send-btn-wrap{
+      height:20px;
+    }
+  }
+  #notify{
+    margin-top:1em;
+  }
+  #type-header{
+/*    
+    position:absolute;
+    top:-2em;
+    right:0;
+    color:#DDD;
+    font-size: 1.25em;
+    display:none;
+*/
+    color:#DDD;
+
+    i{
+      top:4px;
+      font-size: 1.5em; 
+      margin-right:10px; 
+      vertical-align: middle;  
+    }
+  }
+
+  #qTxt{
+    height:250px;
+    width:100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  #qOptions{
+    box-sizing:border-box;
+
+    input[type='radio']{
+      width:2em;
+      vertical-align: top;
+    }
+    .well {
+      margin-bottom:10px;
+    }
+    .tally{
+      margin-left:1em;
+    }
+    .scale-values,
+    .submit-values{
+      line-height: 2em;
+    }
+  }
+  #response-wrap{
+    &.max{
+      position:absolute;
+      top:0;
+      left:0;
+      width:95%;
+      width:~"-moz-calc(100% - 40px)";
+      width:~"-webkit-calc(100% - 40px)";
+      width:~"calc(100% - 40px)";
+      height:100%;
+      margin-top: 0;
+    }
+    #graphWrap{
+      width:100%;
+    }
+    #polling-controls{
+      position: absolute;
+      right:19px;
+    }
+    #total{
+      margin-left:0.5em;
+      font-size:1.25em;
+      margin-top:3px;
+    }
+    #word-cloud{
+      margin-right:0.5em;
+    }
+    #word-display{
+      height:200px;
+      overflow-y: auto;
+    }
+  }
+
+  #responses{
+    height:200px;
+    overflow: autoscroll;
+  }
+  #messages,
+  #responses{
+    height:200px;
+    overflow: auto;
+    font-size:14px;
+    padding-top:0;
+  }
+
+  #message-txt{
+    width: 100%;
+    font-size: .75em;
+  }
+  .answer-row{
+    margin-left:10px;
+    margin-top: 10px;
+  }
+  .well{
+    border-color:#ccc;
+  }
+  #min-page,
+  #max-page{
+    margin: 5px .5em 0 .5em;
+    padding: 4px;
+  }
+
+  /* Hide Graph Legend */
+  #dynacloud{
+    clear:both;
+  }
+  .flashwell{
+    background: #FFF;
+  }
+  #flash-display{
+    min-height:200px;
+    max-height:800px;
+    overflow:auto;
+  }
+  #flash-hide{
+    display:none;
+  }
+
+  .dygraph-legend > span { display: none; }
+  .dygraph-legend > span.highlight { display: inline; }
+
+  #set-questions {
+    margin-right: 2em;
+    width:70%;
+    width:~"-moz-calc(90% - 4em)";
+    width:~"-webkit-calc(90% - 4em)";
+    width:~"calc(90% - 4em)";
+    min-width: 150px;
+  }
+
+  #answer-placeholder{
+    width:100%;
+    min-height:200px;
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Question Set Edit <<<----*/
+  /* -----------------------------------*/
+  #set-name-wrap,
+  #class-name-wrap{
+    margin: 0 0 0 20px;
+    font-family: @headingsFontFamily;
+    font-weight: @headingsFontWeight;
+    color:#DDD; 
+    text-rendering: optimizelegibility; // Fix the character spacing for headings 
+    width:70%;
+    display:block;
+
+    label{
+      margin-right: 0.5em;
+      font-size:inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+  }
+  #set-name-wrap{
+    font-size: 30px;
+  }
+  #class-name-wrap{
+    font-size: 18px;
+    line-height: @baseLineHeight * 2;   
+  }
+  .set-name-placeholder,
+  .class-name-placeholder{
+    min-width:200px;
+    height: 1.5em;
+  }
+  #set-edit{
+    margin-bottom:100px;
+  }
+
+  #questions{
+    ui-state-highlight{
+      height: 50px;
+    }
+
+  }
+
+  #set-controls{
+    margin-bottom:-2.5em;
+
+    #remove-set-btn:hover{
+      color:red;
+    }
+    #done-btn:hover{
+      color:rgba(82,168,236,0.8);
+    }
+    #start-btn:hover{
+      color:@baseUIColor;
+    }
+  }
+  #set-titles div[data-type='editable'],
+  .question-set-section span[data-type='editable']{
+    cursor:pointer;
+    &:hover{
+      border:3px @focusHighlight solid;     
+      -moz-box-shadow: 0px 0px 14px @focusHighlight;
+      -webkit-box-shadow: 0px 0px 14px @focusHighlight;
+      box-shadow: 0px 0px 14px @focusHighlight;
+      margin-top:-3px;
+    }
+  }
+  
+
+  .question-set-section {
+    min-height: 5em;
+    position: relative;
+
+    label{
+      display:inline-block;
+    }
+    legend{
+      font-size: 0.9em;
+    }
+
+    .lead-label{
+      width:250px;
+    }
+    .question-icon{
+      position: absolute;
+      display:inline;
+      top: 9px;
+      left: 9px;
+      color:#A6A6A6; 
+    }
+    .sort-icon{
+      position: absolute;
+      left:-1px;
+      top:50%;
+      margin-top:-9px;
+      font-size: 24px;
+      padding-top: 5px;
+    }
+    .sort-icon .accessibility-label{
+      margin-left: 0;
+    }
+    .question-text{
+      width:100%;
+    }
+    .question-label{
+      width:100%;
+    }
+    .answer-label{
+      display: inline;
+    }
+    .answer-option{
+      width: 85%;
+      display:inline;
+    }
+    .btn-add-prepend{
+      position:absolute;
+      top:0px;
+      right:15px;
+    }
+    .btn-add-append{
+      position:absolute;
+      bottom:0px;
+      right:15px;
+    }
+    .btn-add-question{
+      color: green;
+      margin-right:-10px;
+      visibility:hidden;
+    }
+
+    .label-highlight{
+      font-weight:bold;
+      font-size: 1.25em;
+    }
+    .letter-highlight{
+      margin-right:0.5em;
+    }
+    .start-question-content{
+      margin-top:-.75em;
+    }
+    .remove-question-wrap{
+      position:absolute;
+      top:50%;
+      right:0.25em;
+      margin-top:-1.1em;
+    }
+    .btn-add-question,
+    .remove-question-wrap{
+      line-height:1.5em;
+      border:none;
+      background-color: transparent;
+    }
+    .numeric-options{
+      margin-left: 55px;
+
+      label{
+        width:250px;
+      }
+    }
+    .controls{
+      padding:0 4em;
+      
+      .scale-values,
+      .submit-values{
+        line-height: 2em;
+      }
+      input[type='radio']{
+        width:2em;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .question-set-section:hover {
+    .btn-add-question{
+      visibility: visible;
+    }
+  }
+
+  .test{
+    color: #bbb;
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Set Lists Dashboard<<<----*/
+  /* -----------------------------------*/
+  .question-set-section{
+    .set-name{
+      width:40%;
+      display:inline-block;
+      box-sizing:border-box;
+      padding-right: 1em;
+    }
+    .set-info{
+      width: 55%;
+      min-width:350px;
+      vertical-align: top;
+      display:inline-block;
+      box-sizing:border-box;
+    }
+    .set-label,
+    .set-edit,
+    .set-start{
+      display:inline-block;
+      line-height: 2.5em;
+    }
+    .set-label{
+      min-width: 6em;
+      padding-right:1em;
+    }
+    .set-edit{
+      min-width: 1.5em;
+      padding-right:1em;
+    }
+    .set-start{
+      min-width: 5em;
+    }
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Set Lists Dashboard<<<----*/
+  /* -----------------------------------*/
+  #sets{
+    .set-name{
+      width:40%;
+      float:left;
+      display:inline-block;
+      box-sizing:border-box;
+      padding-right: 1em;
+    }
+    .set-info{
+      width: 55%;
+      min-width:24em;
+      display:inline-block;
+      box-sizing:border-box;
+    }
+    .set-label,
+    .set-edit,
+    .set-start{
+      display:inline-block;
+      line-height: 2.5em;
+    }
+    .set-label{
+      min-width: 6em;
+      padding-right:2em;
+    }
+    .set-edit{
+      min-width: 6em;
+      padding:0 2em;
+    }
+    .set-start{
+      min-width: 5em;
+    }
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Lists <<<----*/
+  /* -----------------------------------*/
+  .report-list,
+  .set-list{
+    margin-left: 0px;
+
+    .btn{
+      margin-top: -.625em;
+      white-space:nowrap;
+    }
+
+  }
+
+  .set-list-view-btn{
+    margin-right:1em;
+    margin-top: 0.5em;
+  }
+
+ 
+  /* -----------------------------------*/
+  /* ---->>> Report List <<<----*/
+  /* -----------------------------------*/
+  #report-list-wrap{
+    .question-cnt{
+      margin-right:2em;
+    }
+  }
+  /* -----------------------------------*/
+  /* ---->>> Report Items <<<----*/
+  /* -----------------------------------*/
+  #report-item-wrap{
+    #csv-link{
+      width:100%;
+      text-align: right;
+    }
+    .q-type-label i{
+      color: #A6A6A6;
+    }
+    .question-title{
+      font-weight: bold;
+    }
+    .report-items{
+      width: 100%;
+      th{
+        text-align:left;
+      }
+      .time-col{
+        width:6em;
+      }
+      .client-col{
+        width:6em;
+      }
+    }
+    tr:nth-of-type(even) {
+      background-color:#ddd;
+    }
+
+    .label-responses {
+      text-align: center;
+    }
+    .individual-responses {
+      margin-top:1em;
+    }
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Permissions <<<----*/
+  /* -----------------------------------*/
+  #permissions {
+    line-height: 2em;
+    border-left:1px #333 solid;    
+
+    .permission-header{
+      #gradient > .vertical(@gray, @bgUIColor);
+      margin-top: 1em;
+      border-bottom: 2px solid #666;
+      .border-radius(5px);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      color: #CCC;
+    }
+    .permission-name {
+      display:inline-block;
+      width:50%;
+      min-width:150px;
+      text-transform:capitalize;
+      padding-left: 1em;
+    }
+    .granted-role{
+      border-bottom: 1px solid #DDD;
+
+      &:nth-of-type(even){
+        background-color: @tableStripe;
+      }
+      &:hover{
+        background-color: @tableHover;
+        border-bottom: 1px solid @tableHoverBorder;
+      }    
+    }
+    .roles {
+      display:inline-block;
+      width:23%;
+      text-align: center;
+      text-transform:capitalize;
+
+
+    }
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> People <<<----*/
+  /* -----------------------------------*/
+  #user-list{
+    width:100%;
+    border-width: 1px 0;
+    .border-radius(5px);
+
+    .icon-remove{
+      color:red;
+    }
+
+    thead {
+      #gradient > .vertical(#555, #3e3e3e);
+      .border-radius(5px);
+      .box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
+      color:#AAA;
+    }
+    .table-highlight td{
+      background-color: #CCC;
+    }
+    tr:hover td{
+      background-color:@tableHover;
+    }
+    td {
+      border-left: none;
+    }
+    .person-active td,
+    .person-active:hover td{
+      background-color: @baseUIColor;
+      color: #FFF;
+    }
+    .person-active:hover td{
+      color:@grayHighlight;
+    }
+  }
+  #people{
+    #account-template{
+      display:none;
+    }    
+  }
+
+  /* -----------------------------------*/
+  /* ---->>> Settings <<<----*/
+  /* -----------------------------------*/
+  #settings{
+    #categories > li.active > a{
+      background-color: #FFF;
+      color:#00B7FF;
+    }
+    #categories > li > a{
+      background-color: #EEE;
+      border-right:none;
+      color: #005580;
+      &:hover{
+        color:#00B7FF;
+      }
+    }
+    #variable-container{
+      background-color:#FFF;
+      .border-radius(0 4px 4px 4px); 
+      margin-left:0;
+      padding:1em;   
+      border:1px #DDD solid;  
+    }    
+    .button-input{
+      width:100%;
+      line-height: 2.5em;
+
+      label,
+      .btn-group{
+        float:left;
+        display:inline;
+      }
+      label{
+        width:70%;
+      }
+    }
+    .button-controls{
+      font-size: 1.5em;
+    }
+
+    .txt-input {
+      margin-bottom: 1em;
+
+      label {
+        margin-bottom: 0
+      }
+      input{
+        margin-bottom: 0;
+      }
+    }
+    .txt-input:first{
+      margin-top: 0;
+    }
+  }
+}
+/* -----------------------------------*/
+/* ---->>> Session Sidebar <<<----*/
+/* -----------------------------------*/
+.page--admin-session {
+  #toggle-names {
+    label{
+      display: inline;
+    }
+    .btn-group {
+      text-align: right;
+    }
+  }
+
+  .hide-names .name{
+    display:none;
+  }
+  #responses{
+    clear:both;
+  }
+}
+
+/* -----------------------------------*/
+/* ---->>> Responsive <<<----*/
+/* -----------------------------------*/
+@media (min-width: 1240px) {
+  .admin-page{
+    .question-set-section{
+      .set-label{
+        padding-right: 15%;
+      }
+      .set-edit{
+        padding-right: 15%;
+      }
+    }
+  }
+}
+@media screen and (max-width:1080px) and (min-width:768px){
+  .admin-page{
+    .question-set-section{
+      .set-name{
+        width:100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px){
+  .admin-page{
+    #set-questions {
+      width:~"-moz-calc(85% - 4em)";
+      width:~"-webkit-calc(85% - 4em)";
+      width:~"calc(85% - 4em)";
+    }  
+  }
+}
+@media (max-width: 800px) {
+  .admin-page{
+    #response-wrap{
+      margin-top:40px;
+     
+      #polling-controls{
+        position:static;
+      }
+    }
+    #qOptions{
+      .span2{
+        display:inline;
+      }
+      input{
+        width:250px;
+      }
+      input[type="radio"]{
+        width:auto;
+      }
+    }
+    .set-list{
+      .span-label[class*="span"] {
+        display:none;
+      }
+      .span-edit{
+        margin-left:2em;
+      }
+    }
+    #permissions{
+      .permission-name{
+        width:auto;
+      }
+    }    
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-page{ 
+    .question-core {
+      margin: 2em;
+    }
+    .question-set-section {
+      label{
+        text-align: left;
+      }
+      .question-text {
+        width:80%;
+      }
+    } 
+    .set-list [class*="span"]{
+      width:25%;
+      display:inline-block;
+    }
+    .editable-wysihtml5,
+    .wysihtml5-sandbox{
+      width:80%;
+    }
+    .editableform .control-group {
+      white-space: pre-wrap;
+    }
+
+    #report-item-wrap{
+      /*  Label the data table */
+      .time-cell:before { content: "Time"; }
+      .name-cell:before { content: "Individual"; }
+      .answer-cell:before { content: "Response"; }
+    }
+  }
+}
+
+@media (max-width:565px){
+  .admin-page{
+    .question-set-section{
+      .set-name{
+        width:100%;
+      }
+    }
+    #permissions{
+      .permission-name{
+        width:auto;
+        min-width: 100px;
+      }
+    }    
+  }
+}
+
+@media (max-width: 400px){
+  .admin-page{   
+    #question-wrap{
+
+      #qTxt{
+        height:100px;
+      }
+      #qOptions{
+        input{
+          width:120px;
+        }
+        input[type='radio']{
+          width:2em;
+        }
+        .tally{
+          display:none;
+        }
+      }    
+    }
+    
+    #response-wrap{
+      .total-label{
+        display:none;
+      }
+      #polling-controls{
+        float:left;
+        margin-bottom:10px;
+      }
+      #flash-show{
+        float:left;
+      }
+      #word-cloud{
+        display:none;
+      }
+    }
+
+    #sets{
+      .set-label{
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .set-edit,
+      .set-start{
+        display:inline;
+        float:left;
+        width:50%;
+        box-sizing:border-box;
+      }
+    }
+
+    #permissions{
+      .permission-header{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;        
+      }
+      .granted-role{
+        border-bottom:1px #333 solid;
+        
+        &:first-child{
+          margin-top:1em;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+        &:nth-of-type(even){
+          background: #DDD;
+
+          & .roles{
+            border-top:1px #CCC solid;    
+          }
+        }
+        &:nth-of-type(odd) .roles{
+          border-top:1px #CCC solid;          
+        }
+
+      }
+      .permission-name,
+      .roles{
+        width:100%;
+        text-align: left;
+
+        input{
+          position:absolute;
+          left:75%;
+        }
+      }
+      .permission-name{
+        font-weight: bold;
+      }
+      .accessibility-label{
+        position: relative !important;
+        left:0;
+        display:inline;
+        clip:auto !important;
+        width:auto !important;
+        height:auto !important;
+        text-align: left;
+        margin-left:2em;
+        margin-right:2em;
+      }
+    }
+
+    #set-questions {
+      width:~"-moz-calc(80% - 4em)";
+      width:~"-webkit-calc(80% - 4em)";
+      width:~"calc(80% - 4em)";
+    }
+
+  } // End .admin-page
+}
+
+@media (max-width: 320px){
+  .admin-page{
+    #question-response-wrap{
+      max-width: 280px;
+    }
+
+    #set-questions {
+      width:~"-moz-calc(75% - 4em)";
+      width:~"-webkit-calc(75% - 4em)";
+      width:~"calc(75% - 4em)";
+    }
+
+  }
+}
+
+// End of .admin-page
+// __________________________________
+
+.navbar .btn-navbar{
+  display:inline-block;
+}
+
+.question-choices{
+ .row{
+    margin: 5px 0 5px 10px;
+  }
+ .btn{
+    width:15em;
+    text-align:left;
+  }
+  .row .icon{
+    margin-right: 10px;
+  }
+}
+
+#account-form-container{
+  #role-cg .controls{
+    width:100%;    
+    display:inline-block;
+    text-align: left;
+  }
+
+}
+

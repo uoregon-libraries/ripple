@@ -1,0 +1,37 @@
+<% include ./partials/header %>
+
+<div id="report-list-wrap">
+	<h1><%= title %></h1>
+
+	<%
+		var hasExpireTime = system.hasOwnProperty('session-expireTime') && system['session-expireTime'] > 0;
+		if( hasExpireTime ) {
+	%>
+	<div class="alert alert-warn">
+		<span class="icon-info-sign"></span> Reports and their associated data are deleted after <strong><%= system['session-expireTime'] %> day(s)</strong>.
+	</div>
+	<% }	%>
+
+	<div class="row-fluid">
+	  <div id="sets">
+	    <% include partials/report-listing %>
+	  </div>
+	</div>
+
+<% include ./partials/footer %>
+</div> <!-- End #report-list -->
+
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'form-validators/setValidator.js'
+    , 'views/admin-dashboard.js'
+    , 'views/admin-report-list.js'
+    , 'jquery.jgrowl.min.js'
+    , 'jquery.form.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static/js?<%= jsSrc %>" /></script>
+

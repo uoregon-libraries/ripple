@@ -1,0 +1,116 @@
+<% include ./partials/header %>
+<% 
+  // Convert Array to Object for easier use
+  var questionTypesObj = convertArrToObj(questionTypes, 'name');
+  var jsPassObj = JSON.stringify(questionTypesObj);
+%>
+<script>
+GLOBALS.questionTypes = <%- jsPassObj  %>;
+</script>
+<input type="hidden"	id="qSetID" value="<%= record['_id'] %>">
+
+<!-- Set Controls -->
+<div id="set-controls" class="btn-group pull-right">
+	<button id="remove-set-btn" class="btn" rel="tooltip" data-placement="bottom" title="Remove Set" tabindex="0">
+<!-- 		<label for="remove-set-btn" class="accessibility-label">Delete Question Set</label>
+ -->	  <i class="icon-remove"></i>
+	</button>
+	<button id="done-btn" class="btn" rel="tooltip" data-placement="bottom" title="Save Set" tabindex="0">
+<!-- 		<label for="done-btn" class="accessibility-label">Save Question Set</label>
+ -->		Save <i class="icon-save"></i>					
+	</button>
+	<button id="start-btn" data-href="/admin/session/<%= record['_id'] %>" class="btn" rel="tooltip" data-placement="bottom" title="Start Session" tabindex="0">
+		<label for="start-btn" class="accessibility-label">Start Session with Question Set</label>
+      Start <i class="icon-share-alt"></i>
+  </button> 
+</div>
+
+<!-- Title -->
+<div id="set-titles" class="row">
+	<div id="set-name-wrap" class="span8">
+		<label for="name" class="pull-left label-highlight">Set: </label>
+		<span>
+      <a id="name" href="#" class="editiable" data-pk="<%= record['_id'] %> " rel="tooltip" data-placement="bottom" title="Edit Set Name"><%= setName %></a>
+		</span>
+	</div>
+	<div id="class-name-wrap" class="span8">
+    <label for="class" class="pull-left label-highlight">Class/Presentation: </label>
+    <span>
+      <a id="class" href="#" class="editiable" data-pk="<%= record['_id'] %>" rel="tooltip" data-placement="bottom" title="Edit Class/Presentation Name"><%= className %></a>
+    </span>
+  </div>
+</div>
+			
+<% 
+	// console.log(record.question);
+	// log("JSON",JSON.stringify(qArray));
+%>
+<script>
+var questions = []
+<% for(var i=0, len=qArray.length ; i<len; i++) {%>
+	<% qArray[i] = JSON.stringify(qArray[i]); %>
+	questions[<%=i%>] = <%- qArray[i] %>;
+<% } %>
+// console.log(questions);
+</script>
+<div id="set-edit">
+	<div class="row-fluid">	
+		<div id="questions" aria-live="polite" aria-relevant="additions">
+		</div>
+		<div class="span12 span-center start-session row">
+			<div class="btn-group">
+				<button id="default-choice" class="btn btn-primary question-type" data-qtype="true-false" data-panel-position="append">
+					<i class="icon icon-plus-sign icon-white icon-large"></i>
+					Add A Question
+				</button>
+				<button id="btn-question-choice" class="btn btn-primary" data-title="Available Question Types">
+					<i class="icon icon-signout icon-white icon-large"></i>
+					<span class="accessibility-label">Add new question at bottom of list</span>
+				</button>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<% include ./partials/question-types %>
+
+<% include ./partials/footer %>
+
+<!-- Needed for sorting & inline editing -->
+<%
+var cssScripts = [
+  'css/jquery-ui_1.8.23.min.css'
+  , 'vendor/x-editable/bootstrap-editable/css/bootstrap-editable.css'
+  , 'vendor/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css'
+]
+var cssSrc = locals.concatFiles(cssScripts);
+%>
+<link href="/static?<%= cssSrc %>" rel="stylesheet" />
+
+<!-- Consolidate all the internal js files -->
+<%
+var jsScripts = [
+    'js/controllers/setEditController.js'
+    , 'js/controllers/util.js'
+    , 'js/views/admin-set-edit.js'
+    , 'js/jquery.onscreen.min.js'
+    , 'vendor/x-editable/bootstrap-editable/js/bootstrap-editable.js'
+    , 'vendor/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js'
+    , 'vendor/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js'
+    , 'vendor/x-editable/inputs-ext/wysihtml5/wysihtml5.js'
+    , 'js/jquery.jgrowl.min.js'
+    , 'js/jquery-ui_1.8.23.min.js'    
+    , 'js/jquery.ui.touch-punch.min.js'
+]
+var jsSrc = locals.concatFiles(jsScripts);
+%>
+<script src="/static?<%= jsSrc %>" ></script>
+
+<!-- Question Type Scripts -->
+<%
+  var jsPathArr = [];
+  for(item in questionTypesObj){
+    jsPathArr.push( questionTypesObj[item].js );
+  }
+%>
+<%- autoLoadScriptPaths(jsPathArr) %>
