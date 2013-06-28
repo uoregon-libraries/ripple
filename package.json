@@ -1,8 +1,9 @@
 {
-  "author": "William Myers",
   "name": "ripple-core",
+  "preferGlobal": true,
   "version": "1.0.0",
-  "description": "An audience response system.",
+  "author": "William Myers",
+  "description": "Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices.",
   "keywords": [
     "ripple",
     "audience",
@@ -14,14 +15,20 @@
     "type":"git",
     "url":"https://github.com/uoregon-libraries/ripple.git"
   },
-  "private": true,
   "bin": {
     "ripple":"./bin/ripple-cli.js"
   },
   "scripts": {
-    "start": "ripple start",
     "test": "make test"
   },
+  "keywords": [
+    "ripple",
+    "ripple-core",
+    "prs",
+    "audience",
+    "response",
+    "classroom"
+  ],
   "dependencies": {
     "express": "3.0.x"
     , "ejs": "0.8.x"
@@ -52,5 +59,6 @@
   "engines":{
     "node": "0.8.x"
   },
+  "os" : [ "!win32" ]
   "license": "GPLv3",
 }

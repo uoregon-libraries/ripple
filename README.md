@@ -15,14 +15,20 @@ Dependencies
 Install
 -------------------
 1. Install npm package
-``` npm install ripple-core ```
+
+``` npm install -g ripple-core ```
+
 2. Make a user named ripple on system
 3. Log in as ripple user
 4. Make a directory to hold ripple
 5. Install Ripple - In that directory, run ripple install
+
 ``` ripple install ```
+
 6. Start Ripple
+
 ``` ripple start ```
+
 7. Checkout the site at localhost:8080.
 
 License
