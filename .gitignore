@@ -3,6 +3,7 @@
 ._*
 .DS_Store
 /issue.log
+/ripple.log
 
 # Coverage reporting
 /coverage.html
