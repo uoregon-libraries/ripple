@@ -1,26 +1,9 @@
 {
   "name": "ripple-core",
   "preferGlobal": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "William Myers",
   "description": "Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices.",
-  "keywords": [
-    "ripple",
-    "audience",
-    "classroom",
-    "learning",
-    "response"
-  ],
-  "repository": {
-    "type":"git",
-    "url":"https://github.com/uoregon-libraries/ripple.git"
-  },
-  "bin": {
-    "ripple":"./bin/ripple-cli.js"
-  },
-  "scripts": {
-    "test": "make test"
-  },
   "keywords": [
     "ripple",
     "ripple-core",
@@ -29,36 +12,47 @@
     "response",
     "classroom"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uoregon-libraries/ripple.git"
+  },
+  "bin": {
+    "ripple": "./bin/ripple-cli.js"
+  },
+  "scripts": {
+    "test": "make test"
+  },
   "dependencies": {
-    "express": "3.0.x"
-    , "ejs": "0.8.x"
-    , "underscore": "1.3.x"
-    , "less": "0.1.x"
-    , "mongodb": "1.2.x"
-    , "express-partials": "0.0.x"
-    , "bcrypt": "0.7.x"
-    , "moment": "1.7.x"
-    , "emailjs": "0.3.x"
-    , "connect-assetmanager": "0.0.x"
-    , "now": "0.8.x"
-    , "combohandler": "0.2.x"
-    , "async": "0.1.x"
-    , "plugin-manager": "2.0.x"
-    , "caterpillar": "1.1.x"
-    , "connect-mongo": "git://github.com/uoregon-img/connect-mongo"
-    , "less": "1.3.x"
-    , "commander": "1.1.x"
-    , "shelljs": "0.1.x"
-    , "validator": "1.1.x"
+    "express": "3.0.x",
+    "ejs": "0.8.x",
+    "underscore": "1.3.x",
+    "less": "1.3.x",
+    "mongodb": "1.2.x",
+    "express-partials": "0.0.x",
+    "bcrypt": "0.7.x",
+    "moment": "1.7.x",
+    "emailjs": "0.3.x",
+    "connect-assetmanager": "0.0.x",
+    "now": "0.8.x",
+    "combohandler": "0.2.x",
+    "async": "0.1.x",
+    "plugin-manager": "2.0.x",
+    "caterpillar": "1.1.x",
+    "connect-mongo": "git://github.com/uoregon-img/connect-mongo",
+    "commander": "1.1.x",
+    "shelljs": "0.1.x",
+    "validator": "1.1.x"
   },
   "devDependencies": {
     "mocha": "1.8.x",
     "should": "1.2.x",
     "sinon": "1.6.x"
   },
-  "engines":{
+  "engines": {
     "node": "0.8.x"
   },
-  "os" : [ "!win32" ],
+  "os": [
+    "!win32"
+  ],
   "license": "GPLv3"
 }
