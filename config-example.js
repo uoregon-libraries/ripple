@@ -39,7 +39,7 @@ var CONFIG = (function() {
     , 'LOG_FILE': path.normalize(basePath + "/ripple.log")
 
     // If running the app via the upstart script, use this location instead:
-    // , 'LOG_FILE': "/var/log/ripple.log")
+    // , 'LOG_FILE': "/var/log/ripple.log"
 
     // Default to four hours for room expiration
     , "DEFAULT_ROOM_EXPIRATION_HOURS": 4
