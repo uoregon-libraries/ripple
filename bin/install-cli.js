@@ -12,7 +12,7 @@ module.exports = INSTALL;
 INSTALL.app = function(params) {
   UTIL.emptyDirectory(installDir, function(empty){
     if (empty) {
-      INSTALL.createAppAt();
+      INSTALL.createAppAt(params);
     } else {
       program.confirm('destination is not empty, continue? ', function(ok){
         if (ok) {
