@@ -22,6 +22,7 @@ DB.connect(run);
 function run() {
 
 console.log('Environment :: ', process.env.NODE_ENV );
+console.log('DB          :: ', 'monogodb://' + CONFIG.SERVER('DB_HOST') + "/" + CONFIG.SERVER('DB_NAME') + ":" + CONFIG.SERVER('DB_PORT') );
 console.log("==============================================");
 
 var express = require('express')

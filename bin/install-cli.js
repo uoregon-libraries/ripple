@@ -47,7 +47,7 @@ INSTALL.createAppAt = function(params) {
   }
 
   UTIL.notify("Run the app: ");
-  console.log("          $ node app");
+  console.log("          $ ripple start");
   console.log("");
   console.log("");
 
