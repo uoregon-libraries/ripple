@@ -629,7 +629,7 @@ exports.reportItemCSV = function(req, res){
 
     // Compile CSV
     var parseQuestions = function(item, callback){
-      //log("Parse Question", util.inspect(item) );
+      log("Parse Question", util.inspect(item) );
       log("Parse Answers Obj", util.inspect(parsedItem) );
       qID = item.qID;
       parsedItem[qID] = "";
