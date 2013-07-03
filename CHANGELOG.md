@@ -1,3 +1,12 @@
+## 1.0.3 (July 3, 2013)
+
+* Bug Fix reports not creating cvs
+
+* Bug Fix client name not associating with answers
+
+* Added License info file
+
+
 ## 1.0.2 (July 1, 2013)
 
 * Improved upstart process to be owned by ripple
