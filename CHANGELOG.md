@@ -1,3 +1,33 @@
+## 1.0.3 (July 3, 2013)
+
+* Bug Fix reports not creating cvs
+
+* Bug Fix client name not associating with answers
+
+* Added License info file
+
+
+## 1.0.2 (July 1, 2013)
+
+* Improved upstart process to be owned by ripple
+
+
+## 1.0.1 (July 1, 2013)
+
+* Bug Fix install issues related to custom and plugins folder
+
+* Bug Fix install with missing parameter
+
+
+## 1.0.0 (June 30, 2013)
+
+* Public Launch - Removed earlier commit for security reasons
+
+* Bug Fix wysiwyg editor with embedded images
+
+* Improve consistency of tooltip
+
+
 ## 1.0.0-rc1 (June 10, 2013)
 
 * Updated node module plugin-manager to v2 to rearchitect plugins so that their functions can be executed seperately instead of with events

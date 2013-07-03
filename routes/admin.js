@@ -596,8 +596,8 @@ exports.reportItem = function(req, res){
           // Add to session store for use with csv
           req.session.report = {};
           req.session.report.sessionObj = sessionObj;
-          req.session.report.answers = docArray;
-          //log('locals', util.inspect(locals) );
+          req.session.report.answers = JSON.parse(JSON.stringify(docArray));
+          log('[req.session.report]', util.inspect(req.session.report) );
           res.render('admin/report-item', locals);
         });
       })
@@ -616,6 +616,8 @@ exports.reportItemCSV = function(req, res){
     type: 'session'
   }
   AM.userAuth(authCheckObj, req, res, function(err, userObj, sessionObj){
+    logger.debugPair("[AM.userAuth] args", util.inspect(arguments) );
+    logger.debugPair("[AM.userAuth] req.session", util.inspect(req.session) );
     if( typeof req.session.report === 'undefined' ) return;
     var r = req.session.report
       , s = r.sessionObj
@@ -623,27 +625,29 @@ exports.reportItemCSV = function(req, res){
       , csv = ""
       , parsedItem = {};
     
+    logger.debugPair("[req.session.report] Obj", util.inspect(r));
+
     // Create CSV header info
     var sTime = new Date( r.sessionObj.startTime );
     csv += "Report for " + sTime.toDateString() + " " + sTime.toTimeString().substr(0,8) + ",\n";
 
     // Compile CSV
     var parseQuestions = function(item, callback){
-      //log("Parse Question", util.inspect(item) );
+      log("Parse Question", util.inspect(item) );
       log("Parse Answers Obj", util.inspect(parsedItem) );
+      log("Answers", a);
+      if( !a ) return false;
       qID = item.qID;
       parsedItem[qID] = "";
       // Create Question info
       csv += '\n' + item.type + '\n';
       csv += '"' + String( item.qTxt ) + '"\n';
-      log("CSV", csv)
+      logger.debugPair("CSV", csv)
       // Loop through responses
       async.forEach(a, parseAnswers, function(err){
         if(err) {
-          log('Error',err);
-          var errMsg = 'error-parsing-answers';
-          callback(errMsg);
-          res.send(errMsg, 400);
+          logger.error(err);
+          callback(err);
         } else {
           csv += parsedItem[qID];
           callback(null);
@@ -653,6 +657,11 @@ exports.reportItemCSV = function(req, res){
     }
 
     var parseAnswers = function(item, callback){
+      log("Individual Answer", item);
+      if( !item ) {
+        callback("No answer to parse")
+        return false;
+      }
       if( item.qID === qID) {
         // create cvs row
         var row = ""
@@ -673,8 +682,8 @@ exports.reportItemCSV = function(req, res){
       , docName = 'report_'+reportDate+'_'+reportTime+'.csv';
     async.forEach(s.questions, parseQuestions, function(err){
       if( err ) {
-        res.send('error-parsing-questions', 400);
-        return
+        sendErrorPage(res, err);
+        return false;
       } else {
         res.header('content-type','text/csv'); 
         res.header('content-disposition', 'attachment; filename='+docName);
