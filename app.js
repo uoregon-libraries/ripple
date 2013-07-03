@@ -468,8 +468,12 @@ everyone.now.distributeAnswer = function(data){
   }
 
   sessionAPI.getSession(that, sessionStore, function(err, session) {
+    var clientNowObj;
+    nowjs.getClient(that.user.clientId, function(){
+      clientNowObj = this.now
+    })
     var room = session.room
-      , name = session.user.name
+      , name = session.hasOwnProperty('user') ? session.user.name : clientNowObj.name
       , group = nowjs.getGroup(room)
       , answer = data.answer
       , qID = data.qID;
@@ -483,7 +487,6 @@ everyone.now.distributeAnswer = function(data){
     }
 
     // Ensure that answer are allowed to be received
-    log("distributeAnswer Group", util.inspect(group) );
     if (!group.hasOwnProperty('receiveAnswer') ||  !group.receiveAnswer ){
       logger.warn("Invalid answer submission - currently not taking answers");
       return;
