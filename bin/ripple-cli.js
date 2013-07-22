@@ -34,7 +34,7 @@ program
  * @class  command-line.install
  * @method install
  * @title install
- * @command Ripple install {-s}
+ * @command ripple install {-s}
  */
 program
   .command('install')
@@ -52,7 +52,7 @@ program
  * @class  command-line.update
  * @title update
  * @method update
- * @command Ripple update {-s, -a}
+ * @command ripple update {-s, -a}
  */
 program
   .command('update')
@@ -65,7 +65,11 @@ program
   });
 
 /**
- * Account Command
+ * Account command modifies ripple account information
+ *
+ * @class command-line.account
+ * @title account
+ * @command ripple account <i>option</i>
  */
 program
   .command('account <action>')
@@ -76,6 +80,13 @@ program
     
     var utilCli = require('./util-cli.js');
     action = action.split(' ');
+    /**
+     * Account reset allow for an administrative account to be created or
+     * will reset the password of the administrative account if it already exists
+     * 
+     * @method reset
+     * @command Ripple account reset
+     */
     if( action[0] === 'reset' ) utilCli.createAdmin();
     else HELP.notify( actHelp );
 
@@ -93,7 +104,13 @@ program
   });
 
 /**
- * Stat Command
+ * Command starts ripple in interactive mode so terminal must stay 
+ * open for application to continue to run.
+ * 
+ * @class  command-line.start
+ * @title start
+ * @method start
+ * @command ripple start
  */
 program
   .command('start')
@@ -105,7 +122,13 @@ program
   });
 
 /**
- * Stat Command
+ * Command looks for an existing interactive mode terminal session and ends 
+ * that process
+ * 
+ * @class  command-line.stop
+ * @title stop
+ * @method stop
+ * @command ripple stop
  */
 program
   .command('stop')
@@ -116,7 +139,12 @@ program
   });
 
 /**
- * Stat Command
+ * Searches for processes associated with Ripple server
+ * 
+ * @class  command-line.find
+ * @title find
+ * @method find
+ * @command ripple find
  */
 program
   .command('find')

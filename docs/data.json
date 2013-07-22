@@ -2,7 +2,7 @@
     "project": {
         "name": "ripple-core",
         "description": "Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices.",
-        "version": "1.0.3"
+        "version": "1.0.4"
     },
     "files": {
         "bin/ripple-cli.js": {
@@ -10,7 +10,11 @@
             "modules": {},
             "classes": {
                 "command-line.install": 1,
-                "command-line.update": 1
+                "command-line.update": 1,
+                "command-line.account": 1,
+                "command-line.start": 1,
+                "command-line.stop": 1,
+                "command-line.find": 1
             },
             "fors": {},
             "namespaces": {}
@@ -268,7 +272,7 @@
             "description": "Installs Ripple server at current location.",
             "itemtype": "method",
             "title": "install",
-            "command": "Ripple install {-s}"
+            "command": "ripple install {-s}"
         },
         "command-line.update": {
             "name": "command-line.update",
@@ -283,7 +287,66 @@
             "description": "Updates Ripple server at current location.",
             "title": "update",
             "itemtype": "method",
-            "command": "Ripple update {-s, -a}"
+            "command": "ripple update {-s, -a}"
+        },
+        "command-line.account": {
+            "name": "command-line.account",
+            "shortname": "command-line.account",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bin/ripple-cli.js",
+            "line": 67,
+            "description": "Account command modifies ripple account information",
+            "title": "account",
+            "command": "ripple account <i>option</i>"
+        },
+        "command-line.start": {
+            "name": "command-line.start",
+            "shortname": "command-line.start",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bin/ripple-cli.js",
+            "line": 106,
+            "description": "Command starts ripple in interactive mode so terminal must stay \nopen for application to continue to run.",
+            "title": "start",
+            "itemtype": "method",
+            "command": "ripple start"
+        },
+        "command-line.stop": {
+            "name": "command-line.stop",
+            "shortname": "command-line.stop",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bin/ripple-cli.js",
+            "line": 124,
+            "description": "Command looks for an existing interactive mode terminal session and ends \nthat process",
+            "title": "stop",
+            "itemtype": "method",
+            "command": "ripple stop"
+        },
+        "command-line.find": {
+            "name": "command-line.find",
+            "shortname": "command-line.find",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bin/ripple-cli.js",
+            "line": 141,
+            "description": "Searches for processes associated with Ripple server",
+            "title": "find",
+            "itemtype": "method",
+            "command": "ripple find"
         },
         "plugin-server.auth": {
             "name": "plugin-server.auth",
@@ -412,33 +475,18 @@
     "classitems": [
         {
             "file": "bin/ripple-cli.js",
-            "line": 67,
-            "description": "Account Command",
-            "class": "command-line.update"
+            "line": 83,
+            "description": "Account reset allow for an administrative account to be created or\nwill reset the password of the administrative account if it already exists",
+            "itemtype": "method",
+            "name": "reset",
+            "command": "Ripple account reset",
+            "class": "command-line.account"
         },
         {
             "file": "bin/ripple-cli.js",
-            "line": 95,
-            "description": "Stat Command",
-            "class": "command-line.update"
-        },
-        {
-            "file": "bin/ripple-cli.js",
-            "line": 107,
-            "description": "Stat Command",
-            "class": "command-line.update"
-        },
-        {
-            "file": "bin/ripple-cli.js",
-            "line": 118,
-            "description": "Stat Command",
-            "class": "command-line.update"
-        },
-        {
-            "file": "bin/ripple-cli.js",
-            "line": 129,
+            "line": 157,
             "description": "Load Commands",
-            "class": "command-line.update"
+            "class": "command-line.find"
         },
         {
             "file": "bin/util-cli.js",
@@ -1530,6 +1578,26 @@
             "line": " bin/ripple-cli.js:50"
         },
         {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:67"
+        },
+        {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:83"
+        },
+        {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:106"
+        },
+        {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:124"
+        },
+        {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:141"
+        },
+        {
             "message": "unknown tag: space",
             "line": " public/js/controllers/clientController.js:1"
         },
@@ -1582,24 +1650,8 @@
             "line": " routes/main.js:196"
         },
         {
-            "message": "Missing item type\nAccount Command",
-            "line": " bin/ripple-cli.js:67"
-        },
-        {
-            "message": "Missing item type\nStat Command",
-            "line": " bin/ripple-cli.js:95"
-        },
-        {
-            "message": "Missing item type\nStat Command",
-            "line": " bin/ripple-cli.js:107"
-        },
-        {
-            "message": "Missing item type\nStat Command",
-            "line": " bin/ripple-cli.js:118"
-        },
-        {
             "message": "Missing item type\nLoad Commands",
-            "line": " bin/ripple-cli.js:129"
+            "line": " bin/ripple-cli.js:157"
         },
         {
             "message": "Missing item type\nCheck if the given directory `path` is empty.",
