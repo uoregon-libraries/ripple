@@ -1,0 +1,1965 @@
+{
+    "project": {
+        "name": "ripple-core",
+        "description": "Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices.",
+        "version": "1.0.3"
+    },
+    "files": {
+        "bin/ripple-cli.js": {
+            "name": "bin/ripple-cli.js",
+            "modules": {},
+            "classes": {
+                "command-line.install": 1,
+                "command-line.update": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "bin/util-cli.js": {
+            "name": "bin/util-cli.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/account-manager.js": {
+            "name": "lib/account-manager.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "plugin-server.auth": 1
+            },
+            "namespaces": {}
+        },
+        "lib/config-loader.js": {
+            "name": "lib/config-loader.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/db-manager.js": {
+            "name": "lib/db-manager.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/log-helpers.js": {
+            "name": "lib/log-helpers.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/menu-rights-middleware.js": {
+            "name": "lib/menu-rights-middleware.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/nowjs-to-session.js": {
+            "name": "lib/nowjs-to-session.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/plugins.js": {
+            "name": "lib/plugins.js",
+            "modules": {},
+            "classes": {
+                "plugin-server.auth": 1,
+                "plugin-server.question": 1,
+                "plugin-server.answer": 1,
+                "plugin-server.plugin": 1,
+                "plugin-server.logger": 1,
+                "plugin-server.questionType": 1
+            },
+            "fors": {
+                "plugin-server.plugin": 1
+            },
+            "namespaces": {}
+        },
+        "lib/question-type-manager.js": {
+            "name": "lib/question-type-manager.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "plugin-server.questionType": 1
+            },
+            "namespaces": {}
+        },
+        "lib/room-manager.js": {
+            "name": "lib/room-manager.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "plugins/ldap-auth/lib/ldap-auth.js": {
+            "name": "plugins/ldap-auth/lib/ldap-auth.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/controllers/chatController.js": {
+            "name": "public/js/controllers/chatController.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/controllers/clientController.js": {
+            "name": "public/js/controllers/clientController.js",
+            "modules": {},
+            "classes": {
+                "plugin-client.client": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/controllers/sessionDisplayController.js": {
+            "name": "public/js/controllers/sessionDisplayController.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/controllers/sessionMainController.js": {
+            "name": "public/js/controllers/sessionMainController.js",
+            "modules": {},
+            "classes": {
+                "plugin-client.session": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/controllers/setEditController.js": {
+            "name": "public/js/controllers/setEditController.js",
+            "modules": {},
+            "classes": {
+                "plugin-client.set": 1
+            },
+            "fors": {
+                "plugin-client.set": 1
+            },
+            "namespaces": {}
+        },
+        "public/js/question-types/slider.js": {
+            "name": "public/js/question-types/slider.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/views/admin-session.js": {
+            "name": "public/js/views/admin-session.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "plugin-client.session": 1
+            },
+            "namespaces": {}
+        },
+        "public/js/views/admin-set-edit.js": {
+            "name": "public/js/views/admin-set-edit.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/views/client.js": {
+            "name": "public/js/views/client.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "plugin-client.client": 1
+            },
+            "namespaces": {}
+        },
+        "public/js/global.js": {
+            "name": "public/js/global.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/jquery.form.js": {
+            "name": "public/js/jquery.form.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/jquery.h5validate.js": {
+            "name": "public/js/jquery.h5validate.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "public/js/jquery.jPanelMenu-1.1.0.min.js": {
+            "name": "public/js/jquery.jPanelMenu-1.1.0.min.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "routes/admin.js": {
+            "name": "routes/admin.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "plugin-server.plugin": 1
+            },
+            "namespaces": {}
+        },
+        "routes/main.js": {
+            "name": "routes/main.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app.js": {
+            "name": "app.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "plugin-server.question": 1,
+                "plugin-server.answer": 1
+            },
+            "namespaces": {}
+        },
+        "config-example.js": {
+            "name": "config-example.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "Contains all constants globally available for use by system": 1
+            }
+        },
+        "config.js": {
+            "name": "config.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {
+                "Contains all constants globally available for use by system": 1
+            }
+        }
+    },
+    "modules": {},
+    "classes": {
+        "command-line.install": {
+            "name": "command-line.install",
+            "shortname": "command-line.install",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bin/ripple-cli.js",
+            "line": 32,
+            "description": "Installs Ripple server at current location.",
+            "itemtype": "method",
+            "title": "install",
+            "command": "Ripple install {-s}"
+        },
+        "command-line.update": {
+            "name": "command-line.update",
+            "shortname": "command-line.update",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bin/ripple-cli.js",
+            "line": 50,
+            "description": "Updates Ripple server at current location.",
+            "title": "update",
+            "itemtype": "method",
+            "command": "Ripple update {-s, -a}"
+        },
+        "plugin-server.auth": {
+            "name": "plugin-server.auth",
+            "shortname": "plugin-server.auth",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/plugins.js",
+            "line": 49,
+            "description": "Hooks associated with account authenication",
+            "title": "auth"
+        },
+        "plugin-server.question": {
+            "name": "plugin-server.question",
+            "shortname": "plugin-server.question",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/plugins.js",
+            "line": 13,
+            "description": "Hooks for questions",
+            "title": "question"
+        },
+        "plugin-server.answer": {
+            "name": "plugin-server.answer",
+            "shortname": "plugin-server.answer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/plugins.js",
+            "line": 20,
+            "description": "Hooks for answers",
+            "title": "answer"
+        },
+        "plugin-server.plugin": {
+            "name": "plugin-server.plugin",
+            "shortname": "plugin-server.plugin",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/plugins.js",
+            "line": 28,
+            "description": "Hooks associated with plugin load, save, and display",
+            "title": "plugin"
+        },
+        "plugin-server.logger": {
+            "name": "plugin-server.logger",
+            "shortname": "plugin-server.logger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/plugins.js",
+            "line": 88,
+            "description": "Logger API Module handles output to console and logs. It is a direct map of <a href=\"https://github.com/bevry/caterpillar#usage\">Catipillar npm module</a>.",
+            "title": "logger"
+        },
+        "plugin-server.questionType": {
+            "name": "plugin-server.questionType",
+            "shortname": "plugin-server.questionType",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/plugins.js",
+            "line": 101,
+            "description": "Plugin API for Question Type.",
+            "title": "question type"
+        },
+        "plugin-client.client": {
+            "name": "plugin-client.client",
+            "shortname": "plugin-client.client",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "public/js/controllers/clientController.js",
+            "line": 1,
+            "description": "Client Plugin Session API Module.",
+            "author": "William Myers",
+            "title": "client",
+            "space": "RIPPLE.questionType['<i>pluginName</i>'].client<br /> <span class=\"note\"><i>pluginName</i> will be replaced by your plugin's name</span>"
+        },
+        "plugin-client.session": {
+            "name": "plugin-client.session",
+            "shortname": "plugin-client.session",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "public/js/controllers/sessionMainController.js",
+            "line": 2,
+            "description": "Client Plugin Session API Module.",
+            "author": "William Myers",
+            "title": "session",
+            "space": "RIPPLE.questionType['<i>pluginName</i>'].session<br /> <span class=\"note\"><i>pluginName</i> will be replaced by your plugin's name</span>"
+        },
+        "plugin-client.set": {
+            "name": "plugin-client.set",
+            "shortname": "plugin-client.set",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "public/js/controllers/setEditController.js",
+            "line": 1,
+            "description": "Client Plugin Set API Module.",
+            "author": "William Myers",
+            "title": "set",
+            "space": "RIPPLE.questionType['<i>pluginName</i>'].set<br /> <span class=\"note\"><i>pluginName</i> will be replaced by your plugin's name</span>"
+        }
+    },
+    "classitems": [
+        {
+            "file": "bin/ripple-cli.js",
+            "line": 67,
+            "description": "Account Command",
+            "class": "command-line.update"
+        },
+        {
+            "file": "bin/ripple-cli.js",
+            "line": 95,
+            "description": "Stat Command",
+            "class": "command-line.update"
+        },
+        {
+            "file": "bin/ripple-cli.js",
+            "line": 107,
+            "description": "Stat Command",
+            "class": "command-line.update"
+        },
+        {
+            "file": "bin/ripple-cli.js",
+            "line": 118,
+            "description": "Stat Command",
+            "class": "command-line.update"
+        },
+        {
+            "file": "bin/ripple-cli.js",
+            "line": 129,
+            "description": "Load Commands",
+            "class": "command-line.update"
+        },
+        {
+            "file": "bin/util-cli.js",
+            "line": 12,
+            "description": "Check if the given directory `path` is empty.",
+            "params": [
+                {
+                    "name": "path",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "class": "plugin-server.auth"
+        },
+        {
+            "file": "bin/util-cli.js",
+            "line": 26,
+            "description": "Exit with the given `str`.",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "plugin-server.auth"
+        },
+        {
+            "file": "lib/account-manager.js",
+            "line": 80,
+            "description": "Whenever the account manager's \"manualLogin\" method is called, this is fired off with a single\nobject and a callback as parameters:\n* An object containing \"user\" and \"password\" values for authentication.\n* A callback which takes an error and a response object.  The error should be null if the\n  authentication didn't have any critical errors.  The response object should be null to\n  allow standard authentication to happen, or else be a user object with the following data:\n    * \"user\": User id\n    * \"email\": User's email address\n    * \"name\": User's full name\n    * \"password\": Password as stored in the database (generally hashed for real local accounts)\n\nRight now authentication happens in multiple places, and only the main sign-in has a handler\noption.  The session verification still hits the local database.  This means overriding\nauthenticate also requires inserting a dummy record into the database.",
+            "itemtype": "event",
+            "name": "presenterAuth",
+            "async": 1,
+            "params": [
+                {
+                    "name": "authInfo",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "function(err, userObj){} \nif userObj is returned then external authenication was successful",
+                    "type": "Function"
+                }
+            ],
+            "class": "plugin-server.auth"
+        },
+        {
+            "file": "lib/config-loader.js",
+            "line": 1,
+            "description": "Loads config.js if it exists, creating it from config-example.js if it doesn't exist",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/db-manager.js",
+            "line": 18,
+            "description": "Opens the database and, if successful, calls the given callback.  We assume here that the\ndatabase is necessary for the callback to run, allowing us to avoid making the caller handle\nerror and failure conditions.",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/db-manager.js",
+            "line": 41,
+            "description": "Verifies db user/pass allow access to the database, only calling the callback if this is the\ncase.  Meant only to be used internally since we hard-code error responses.",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/log-helpers.js",
+            "line": 1,
+            "description": "This file contains all the helper classes used with the caterpillar logging module",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/log-helpers.js",
+            "line": 15,
+            "description": "Caterpillar transport class for file-based logs.  A filename must be set up prior to use, and\nall logging writes to that file.  The file will be created if it doesn't already exist.",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/log-helpers.js",
+            "line": 28,
+            "description": "Sets up the log file name",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/log-helpers.js",
+            "line": 35,
+            "description": "Writes to the log file only the most basic information.  This is extremely inflexible compared\nto building the appropriate formatter infrastructure, but it works for now.",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/log-helpers.js",
+            "line": 50,
+            "description": "Special no-colors-allowed version of the console formatter for use when writing to a file",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/log-helpers.js",
+            "line": 78,
+            "description": "Copied and slightly modified console formatter - basically this is just Caterpillar's internal\nclass without the extra line of file info.  Since we centralize all logging, that file info is\nalways exactly the same.",
+            "todo": [
+                ": Look into storing a stack trace rather than file info?"
+            ],
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/menu-rights-middleware.js",
+            "line": 73,
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/nowjs-to-session.js",
+            "line": 9,
+            "description": "Given a nowjs object, pulls cookie information to get at the session id, which is then looked\nup to get at the actual underlying session object\n\nTODO: Long-term, this manual parsing of sid is a bad idea and probably should be replaced by\nsubclassing whatever session store we end up choosing, adding a method to properly convert\nthe connect.sid cookie into a session id.  This approach will likely break on updates to\nconnect / express, and isn't very secure in comparison (doesn't validate signed cookies).",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/plugins.js",
+            "line": 1,
+            "description": "Module dependencies.",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "lib/plugins.js",
+            "line": 128,
+            "description": "Hook to load plugin config.",
+            "itemtype": "event",
+            "name": "loadConfig",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "An object containing the current configuration of the plugin\nthat is being accessed.",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "lib/question-type-manager.js",
+            "line": 12,
+            "itemtype": "method",
+            "name": "exists",
+            "params": [
+                {
+                    "name": "questionType",
+                    "description": "The question type object",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "plugin-server.questionType"
+        },
+        {
+            "file": "lib/question-type-manager.js",
+            "line": 39,
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "questionType",
+                    "description": "The question type object",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "plugin-server.questionType"
+        },
+        {
+            "file": "lib/question-type-manager.js",
+            "line": 100,
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "questionType",
+                    "description": "The question type object",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "plugin-server.questionType"
+        },
+        {
+            "file": "lib/room-manager.js",
+            "line": 1,
+            "description": "\"static\" class for managing all room registration and assignment",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "lib/room-manager.js",
+            "line": 15,
+            "description": "Creates random string for use in rooms",
+            "return": {
+                "description": "random alphanumeric",
+                "type": "String"
+            },
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "lib/room-manager.js",
+            "line": 34,
+            "description": "Finds or creates a room for the given user (presenter)",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "lib/room-manager.js",
+            "line": 82,
+            "description": "Verifies the existence of the given room string",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "plugins/ldap-auth/lib/ldap-auth.js",
+            "line": 1,
+            "description": "This module intercepts and modifies the application as follows:\n\n- The main page is modified to provide a login form to enter a room\n- On submission of the presenter form, we first check LDAP for the user's credentials.  If not\n  found, the app does whatever normal local auth it does.  If the user is found, however, we\n  tell the app to skip its normal authentication and send back the user's relevant data.\n- On submit of the room entry form from the main page, we require authentication in a similar\n  manner to the presenter.  We first check LDAP, then do normal local auth, returning user data\n  to the application.",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "plugins/ldap-auth/lib/ldap-auth.js",
+            "line": 71,
+            "description": "EVENT HANDLERS",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "plugins/ldap-auth/lib/ldap-auth.js",
+            "line": 315,
+            "description": "HELPER METHODS",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "plugins/ldap-auth/lib/ldap-auth.js",
+            "line": 386,
+            "description": "Stores config data passed in by app",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/controllers/chatController.js",
+            "line": 1,
+            "description": "Controls for Chatting",
+            "author": "William Myers",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/controllers/clientController.js",
+            "line": 27,
+            "description": "Clears previous question information",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/controllers/clientController.js",
+            "line": 40,
+            "description": "Show a Question that came from the presenter",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "[Type of question to show]",
+                    "type": "String"
+                }
+            ],
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/controllers/clientController.js",
+            "line": 70,
+            "description": "Hook fired when question is displayed to client",
+            "itemtype": "event",
+            "name": "displayFn",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 1,
+            "description": "Modifies the Admin Display",
+            "author": "William Myers",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 12,
+            "description": "Puts sting in display",
+            "params": [
+                {
+                    "name": "output",
+                    "description": "[String to be put into elem]",
+                    "type": "String"
+                },
+                {
+                    "name": "elem",
+                    "description": "[Element to put string into]",
+                    "type": "String"
+                }
+            ],
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 71,
+            "description": "Increment Value of badges",
+            "params": [
+                {
+                    "name": "objID",
+                    "description": "[Element ID name w/out #]",
+                    "type": "String"
+                },
+                {
+                    "name": "ansObj",
+                    "description": "[Object containing all the answer values]",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "val   [The new value of the answer]",
+                "type": "Numeric"
+            },
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 84,
+            "description": "Creates the Progress Bar for Multiple Choice and True / False",
+            "params": [
+                {
+                    "name": "barName",
+                    "description": "[The specific name to ammend to identify this bar]",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "html    [The html for a progress bar]",
+                "type": "String"
+            },
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 100,
+            "description": "Adjust the Progress Bar in value and change display",
+            "params": [
+                {
+                    "name": "objID",
+                    "description": "[Element ID name w/out #]",
+                    "type": "String"
+                },
+                {
+                    "name": "ansObj",
+                    "description": "[Object containing all the answer values]",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 135,
+            "description": "Clears the Progress Bar",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 142,
+            "description": "Adds Answer Values to Progress Bars",
+            "params": [
+                {
+                    "name": "ansObj",
+                    "description": "[Object containing all the answer values]",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 168,
+            "description": "Creation of Question Response Area",
+            "params": [
+                {
+                    "name": "questionName",
+                    "description": "[The specifc name of question]",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "html",
+                "type": "String"
+            },
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionDisplayController.js",
+            "line": 204,
+            "description": "Clear the UI between questions",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/sessionMainController.js",
+            "line": 69,
+            "description": "Hook fired when a question is sent to audience.",
+            "itemtype": "event",
+            "name": "sendQuestionFn",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/controllers/setEditController.js",
+            "line": 44,
+            "description": "Add a new question of type defined in params",
+            "params": [
+                {
+                    "name": "qType",
+                    "description": "[The question type to create]",
+                    "type": "String"
+                },
+                {
+                    "name": "jElem",
+                    "description": "[The element to add html to]",
+                    "type": "JQuery element"
+                }
+            ],
+            "class": "plugin-client.set"
+        },
+        {
+            "file": "public/js/controllers/setEditController.js",
+            "line": 131,
+            "description": "Output to display in question option area",
+            "itemtype": "event",
+            "name": "displaySetEditFn",
+            "params": [
+                {
+                    "name": "question",
+                    "description": "Html of question",
+                    "type": "String"
+                },
+                {
+                    "name": "qOptions",
+                    "description": "Question options",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-client.set"
+        },
+        {
+            "file": "public/js/question-types/slider.js",
+            "line": 8,
+            "description": "Session UI Related functionality",
+            "return": {
+                "description": "object Methods and parameters that will be called on the Session UI\n  for Slider Question Type"
+            },
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/question-types/slider.js",
+            "line": 193,
+            "description": "Set Edit UI Related Functionality",
+            "return": {
+                "description": "object Methods and parameters that will be called on the Set Edit UI\n  for Slider Question Type"
+            },
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/question-types/slider.js",
+            "line": 268,
+            "description": "Client UI Related Functionality",
+            "return": {
+                "description": "object Methods and parameters that will be called on the Client UI\n  for Slider Question Type"
+            },
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/views/admin-session.js",
+            "line": 335,
+            "description": "Hook fired when a question type is displayed.",
+            "itemtype": "event",
+            "name": "displayQuestionFn",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/views/admin-session.js",
+            "line": 343,
+            "description": "Property to determine if a question type displays the answer\noption area.",
+            "itemtype": "property",
+            "name": "displayOptions",
+            "type": "boolean",
+            "default": "null",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/views/admin-session.js",
+            "line": 463,
+            "description": "Hook fired when the response area is resized on Client UI",
+            "itemtype": "event",
+            "name": "resizeAnswersFn",
+            "class": "plugin-client.session"
+        },
+        {
+            "file": "public/js/views/admin-set-edit.js",
+            "line": 1,
+            "description": "View for Set Creation",
+            "author": "William Myers",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/views/client.js",
+            "line": 86,
+            "description": "Hook called when client's browser is resized",
+            "itemtype": "event",
+            "name": "resizeFn",
+            "class": "plugin-client.client"
+        },
+        {
+            "file": "public/js/global.js",
+            "line": 152,
+            "description": "Clear the chat count",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 53,
+            "description": "Feature detection",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 60,
+            "description": "ajaxSubmit() provides a mechanism for immediately submitting\nan HTML form using AJAX.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 664,
+            "description": "ajaxForm() provides a mechanism for fully automating form submission.\n\nThe advantages of using this method instead of ajaxSubmit() are:\n\n1: This method will include coordinates for <input type=\"image\" /> elements (if the element\n   is used to submit the form).\n2. This method will include the submit element's name/value data (for the element that was\n   used to submit the form).\n3. This method binds the submit() method to the form for you.\n\nThe options argument for ajaxForm works exactly as it does for ajaxSubmit.  ajaxForm merely\npasses the options argument along after properly binding events for submit elements and\nthe form itself.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 759,
+            "description": "formToArray() gathers form element data into an array of objects that can\nbe passed to any of the following ajax functions: $.get, $.post, or load.\nEach object in the array has both a 'name' and 'value' property.  An example of\nan array for a simple login form might be:\n\n[ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]\n\nIt is this array that is passed to pre-submit callback functions provided to the\najaxSubmit() and ajaxForm() methods.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 840,
+            "description": "Serializes form data into a 'submittable' string. This method will return a string\nin the format: name1=value1&amp;name2=value2",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 849,
+            "description": "Serializes all field elements in the jQuery object into a query string.\nThis method will return a string in the format: name1=value1&amp;name2=value2",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 874,
+            "description": "Returns the value(s) of the element in the matched set.  For example, consider the following form:\n\n <form><fieldset>\n     <input name=\"A\" type=\"text\" />\n     <input name=\"A\" type=\"text\" />\n     <input name=\"B\" type=\"checkbox\" value=\"B1\" />\n     <input name=\"B\" type=\"checkbox\" value=\"B2\"/>\n     <input name=\"C\" type=\"radio\" value=\"C1\" />\n     <input name=\"C\" type=\"radio\" value=\"C2\" />\n </fieldset></form>\n\n var v = $(':text').fieldValue();\n // if no values are entered into the text inputs\n v == ['','']\n // if values entered into the text inputs are 'foo' and 'bar'\n v == ['foo','bar']\n\n var v = $(':checkbox').fieldValue();\n // if neither checkbox is checked\n v === undefined\n // if both checkboxes are checked\n v == ['B1', 'B2']\n\n var v = $(':radio').fieldValue();\n // if neither radio is checked\n v === undefined\n // if first radio is checked\n v == ['C1']\n\nThe successful argument controls whether or not the field element must be 'successful'\n(per http://www.w3.org/TR/html4/interact/forms.html#successful-controls).\nThe default value of the successful argument is true.  If this value is false the value(s)\nfor each element is returned.\n\nNote: This method *always* returns an array.  If no valid value can be determined the\n   array will be empty, otherwise it will contain one or more values.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 927,
+            "description": "Returns the value of the field element.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 969,
+            "description": "Clears the form data.  Takes the following actions on the form's input fields:\n - input text fields will have their 'value' property set to the empty string\n - select elements will have their 'selectedIndex' property set to -1\n - checkbox and radio inputs will have their 'checked' property set to false\n - inputs of type submit, button, reset, and hidden will *not* be effected\n - button elements will *not* be effected",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 983,
+            "description": "Clears the selected form elements.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 1011,
+            "description": "Resets the form data.  Causes all form elements to be reset to their original value.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 1024,
+            "description": "Enables or disables any matching elements.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.form.js",
+            "line": 1036,
+            "description": "Checks/unchecks any matching checkboxes or radio buttons and\nselects/deselects and matching option elements.",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 1,
+            "description": "h5Validate",
+            "version": "v0.8.4\nUsing semantic versioning: http://semver.org/",
+            "author": "Eric Hamilton http://ericleads.com/",
+            "copyright": "2010 - 2012 Eric Hamilton\nDual licensed under the MIT and GPL licenses:\nhttp://www.opensource.org/licenses/mit-license.php\nhttp://www.gnu.org/licenses/gpl.html\n\nDeveloped under the sponsorship of RootMusic, Zumba Fitness, LLC, and Rese Property Management",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 165,
+            "description": "Check the validity of the current field",
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "instance settings",
+                    "type": "Object"
+                },
+                {
+                    "name": "options!~YUIDOC_LINE~!",
+                    "description": ".revalidate - trigger validation function first?",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 333,
+            "description": "Take the event preferences and delegate the events to selected\nobjects.",
+            "params": [
+                {
+                    "name": "eventFlags",
+                    "description": "The object containing event flags.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The passed element (for method chaining).",
+                "type": "Element"
+            },
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 360,
+            "description": "Prepare for event delegation.",
+            "params": [
+                {
+                    "name": "settings",
+                    "description": "The full plugin state, including\noptions.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "jQuery object for chaining.",
+                "type": "Object"
+            },
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 411,
+            "description": "Event handler for the form submit event.\nWhen settings.submit is enabled:\n - prevents submission if any invalid fields are found.\n - Optionally validates all fields.\n - Optionally moves focus to the first invalid field.",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "The jQuery Event object as from the submit event.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "undefined if no validation was done, true if validation passed, false if validation didn't.",
+                "type": "Object"
+            },
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 480,
+            "description": "Take a map of pattern names and HTML5-compatible regular\nexpressions, and add them to the patternLibrary. Patterns in\nthe library are automatically assigned to HTML element pattern\nattributes for validation.",
+            "params": [
+                {
+                    "name": "patterns",
+                    "description": "A map of pattern names and HTML5 compatible\nregular expressions.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "patternLibrary The modified pattern library",
+                "type": "Object"
+            },
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.h5validate.js",
+            "line": 501,
+            "description": "Take a valid jQuery selector, and a list of valid values to\nvalidate against.\nIf the user input isn't in the list, validation fails.",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "Any valid jQuery selector.",
+                    "type": "String"
+                },
+                {
+                    "name": "values",
+                    "description": "A list of valid values to validate selected \nfields against.",
+                    "type": "Array"
+                }
+            ],
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "public/js/jquery.jPanelMenu-1.1.0.min.js",
+            "line": 1,
+            "description": "jPanelMenu 1.1.0 (http://jpanelmenu.com)\n By Anthony Colangelo (http://acolangelo.com)\n*/(function(e){e.jPanelMenu=function(t){if(typeof t==\"undefined\"||t==null)t={};var n={options:e.extend({menu:\"#menu\",trigger:\".menu-trigger\",excludedPanelContent:\"style, script\",direction:\"left\",openPosition:\"250px\",animated:!0,keyboardShortcuts:[{code:27,open:!1,close:!0},{code:37,open:!1,close:!0},{code:39,open:!0,close:!0},{code:77,open:!0,close:!0}],duration:150,openDuration:t.duration||150,closeDuration:t.duration||150,easing:\"ease-in-out\",openEasing:t.easing||\"ease-in-out\",closeEasing:t.easing||\"ease-in-out\",before:function(){},beforeOpen:function(){},beforeClose:function(){},after:function(){},afterOpen:function(){},afterClose:function(){}},t),settings:{transitionsSupported:\"WebkitTransition\"in document.body.style||\"MozTransition\"in document.body.style||\"msTransition\"in document.body.style||\"OTransition\"in document.body.style||\"Transition\"in document.body.style,shiftFixedChildren:!1,panelPosition:\"relative\",positionUnits:\"px\"},menu:\"#jPanelMenu-menu\",panel:\".jPanelMenu-panel\",fixedChildren:[],timeouts:{},clearTimeouts:function(){clearTimeout(n.timeouts.open);clearTimeout(n.timeouts.afterOpen);clearTimeout(n.timeouts.afterClose)},setPositionUnits:function(){var e=!1,t=[\"%\",\"px\",\"em\"];for(unitID in t){var r=t[unitID];if(n.options.openPosition.toString().substr(-r.length)==r){e=!0;n.settings.positionUnits=r}}e||(n.options.openPosition=parseInt(n.options.openPosition)+n.settings.positionUnits)},checkFixedChildren:function(){n.disableTransitions();var t={position:e(n.panel).css(\"position\")};t[n.options.direction]=e(n.panel).css(n.options.direction)==\"auto\"?0:e(n.panel).css(n.options.direction);e(n.panel).find(\"> *\").each(function(){e(this).css(\"position\")==\"fixed\"&&e(this).css(n.options.direction)==\"auto\"&&n.fixedChildren.push(this)});if(n.fixedChildren.length>0){var r={position:\"relative\"};r[n.options.direction]=\"1px\";n.setPanelStyle(r);parseInt(e(n.fixedChildren[0]).offset().left)==0&&(n.settings.shiftFixedChildren=!0)}n.setPanelStyle(t)},setjPanelMenuStyles:function(){var t=\"#fff\",r=e(\"html\").css(\"background-color\"),i=e(\"body\").css(\"background-color\");i!=\"transparent\"&&i!=\"rgba(0, 0, 0, 0)\"?t=i:r!=\"transparent\"&&r!=\"rgba(0, 0, 0, 0)\"?t=r:t=\"#fff\";e(\"#jPanelMenu-style-master\").length==0&&e(\"body\").append('<style id=\"jPanelMenu-style-master\">body{width:100%}.jPanelMenu,body{overflow-x:hidden}#jPanelMenu-menu{display:block;position:fixed;top:0;'+n.options.direction+\":0;height:100%;z-index:-1;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch}.jPanelMenu-panel{position:static;\"+n.options.direction+\":0;top:0;z-index:2;width:100%;min-height:100%;background:\"+t+\"}</style>\")},setMenuState:function(t){var n=t?\"open\":\"closed\";e(\"body\").attr(\"data-menu-position\",n)},getMenuState:function(){return e(\"body\").attr(\"data-menu-position\")},menuIsOpen:function(){return n.getMenuState()==\"open\"?!0:!1},setMenuStyle:function(t){e(n.menu).css(t)},setPanelStyle:function(t){e(n.panel).css(t)},showMenu:function(){n.setMenuStyle({display:\"block\"});n.setMenuStyle({\"z-index\":\"1\"})},hideMenu:function(){n.setMenuStyle({\"z-index\":\"-1\"});n.setMenuStyle({display:\"none\"})},enableTransitions:function(t,r){var i=t/1e3,s=n.getCSSEasingFunction(r);n.disableTransitions();e(\"body\").append('<style id=\"jPanelMenu-style-transitions\">.jPanelMenu-panel{-webkit-transition: all '+i+\"s \"+s+\"; -moz-transition: all \"+i+\"s \"+s+\"; -o-transition: all \"+i+\"s \"+s+\"; transition: all \"+i+\"s \"+s+\";}</style>\")},disableTransitions:function(){e(\"#jPanelMenu-style-transitions\").remove()},enableFixedTransitions:function(t,r,i,s){var o=i/1e3,u=n.getCSSEasingFunction(s);n.disableFixedTransitions(r);e(\"body\").append('<style id=\"jPanelMenu-style-fixed-'+r+'\">'+t+\"{-webkit-transition: all \"+o+\"s \"+u+\"; -moz-transition: all \"+o+\"s \"+u+\"; -o-transition: all \"+o+\"s \"+u+\"; transition: all \"+o+\"s \"+u+\";}</style>\")},disableFixedTransitions:function(t){e(\"#jPanelMenu-style-fixed-\"+t).remove()},getCSSEasingFunction:function(e){switch(e){case\"linear\":return e;case\"ease\":return e;case\"ease-in\":return e;case\"ease-out\":return e;case\"ease-in-out\":return e;default:return\"ease-in-out\"}},getJSEasingFunction:function(e){switch(e){case\"linear\":return e;default:return\"swing\"}},openMenu:function(t){if(typeof t==\"undefined\"||t==null)t=n.options.animated;n.clearTimeouts();n.options.before();n.options.beforeOpen();n.setMenuState(!0);n.setPanelStyle({position:\"relative\"});n.showMenu();var r={none:t?!1:!0,transitions:t&&n.settings.transitionsSupported?!0:!1};if(r.transitions||r.none){r.none&&n.disableTransitions();r.transitions&&n.enableTransitions(n.options.openDuration,n.options.openEasing);var i={};i[n.options.direction]=n.options.openPosition;n.setPanelStyle(i);n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),i=t.replace(\" \",\".\"),t=t.replace(\" \",\"-\");r.none&&n.disableFixedTransitions(t);r.transitions&&n.enableFixedTransitions(i,t,n.options.openDuration,n.options.openEasing);var s={};s[n.options.direction]=n.options.openPosition;e(this).css(s)});n.timeouts.afterOpen=setTimeout(function(){n.disableTransitions();n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),t=t.replace(\" \",\"-\");n.disableFixedTransitions(t)});n.options.after();n.options.afterOpen();n.initiateContentClickListeners()},n.options.openDuration)}else{var s=n.getJSEasingFunction(n.options.openEasing),o={};o[n.options.direction]=n.options.openPosition;e(n.panel).stop().animate(o,n.options.openDuration,s,function(){n.options.after();n.options.afterOpen();n.initiateContentClickListeners()});n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t={};t[n.options.direction]=n.options.openPosition;e(this).stop().animate(t,n.options.openDuration,s)})}},closeMenu:function(t){if(typeof t==\"undefined\"||t==null)t=n.options.animated;n.clearTimeouts();n.options.before();n.options.beforeClose();n.setMenuState(!1);var r={none:t?!1:!0,transitions:t&&n.settings.transitionsSupported?!0:!1};if(r.transitions||r.none){r.none&&n.disableTransitions();r.transitions&&n.enableTransitions(n.options.closeDuration,n.options.closeEasing);var i={};i[n.options.direction]=0+n.settings.positionUnits;n.setPanelStyle(i);n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),i=t.replace(\" \",\".\"),t=t.replace(\" \",\"-\");r.none&&n.disableFixedTransitions(t);r.transitions&&n.enableFixedTransitions(i,t,n.options.closeDuration,n.options.closeEasing);var s={};s[n.options.direction]=0+n.settings.positionUnits;e(this).css(s)});n.timeouts.afterClose=setTimeout(function(){n.setPanelStyle({position:n.settings.panelPosition});n.disableTransitions();n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),t=t.replace(\" \",\"-\");n.disableFixedTransitions(t)});n.hideMenu();n.options.after();n.options.afterClose();n.destroyContentClickListeners()},n.options.closeDuration)}else{var s=n.getJSEasingFunction(n.options.closeEasing),o={};o[n.options.direction]=0+n.settings.positionUnits;e(n.panel).stop().animate(o,n.options.closeDuration,s,function(){n.setPanelStyle({position:n.settings.panelPosition});n.hideMenu();n.options.after();n.options.afterClose();n.destroyContentClickListeners()});n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t={};t[n.options.direction]=0+n.settings.positionUnits;e(this).stop().animate(t,n.options.closeDuration,s)})}},triggerMenu:function(e){n.menuIsOpen()?n.closeMenu(e):n.openMenu(e)},initiateClickListeners:function(){e(document).on(\"click\",n.options.trigger,function(){n.triggerMenu(n.options.animated);return!1})},destroyClickListeners:function(){e(document).off(\"click\",n.options.trigger,null)},initiateContentClickListeners:function(){e(document).on(\"click\",n.panel,function(e){n.menuIsOpen()&&n.closeMenu(n.options.animated)});e(document).on(\"touchend\",n.panel,function(e){n.menuIsOpen()&&n.closeMenu(n.options.animated)})},destroyContentClickListeners:function(){e(document).off(\"click\",n.panel,null);e(document).off(\"touchend\",n.panel,null)},initiateKeyboardListeners:function(){e(document).on(\"keydown\",function(e){for(mapping in n.options.keyboardShortcuts)if(e.which==n.options.keyboardShortcuts[mapping].code){var t=n.options.keyboardShortcuts[mapping];t.open&&t.close?n.triggerMenu(n.options.animated):t.open&&!t.close&&!n.menuIsOpen()?n.openMenu(n.options.animated):!t.open&&t.close&&n.menuIsOpen()&&n.closeMenu(n.options.animated);return!1}})},destroyKeyboardListeners:function(){e(document).off(\"keydown\",null)},setupMarkup:function(){e(\"html\").addClass(\"jPanelMenu\");e(\"body > *\").not(n.menu+\", \"+n.options.excludedPanelContent).wrapAll('<div class=\"'+n.panel.replace(\".\",\"\")+'\"/>');e(n.options.menu).clone().attr(\"id\",n.menu.replace(\"#\",\"\")).insertAfter(\"body > \"+n.panel)},resetMarkup:function(){e(\"html\").removeClass(\"jPanelMenu\");e(\"body > \"+n.panel+\" > *\").unwrap();e(n.menu).remove()},init:function(){n.initiateClickListeners();Object.prototype.toString.call(n.options.keyboardShortcuts)===\"[object Array]\"&&n.initiateKeyboardListeners();n.setjPanelMenuStyles();n.setMenuState(!1);n.setupMarkup();n.setMenuStyle({width:n.options.openPosition});n.checkFixedChildren();n.setPositionUnits();n.closeMenu(!1)},destroy:function(){n.closeMenu();n.destroyClickListeners();Object.prototype.toString.call(n.options.keyboardShortcuts)===\"[object Array]\"&&n.destroyKeyboardListeners();n.resetMarkup();var t={};t[n.options.direction]=\"auto\";e(n.fixedChildren).each(function(){e(this).css(t)});n.fixedChildren=[]}};return{on:n.init,off:n.destroy,trigger:n.triggerMenu,open:n.openMenu,close:n.closeMenu,isOpen:n.menuIsOpen,menu:n.menu,getMenu:function(){return e(n.menu)},panel:n.panel,getPanel:function(){return e(n.panel)}}}})(jQuery);",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 305,
+            "description": "List of Plugins",
+            "dependencies": "/lib/plugins.js",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 403,
+            "description": "Hook fires when plugin config page loads and allow for addition of inputs to config page.",
+            "itemtype": "event",
+            "name": "configMenuInputs",
+            "params": [
+                {
+                    "name": "menu",
+                    "description": "An empty object that can be modified to include inputs for the configuration of the plugin",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 419,
+            "description": "Hook fires when plugin config page is loaded",
+            "itemtype": "event",
+            "name": "pageLoad",
+            "params": [
+                {
+                    "name": "sessionVariables",
+                    "description": "An object of available session variables",
+                    "type": "Object"
+                },
+                {
+                    "name": "req",
+                    "description": "The <a href=\"http://expressjs.com/api.html#req.params\">express req</a> object with information\nabout the server page request",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 448,
+            "description": "Configuration page for plugins",
+            "dependencies": "/lib/plugins.js",
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 487,
+            "description": "Function that is called after document is inserted or updated",
+            "params": [
+                {
+                    "name": "String",
+                    "description": "err    The database err (null if successful)"
+                },
+                {
+                    "name": "Object",
+                    "description": "result"
+                }
+            ],
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 497,
+            "description": "Hook fires when plugin config page is saved",
+            "itemtype": "event",
+            "name": "saveConfig",
+            "params": [
+                {
+                    "name": "Object",
+                    "description": "config An object containing the configuration at time of save"
+                }
+            ],
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/admin.js",
+            "line": 1004,
+            "class": "plugin-server.plugin"
+        },
+        {
+            "file": "routes/main.js",
+            "line": 52,
+            "description": "Routes Admin Logins or Room Requests",
+            "dependencies": "/lib/Account-Manager.js",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "routes/main.js",
+            "line": 132,
+            "description": "Sign Up - Display Account Form",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "routes/main.js",
+            "line": 166,
+            "description": "Password reset",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "routes/main.js",
+            "line": 196,
+            "description": "Creation of Account on Post of Signup",
+            "dependencies": "/lib/Account-Manager.js",
+            "return": {
+                "description": "[code 200 if completed & code 400 if failed]"
+            },
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "routes/main.js",
+            "line": 260,
+            "description": "Logout of User",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 5,
+            "description": "Module dependencies.",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 52,
+            "description": "Routing",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 70,
+            "description": "App Information & Configurations",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 160,
+            "description": "URIs in use",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 219,
+            "description": "HTTP Server setup - check for SSL and build redirect from non-SSL if SSL\nhas been set up",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 270,
+            "description": "Now & Socket IO",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 356,
+            "description": "Clear Client's UI & Now question variables",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 384,
+            "description": "Send out a message",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The text to be sent to entire virtual room",
+                    "type": "String"
+                }
+            ],
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 400,
+            "description": "Send out a question to virtual room",
+            "params": [
+                {
+                    "name": "question",
+                    "description": "Question object with all client needed variables to display question to client.",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 475,
+            "description": "Hook fired when a question is distributed.",
+            "itemtype": "event",
+            "name": "distribute",
+            "params": [
+                {
+                    "name": "room",
+                    "description": "The room that the question was distributed to",
+                    "type": "String"
+                },
+                {
+                    "name": "question",
+                    "description": "A object that contains all the question information",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 487,
+            "description": "Client sent in answer",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Object that contains answer information",
+                    "type": "Object"
+                }
+            ],
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 544,
+            "description": "Hook fired when a answer is received.",
+            "itemtype": "event",
+            "name": "distribute",
+            "params": [
+                {
+                    "name": "room",
+                    "description": "The room that the question was distributed to",
+                    "type": "String"
+                },
+                {
+                    "name": "clientID",
+                    "description": "The client's id who submitted the answer",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The client's name who submitted the answer",
+                    "type": "String"
+                },
+                {
+                    "name": "question",
+                    "description": "An object with all the question information",
+                    "type": "Object"
+                },
+                {
+                    "name": "answer",
+                    "description": "The answer submitted by the client",
+                    "type": "String"
+                }
+            ],
+            "class": "plugin-server.answer"
+        },
+        {
+            "file": "app.js",
+            "line": 559,
+            "description": "Santize Answers",
+            "params": [
+                {
+                    "name": "answer",
+                    "description": "Answer from client",
+                    "type": "Object"
+                },
+                {
+                    "name": "question",
+                    "description": "Question responded to",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "cleanAnswer Santized answer",
+                "type": "Object"
+            },
+            "class": "plugin-server.answer"
+        },
+        {
+            "file": "app.js",
+            "line": 602,
+            "description": "Set whether answers can or can not be received",
+            "params": [
+                {
+                    "name": "status",
+                    "description": "The current status of polling",
+                    "type": "String"
+                }
+            ],
+            "class": "plugin-server.answer"
+        },
+        {
+            "file": "config-example.js",
+            "line": 4,
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config-example.js",
+            "line": 8,
+            "description": "Constants related to SERVER Configuration",
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config-example.js",
+            "line": 67,
+            "description": "Constants for smtp connection if server is to send emails",
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config-example.js",
+            "line": 86,
+            "description": "Constants are ONLY readable through their methods",
+            "return": {
+                "description": "Methods of SERVER, & UI to retrieve related constants"
+            },
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config.js",
+            "line": 4,
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config.js",
+            "line": 8,
+            "description": "Constants related to SERVER Configuration",
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config.js",
+            "line": 67,
+            "description": "Constants for smtp connection if server is to send emails",
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        },
+        {
+            "file": "config.js",
+            "line": 86,
+            "description": "Constants are ONLY readable through their methods",
+            "return": {
+                "description": "Methods of SERVER, & UI to retrieve related constants"
+            },
+            "class": "",
+            "namespace": "Contains all constants globally available for use by system"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:32"
+        },
+        {
+            "message": "unknown tag: command",
+            "line": " bin/ripple-cli.js:50"
+        },
+        {
+            "message": "unknown tag: space",
+            "line": " public/js/controllers/clientController.js:1"
+        },
+        {
+            "message": "unknown tag: space",
+            "line": " public/js/controllers/sessionMainController.js:2"
+        },
+        {
+            "message": "unknown tag: space",
+            "line": " public/js/controllers/setEditController.js:1"
+        },
+        {
+            "message": "unknown tag: version",
+            "line": " public/js/jquery.h5validate.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " public/js/jquery.h5validate.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " public/js/jquery.h5validate.js:333"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " public/js/jquery.h5validate.js:360"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " public/js/jquery.h5validate.js:411"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " public/js/jquery.h5validate.js:480"
+        },
+        {
+            "message": "unknown tag: dependencies",
+            "line": " routes/admin.js:305"
+        },
+        {
+            "message": "unknown tag: dependencies",
+            "line": " routes/admin.js:448"
+        },
+        {
+            "message": "unknown tag: dependencies",
+            "line": " routes/main.js:52"
+        },
+        {
+            "message": "unknown tag: dependencies",
+            "line": " routes/main.js:196"
+        },
+        {
+            "message": "Missing item type\nAccount Command",
+            "line": " bin/ripple-cli.js:67"
+        },
+        {
+            "message": "Missing item type\nStat Command",
+            "line": " bin/ripple-cli.js:95"
+        },
+        {
+            "message": "Missing item type\nStat Command",
+            "line": " bin/ripple-cli.js:107"
+        },
+        {
+            "message": "Missing item type\nStat Command",
+            "line": " bin/ripple-cli.js:118"
+        },
+        {
+            "message": "Missing item type\nLoad Commands",
+            "line": " bin/ripple-cli.js:129"
+        },
+        {
+            "message": "Missing item type\nCheck if the given directory `path` is empty.",
+            "line": " bin/util-cli.js:12"
+        },
+        {
+            "message": "Missing item type\nExit with the given `str`.",
+            "line": " bin/util-cli.js:26"
+        },
+        {
+            "message": "Missing item type\nLoads config.js if it exists, creating it from config-example.js if it doesn't exist",
+            "line": " lib/config-loader.js:1"
+        },
+        {
+            "message": "Missing item type\nOpens the database and, if successful, calls the given callback.  We assume here that the\ndatabase is necessary for the callback to run, allowing us to avoid making the caller handle\nerror and failure conditions.",
+            "line": " lib/db-manager.js:18"
+        },
+        {
+            "message": "Missing item type\nVerifies db user/pass allow access to the database, only calling the callback if this is the\ncase.  Meant only to be used internally since we hard-code error responses.",
+            "line": " lib/db-manager.js:41"
+        },
+        {
+            "message": "Missing item type\nThis file contains all the helper classes used with the caterpillar logging module",
+            "line": " lib/log-helpers.js:1"
+        },
+        {
+            "message": "Missing item type\nCaterpillar transport class for file-based logs.  A filename must be set up prior to use, and\nall logging writes to that file.  The file will be created if it doesn't already exist.",
+            "line": " lib/log-helpers.js:15"
+        },
+        {
+            "message": "Missing item type\nSets up the log file name",
+            "line": " lib/log-helpers.js:28"
+        },
+        {
+            "message": "Missing item type\nWrites to the log file only the most basic information.  This is extremely inflexible compared\nto building the appropriate formatter infrastructure, but it works for now.",
+            "line": " lib/log-helpers.js:35"
+        },
+        {
+            "message": "Missing item type\nSpecial no-colors-allowed version of the console formatter for use when writing to a file",
+            "line": " lib/log-helpers.js:50"
+        },
+        {
+            "message": "Missing item type\nCopied and slightly modified console formatter - basically this is just Caterpillar's internal\nclass without the extra line of file info.  Since we centralize all logging, that file info is\nalways exactly the same.",
+            "line": " lib/log-helpers.js:78"
+        },
+        {
+            "message": "Missing item type",
+            "line": " lib/menu-rights-middleware.js:73"
+        },
+        {
+            "message": "Missing item type\nGiven a nowjs object, pulls cookie information to get at the session id, which is then looked\nup to get at the actual underlying session object\n\nTODO: Long-term, this manual parsing of sid is a bad idea and probably should be replaced by\nsubclassing whatever session store we end up choosing, adding a method to properly convert\nthe connect.sid cookie into a session id.  This approach will likely break on updates to\nconnect / express, and isn't very secure in comparison (doesn't validate signed cookies).",
+            "line": " lib/nowjs-to-session.js:9"
+        },
+        {
+            "message": "Missing item type\nModule dependencies.",
+            "line": " lib/plugins.js:1"
+        },
+        {
+            "message": "Missing item type\n\"static\" class for managing all room registration and assignment",
+            "line": " lib/room-manager.js:1"
+        },
+        {
+            "message": "Missing item type\nCreates random string for use in rooms",
+            "line": " lib/room-manager.js:15"
+        },
+        {
+            "message": "Missing item type\nFinds or creates a room for the given user (presenter)",
+            "line": " lib/room-manager.js:34"
+        },
+        {
+            "message": "Missing item type\nVerifies the existence of the given room string",
+            "line": " lib/room-manager.js:82"
+        },
+        {
+            "message": "Missing item type\nThis module intercepts and modifies the application as follows:\n\n- The main page is modified to provide a login form to enter a room\n- On submission of the presenter form, we first check LDAP for the user's credentials.  If not\n  found, the app does whatever normal local auth it does.  If the user is found, however, we\n  tell the app to skip its normal authentication and send back the user's relevant data.\n- On submit of the room entry form from the main page, we require authentication in a similar\n  manner to the presenter.  We first check LDAP, then do normal local auth, returning user data\n  to the application.",
+            "line": " plugins/ldap-auth/lib/ldap-auth.js:1"
+        },
+        {
+            "message": "Missing item type\nEVENT HANDLERS",
+            "line": " plugins/ldap-auth/lib/ldap-auth.js:71"
+        },
+        {
+            "message": "Missing item type\nHELPER METHODS",
+            "line": " plugins/ldap-auth/lib/ldap-auth.js:315"
+        },
+        {
+            "message": "Missing item type\nStores config data passed in by app",
+            "line": " plugins/ldap-auth/lib/ldap-auth.js:386"
+        },
+        {
+            "message": "Missing item type\nControls for Chatting",
+            "line": " public/js/controllers/chatController.js:1"
+        },
+        {
+            "message": "Missing item type\nClears previous question information",
+            "line": " public/js/controllers/clientController.js:27"
+        },
+        {
+            "message": "Missing item type\nShow a Question that came from the presenter",
+            "line": " public/js/controllers/clientController.js:40"
+        },
+        {
+            "message": "Missing item type\nModifies the Admin Display",
+            "line": " public/js/controllers/sessionDisplayController.js:1"
+        },
+        {
+            "message": "Missing item type\nPuts sting in display",
+            "line": " public/js/controllers/sessionDisplayController.js:12"
+        },
+        {
+            "message": "Missing item type\nIncrement Value of badges",
+            "line": " public/js/controllers/sessionDisplayController.js:71"
+        },
+        {
+            "message": "Missing item type\nCreates the Progress Bar for Multiple Choice and True / False",
+            "line": " public/js/controllers/sessionDisplayController.js:84"
+        },
+        {
+            "message": "Missing item type\nAdjust the Progress Bar in value and change display",
+            "line": " public/js/controllers/sessionDisplayController.js:100"
+        },
+        {
+            "message": "Missing item type\nClears the Progress Bar",
+            "line": " public/js/controllers/sessionDisplayController.js:135"
+        },
+        {
+            "message": "Missing item type\nAdds Answer Values to Progress Bars",
+            "line": " public/js/controllers/sessionDisplayController.js:142"
+        },
+        {
+            "message": "Missing item type\nCreation of Question Response Area",
+            "line": " public/js/controllers/sessionDisplayController.js:168"
+        },
+        {
+            "message": "Missing item type\nClear the UI between questions",
+            "line": " public/js/controllers/sessionDisplayController.js:204"
+        },
+        {
+            "message": "Missing item type\nAdd a new question of type defined in params",
+            "line": " public/js/controllers/setEditController.js:44"
+        },
+        {
+            "message": "Missing item type\nSession UI Related functionality",
+            "line": " public/js/question-types/slider.js:8"
+        },
+        {
+            "message": "Missing item type\nSet Edit UI Related Functionality",
+            "line": " public/js/question-types/slider.js:193"
+        },
+        {
+            "message": "Missing item type\nClient UI Related Functionality",
+            "line": " public/js/question-types/slider.js:268"
+        },
+        {
+            "message": "Missing item type\nView for Set Creation",
+            "line": " public/js/views/admin-set-edit.js:1"
+        },
+        {
+            "message": "Missing item type\nClear the chat count",
+            "line": " public/js/global.js:152"
+        },
+        {
+            "message": "Missing item type\nFeature detection",
+            "line": " public/js/jquery.form.js:53"
+        },
+        {
+            "message": "Missing item type\najaxSubmit() provides a mechanism for immediately submitting\nan HTML form using AJAX.",
+            "line": " public/js/jquery.form.js:60"
+        },
+        {
+            "message": "Missing item type\najaxForm() provides a mechanism for fully automating form submission.\n\nThe advantages of using this method instead of ajaxSubmit() are:\n\n1: This method will include coordinates for <input type=\"image\" /> elements (if the element\n   is used to submit the form).\n2. This method will include the submit element's name/value data (for the element that was\n   used to submit the form).\n3. This method binds the submit() method to the form for you.\n\nThe options argument for ajaxForm works exactly as it does for ajaxSubmit.  ajaxForm merely\npasses the options argument along after properly binding events for submit elements and\nthe form itself.",
+            "line": " public/js/jquery.form.js:664"
+        },
+        {
+            "message": "Missing item type\nformToArray() gathers form element data into an array of objects that can\nbe passed to any of the following ajax functions: $.get, $.post, or load.\nEach object in the array has both a 'name' and 'value' property.  An example of\nan array for a simple login form might be:\n\n[ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]\n\nIt is this array that is passed to pre-submit callback functions provided to the\najaxSubmit() and ajaxForm() methods.",
+            "line": " public/js/jquery.form.js:759"
+        },
+        {
+            "message": "Missing item type\nSerializes form data into a 'submittable' string. This method will return a string\nin the format: name1=value1&amp;name2=value2",
+            "line": " public/js/jquery.form.js:840"
+        },
+        {
+            "message": "Missing item type\nSerializes all field elements in the jQuery object into a query string.\nThis method will return a string in the format: name1=value1&amp;name2=value2",
+            "line": " public/js/jquery.form.js:849"
+        },
+        {
+            "message": "Missing item type\nReturns the value(s) of the element in the matched set.  For example, consider the following form:\n\n <form><fieldset>\n     <input name=\"A\" type=\"text\" />\n     <input name=\"A\" type=\"text\" />\n     <input name=\"B\" type=\"checkbox\" value=\"B1\" />\n     <input name=\"B\" type=\"checkbox\" value=\"B2\"/>\n     <input name=\"C\" type=\"radio\" value=\"C1\" />\n     <input name=\"C\" type=\"radio\" value=\"C2\" />\n </fieldset></form>\n\n var v = $(':text').fieldValue();\n // if no values are entered into the text inputs\n v == ['','']\n // if values entered into the text inputs are 'foo' and 'bar'\n v == ['foo','bar']\n\n var v = $(':checkbox').fieldValue();\n // if neither checkbox is checked\n v === undefined\n // if both checkboxes are checked\n v == ['B1', 'B2']\n\n var v = $(':radio').fieldValue();\n // if neither radio is checked\n v === undefined\n // if first radio is checked\n v == ['C1']\n\nThe successful argument controls whether or not the field element must be 'successful'\n(per http://www.w3.org/TR/html4/interact/forms.html#successful-controls).\nThe default value of the successful argument is true.  If this value is false the value(s)\nfor each element is returned.\n\nNote: This method *always* returns an array.  If no valid value can be determined the\n   array will be empty, otherwise it will contain one or more values.",
+            "line": " public/js/jquery.form.js:874"
+        },
+        {
+            "message": "Missing item type\nReturns the value of the field element.",
+            "line": " public/js/jquery.form.js:927"
+        },
+        {
+            "message": "Missing item type\nClears the form data.  Takes the following actions on the form's input fields:\n - input text fields will have their 'value' property set to the empty string\n - select elements will have their 'selectedIndex' property set to -1\n - checkbox and radio inputs will have their 'checked' property set to false\n - inputs of type submit, button, reset, and hidden will *not* be effected\n - button elements will *not* be effected",
+            "line": " public/js/jquery.form.js:969"
+        },
+        {
+            "message": "Missing item type\nClears the selected form elements.",
+            "line": " public/js/jquery.form.js:983"
+        },
+        {
+            "message": "Missing item type\nResets the form data.  Causes all form elements to be reset to their original value.",
+            "line": " public/js/jquery.form.js:1011"
+        },
+        {
+            "message": "Missing item type\nEnables or disables any matching elements.",
+            "line": " public/js/jquery.form.js:1024"
+        },
+        {
+            "message": "Missing item type\nChecks/unchecks any matching checkboxes or radio buttons and\nselects/deselects and matching option elements.",
+            "line": " public/js/jquery.form.js:1036"
+        },
+        {
+            "message": "Missing item type\nh5Validate",
+            "line": " public/js/jquery.h5validate.js:1"
+        },
+        {
+            "message": "Missing item type\nCheck the validity of the current field",
+            "line": " public/js/jquery.h5validate.js:165"
+        },
+        {
+            "message": "Missing item type\nTake the event preferences and delegate the events to selected\nobjects.",
+            "line": " public/js/jquery.h5validate.js:333"
+        },
+        {
+            "message": "Missing item type\nPrepare for event delegation.",
+            "line": " public/js/jquery.h5validate.js:360"
+        },
+        {
+            "message": "Missing item type\nEvent handler for the form submit event.\nWhen settings.submit is enabled:\n - prevents submission if any invalid fields are found.\n - Optionally validates all fields.\n - Optionally moves focus to the first invalid field.",
+            "line": " public/js/jquery.h5validate.js:411"
+        },
+        {
+            "message": "Missing item type\nTake a map of pattern names and HTML5-compatible regular\nexpressions, and add them to the patternLibrary. Patterns in\nthe library are automatically assigned to HTML element pattern\nattributes for validation.",
+            "line": " public/js/jquery.h5validate.js:480"
+        },
+        {
+            "message": "Missing item type\nTake a valid jQuery selector, and a list of valid values to\nvalidate against.\nIf the user input isn't in the list, validation fails.",
+            "line": " public/js/jquery.h5validate.js:501"
+        },
+        {
+            "message": "Missing item type\njPanelMenu 1.1.0 (http://jpanelmenu.com)\n By Anthony Colangelo (http://acolangelo.com)\n*/(function(e){e.jPanelMenu=function(t){if(typeof t==\"undefined\"||t==null)t={};var n={options:e.extend({menu:\"#menu\",trigger:\".menu-trigger\",excludedPanelContent:\"style, script\",direction:\"left\",openPosition:\"250px\",animated:!0,keyboardShortcuts:[{code:27,open:!1,close:!0},{code:37,open:!1,close:!0},{code:39,open:!0,close:!0},{code:77,open:!0,close:!0}],duration:150,openDuration:t.duration||150,closeDuration:t.duration||150,easing:\"ease-in-out\",openEasing:t.easing||\"ease-in-out\",closeEasing:t.easing||\"ease-in-out\",before:function(){},beforeOpen:function(){},beforeClose:function(){},after:function(){},afterOpen:function(){},afterClose:function(){}},t),settings:{transitionsSupported:\"WebkitTransition\"in document.body.style||\"MozTransition\"in document.body.style||\"msTransition\"in document.body.style||\"OTransition\"in document.body.style||\"Transition\"in document.body.style,shiftFixedChildren:!1,panelPosition:\"relative\",positionUnits:\"px\"},menu:\"#jPanelMenu-menu\",panel:\".jPanelMenu-panel\",fixedChildren:[],timeouts:{},clearTimeouts:function(){clearTimeout(n.timeouts.open);clearTimeout(n.timeouts.afterOpen);clearTimeout(n.timeouts.afterClose)},setPositionUnits:function(){var e=!1,t=[\"%\",\"px\",\"em\"];for(unitID in t){var r=t[unitID];if(n.options.openPosition.toString().substr(-r.length)==r){e=!0;n.settings.positionUnits=r}}e||(n.options.openPosition=parseInt(n.options.openPosition)+n.settings.positionUnits)},checkFixedChildren:function(){n.disableTransitions();var t={position:e(n.panel).css(\"position\")};t[n.options.direction]=e(n.panel).css(n.options.direction)==\"auto\"?0:e(n.panel).css(n.options.direction);e(n.panel).find(\"> *\").each(function(){e(this).css(\"position\")==\"fixed\"&&e(this).css(n.options.direction)==\"auto\"&&n.fixedChildren.push(this)});if(n.fixedChildren.length>0){var r={position:\"relative\"};r[n.options.direction]=\"1px\";n.setPanelStyle(r);parseInt(e(n.fixedChildren[0]).offset().left)==0&&(n.settings.shiftFixedChildren=!0)}n.setPanelStyle(t)},setjPanelMenuStyles:function(){var t=\"#fff\",r=e(\"html\").css(\"background-color\"),i=e(\"body\").css(\"background-color\");i!=\"transparent\"&&i!=\"rgba(0, 0, 0, 0)\"?t=i:r!=\"transparent\"&&r!=\"rgba(0, 0, 0, 0)\"?t=r:t=\"#fff\";e(\"#jPanelMenu-style-master\").length==0&&e(\"body\").append('<style id=\"jPanelMenu-style-master\">body{width:100%}.jPanelMenu,body{overflow-x:hidden}#jPanelMenu-menu{display:block;position:fixed;top:0;'+n.options.direction+\":0;height:100%;z-index:-1;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch}.jPanelMenu-panel{position:static;\"+n.options.direction+\":0;top:0;z-index:2;width:100%;min-height:100%;background:\"+t+\"}</style>\")},setMenuState:function(t){var n=t?\"open\":\"closed\";e(\"body\").attr(\"data-menu-position\",n)},getMenuState:function(){return e(\"body\").attr(\"data-menu-position\")},menuIsOpen:function(){return n.getMenuState()==\"open\"?!0:!1},setMenuStyle:function(t){e(n.menu).css(t)},setPanelStyle:function(t){e(n.panel).css(t)},showMenu:function(){n.setMenuStyle({display:\"block\"});n.setMenuStyle({\"z-index\":\"1\"})},hideMenu:function(){n.setMenuStyle({\"z-index\":\"-1\"});n.setMenuStyle({display:\"none\"})},enableTransitions:function(t,r){var i=t/1e3,s=n.getCSSEasingFunction(r);n.disableTransitions();e(\"body\").append('<style id=\"jPanelMenu-style-transitions\">.jPanelMenu-panel{-webkit-transition: all '+i+\"s \"+s+\"; -moz-transition: all \"+i+\"s \"+s+\"; -o-transition: all \"+i+\"s \"+s+\"; transition: all \"+i+\"s \"+s+\";}</style>\")},disableTransitions:function(){e(\"#jPanelMenu-style-transitions\").remove()},enableFixedTransitions:function(t,r,i,s){var o=i/1e3,u=n.getCSSEasingFunction(s);n.disableFixedTransitions(r);e(\"body\").append('<style id=\"jPanelMenu-style-fixed-'+r+'\">'+t+\"{-webkit-transition: all \"+o+\"s \"+u+\"; -moz-transition: all \"+o+\"s \"+u+\"; -o-transition: all \"+o+\"s \"+u+\"; transition: all \"+o+\"s \"+u+\";}</style>\")},disableFixedTransitions:function(t){e(\"#jPanelMenu-style-fixed-\"+t).remove()},getCSSEasingFunction:function(e){switch(e){case\"linear\":return e;case\"ease\":return e;case\"ease-in\":return e;case\"ease-out\":return e;case\"ease-in-out\":return e;default:return\"ease-in-out\"}},getJSEasingFunction:function(e){switch(e){case\"linear\":return e;default:return\"swing\"}},openMenu:function(t){if(typeof t==\"undefined\"||t==null)t=n.options.animated;n.clearTimeouts();n.options.before();n.options.beforeOpen();n.setMenuState(!0);n.setPanelStyle({position:\"relative\"});n.showMenu();var r={none:t?!1:!0,transitions:t&&n.settings.transitionsSupported?!0:!1};if(r.transitions||r.none){r.none&&n.disableTransitions();r.transitions&&n.enableTransitions(n.options.openDuration,n.options.openEasing);var i={};i[n.options.direction]=n.options.openPosition;n.setPanelStyle(i);n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),i=t.replace(\" \",\".\"),t=t.replace(\" \",\"-\");r.none&&n.disableFixedTransitions(t);r.transitions&&n.enableFixedTransitions(i,t,n.options.openDuration,n.options.openEasing);var s={};s[n.options.direction]=n.options.openPosition;e(this).css(s)});n.timeouts.afterOpen=setTimeout(function(){n.disableTransitions();n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),t=t.replace(\" \",\"-\");n.disableFixedTransitions(t)});n.options.after();n.options.afterOpen();n.initiateContentClickListeners()},n.options.openDuration)}else{var s=n.getJSEasingFunction(n.options.openEasing),o={};o[n.options.direction]=n.options.openPosition;e(n.panel).stop().animate(o,n.options.openDuration,s,function(){n.options.after();n.options.afterOpen();n.initiateContentClickListeners()});n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t={};t[n.options.direction]=n.options.openPosition;e(this).stop().animate(t,n.options.openDuration,s)})}},closeMenu:function(t){if(typeof t==\"undefined\"||t==null)t=n.options.animated;n.clearTimeouts();n.options.before();n.options.beforeClose();n.setMenuState(!1);var r={none:t?!1:!0,transitions:t&&n.settings.transitionsSupported?!0:!1};if(r.transitions||r.none){r.none&&n.disableTransitions();r.transitions&&n.enableTransitions(n.options.closeDuration,n.options.closeEasing);var i={};i[n.options.direction]=0+n.settings.positionUnits;n.setPanelStyle(i);n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),i=t.replace(\" \",\".\"),t=t.replace(\" \",\"-\");r.none&&n.disableFixedTransitions(t);r.transitions&&n.enableFixedTransitions(i,t,n.options.closeDuration,n.options.closeEasing);var s={};s[n.options.direction]=0+n.settings.positionUnits;e(this).css(s)});n.timeouts.afterClose=setTimeout(function(){n.setPanelStyle({position:n.settings.panelPosition});n.disableTransitions();n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t=e(this).prop(\"tagName\").toLowerCase()+\" \"+e(this).attr(\"class\"),t=t.replace(\" \",\"-\");n.disableFixedTransitions(t)});n.hideMenu();n.options.after();n.options.afterClose();n.destroyContentClickListeners()},n.options.closeDuration)}else{var s=n.getJSEasingFunction(n.options.closeEasing),o={};o[n.options.direction]=0+n.settings.positionUnits;e(n.panel).stop().animate(o,n.options.closeDuration,s,function(){n.setPanelStyle({position:n.settings.panelPosition});n.hideMenu();n.options.after();n.options.afterClose();n.destroyContentClickListeners()});n.settings.shiftFixedChildren&&e(n.fixedChildren).each(function(){var t={};t[n.options.direction]=0+n.settings.positionUnits;e(this).stop().animate(t,n.options.closeDuration,s)})}},triggerMenu:function(e){n.menuIsOpen()?n.closeMenu(e):n.openMenu(e)},initiateClickListeners:function(){e(document).on(\"click\",n.options.trigger,function(){n.triggerMenu(n.options.animated);return!1})},destroyClickListeners:function(){e(document).off(\"click\",n.options.trigger,null)},initiateContentClickListeners:function(){e(document).on(\"click\",n.panel,function(e){n.menuIsOpen()&&n.closeMenu(n.options.animated)});e(document).on(\"touchend\",n.panel,function(e){n.menuIsOpen()&&n.closeMenu(n.options.animated)})},destroyContentClickListeners:function(){e(document).off(\"click\",n.panel,null);e(document).off(\"touchend\",n.panel,null)},initiateKeyboardListeners:function(){e(document).on(\"keydown\",function(e){for(mapping in n.options.keyboardShortcuts)if(e.which==n.options.keyboardShortcuts[mapping].code){var t=n.options.keyboardShortcuts[mapping];t.open&&t.close?n.triggerMenu(n.options.animated):t.open&&!t.close&&!n.menuIsOpen()?n.openMenu(n.options.animated):!t.open&&t.close&&n.menuIsOpen()&&n.closeMenu(n.options.animated);return!1}})},destroyKeyboardListeners:function(){e(document).off(\"keydown\",null)},setupMarkup:function(){e(\"html\").addClass(\"jPanelMenu\");e(\"body > *\").not(n.menu+\", \"+n.options.excludedPanelContent).wrapAll('<div class=\"'+n.panel.replace(\".\",\"\")+'\"/>');e(n.options.menu).clone().attr(\"id\",n.menu.replace(\"#\",\"\")).insertAfter(\"body > \"+n.panel)},resetMarkup:function(){e(\"html\").removeClass(\"jPanelMenu\");e(\"body > \"+n.panel+\" > *\").unwrap();e(n.menu).remove()},init:function(){n.initiateClickListeners();Object.prototype.toString.call(n.options.keyboardShortcuts)===\"[object Array]\"&&n.initiateKeyboardListeners();n.setjPanelMenuStyles();n.setMenuState(!1);n.setupMarkup();n.setMenuStyle({width:n.options.openPosition});n.checkFixedChildren();n.setPositionUnits();n.closeMenu(!1)},destroy:function(){n.closeMenu();n.destroyClickListeners();Object.prototype.toString.call(n.options.keyboardShortcuts)===\"[object Array]\"&&n.destroyKeyboardListeners();n.resetMarkup();var t={};t[n.options.direction]=\"auto\";e(n.fixedChildren).each(function(){e(this).css(t)});n.fixedChildren=[]}};return{on:n.init,off:n.destroy,trigger:n.triggerMenu,open:n.openMenu,close:n.closeMenu,isOpen:n.menuIsOpen,menu:n.menu,getMenu:function(){return e(n.menu)},panel:n.panel,getPanel:function(){return e(n.panel)}}}})(jQuery);",
+            "line": " public/js/jquery.jPanelMenu-1.1.0.min.js:1"
+        },
+        {
+            "message": "Missing item type\nList of Plugins",
+            "line": " routes/admin.js:305"
+        },
+        {
+            "message": "Missing item type\nConfiguration page for plugins",
+            "line": " routes/admin.js:448"
+        },
+        {
+            "message": "Missing item type\nFunction that is called after document is inserted or updated",
+            "line": " routes/admin.js:487"
+        },
+        {
+            "message": "Missing item type",
+            "line": " routes/admin.js:1004"
+        },
+        {
+            "message": "Missing item type\nRoutes Admin Logins or Room Requests",
+            "line": " routes/main.js:52"
+        },
+        {
+            "message": "Missing item type\nSign Up - Display Account Form",
+            "line": " routes/main.js:132"
+        },
+        {
+            "message": "Missing item type\nPassword reset",
+            "line": " routes/main.js:166"
+        },
+        {
+            "message": "Missing item type\nCreation of Account on Post of Signup",
+            "line": " routes/main.js:196"
+        },
+        {
+            "message": "Missing item type\nLogout of User",
+            "line": " routes/main.js:260"
+        },
+        {
+            "message": "Missing item type\nModule dependencies.",
+            "line": " app.js:5"
+        },
+        {
+            "message": "Missing item type\nRouting",
+            "line": " app.js:52"
+        },
+        {
+            "message": "Missing item type\nApp Information & Configurations",
+            "line": " app.js:70"
+        },
+        {
+            "message": "Missing item type\nURIs in use",
+            "line": " app.js:160"
+        },
+        {
+            "message": "Missing item type\nHTTP Server setup - check for SSL and build redirect from non-SSL if SSL\nhas been set up",
+            "line": " app.js:219"
+        },
+        {
+            "message": "Missing item type\nNow & Socket IO",
+            "line": " app.js:270"
+        },
+        {
+            "message": "Missing item type\nClear Client's UI & Now question variables",
+            "line": " app.js:356"
+        },
+        {
+            "message": "Missing item type\nSend out a message",
+            "line": " app.js:384"
+        },
+        {
+            "message": "Missing item type\nSend out a question to virtual room",
+            "line": " app.js:400"
+        },
+        {
+            "message": "Missing item type\nClient sent in answer",
+            "line": " app.js:487"
+        },
+        {
+            "message": "Missing item type\nSantize Answers",
+            "line": " app.js:559"
+        },
+        {
+            "message": "Missing item type\nSet whether answers can or can not be received",
+            "line": " app.js:602"
+        },
+        {
+            "message": "Missing item type",
+            "line": " config-example.js:4"
+        },
+        {
+            "message": "Missing item type\nConstants related to SERVER Configuration",
+            "line": " config-example.js:8"
+        },
+        {
+            "message": "Missing item type\nConstants for smtp connection if server is to send emails",
+            "line": " config-example.js:67"
+        },
+        {
+            "message": "Missing item type\nConstants are ONLY readable through their methods",
+            "line": " config-example.js:86"
+        },
+        {
+            "message": "Missing item type",
+            "line": " config.js:4"
+        },
+        {
+            "message": "Missing item type\nConstants related to SERVER Configuration",
+            "line": " config.js:8"
+        },
+        {
+            "message": "Missing item type\nConstants for smtp connection if server is to send emails",
+            "line": " config.js:67"
+        },
+        {
+            "message": "Missing item type\nConstants are ONLY readable through their methods",
+            "line": " config.js:86"
+        }
+    ]
+}

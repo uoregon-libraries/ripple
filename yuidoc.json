@@ -1,0 +1,6 @@
+{
+	"options":{
+		"outdir":"./docs",
+		"exclude":"node_modules,vendor"
+	}
+}
