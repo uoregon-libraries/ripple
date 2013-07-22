@@ -449,7 +449,14 @@ everyone.now.distributeQuestion = function(question){
       logger.log('Question Sent Complete');
       logger.log("");
     });
-    // Send Question to plugin
+    /**
+     * Hook fired when a question is distributed.
+     *
+     * @event distribute
+     * @for plugin-server.question
+     * @param {String} room The room that the question was distributed to
+     * @param {Object} question A object that contains all the question information
+     */
     plugin.invokeAll("question.distribute", currentRoom, question);
   });
 };
@@ -509,6 +516,17 @@ everyone.now.distributeAnswer = function(data){
     SSM.saveAnswer(answer, group.question, name)
 
     // Send Answer to plugins
+    /**
+     * Hook fired when a answer is received.
+     *
+     * @event distribute
+     * @for plugin-server.answer
+     * @param {String} room The room that the question was distributed to
+     * @param {String} clientID The client's id who submitted the answer
+     * @param {String} name The client's name who submitted the answer
+     * @param {Object} question An object with all the question information
+     * @param {String} answer The answer submitted by the client
+     */
     plugin.invokeAll("answer.distribute", room, that.user.clientId, name, group.question, answer);
   });
 };

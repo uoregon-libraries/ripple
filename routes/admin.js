@@ -407,6 +407,13 @@ exports.pluginConfig = function(req, res){
       // Use a temporary object to ensure locals only add inputs, otherwise the menu handler could
       // muck with all locals, potentially leading to hard-to-debug errors
       var menu = {};
+      /**
+       * Hook fires when plugin config page loads and allow for addition of inputs to config page.
+       *
+       * @event configMenuInputs
+       * @for plugin-server.plugin
+       * @param {Object} menu An empty object that can be modified to include inputs for the configuration of the plugin
+       */      
       plugin.invoke(pluginName, "plugin.configMenuInputs", menu);
       locals.inputs = menu.inputs;
 
@@ -416,6 +423,15 @@ exports.pluginConfig = function(req, res){
           return false;
         }
         locals.plugins = {};
+        /**
+         * Hook fires when plugin config page is loaded
+         *
+         * @event pageLoad
+         * @for plugin-server.plugin
+         * @param {Object} sessionVariables An object of available session variables
+         * @param {Object} req The <a href="http://expressjs.com/api.html#req.params">express req</a> object with information
+         * about the server page request
+         */ 
         plugin.invoke(pluginName, "plugin.pageLoad", locals, req);
         if( obj == null){
           res.render('admin/pluginMenu', locals);
@@ -489,6 +505,13 @@ pluginSaveCallback = function(err, record, req, res) {
   else {
     sendJSONSuccessMessage(res, "Configurations Saved");   
     var pluginName = req.params['pluginName'].toLowerCase();
+    /**
+     * Hook fires when plugin config page is saved
+     *
+     * @event saveConfig
+     * @for plugin-server.plugin
+     * @param Object config An object containing the configuration at time of save
+     */
     plugin.invoke(pluginName, "plugin.saveConfig", record);
   }
 }

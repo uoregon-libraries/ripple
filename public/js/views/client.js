@@ -87,6 +87,12 @@ $(document).ready(function(){
   // Window Resize
   $(window).resize(function(){
     var type = now.question.type;
+    /**
+     * Hook called when client's browser is resized
+     *
+     * @event resizeFn
+     * @for plugin-client.client
+     */
     // Check for Class, Methods, & Params
     var passCheck = RIPPLE.checkClass(type)
     if( !passCheck ) return false;

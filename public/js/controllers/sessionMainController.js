@@ -1,8 +1,11 @@
 
 /**
- * Controls for Room Assignment
+ * Client Plugin Session API Module. 
  *
  * @author William Myers
+ * @class plugin-client.session
+ * @title session
+ * @space RIPPLE.questionType['<i>pluginName</i>'].session<br /> <span class="note"><i>pluginName</i> will be replaced by your plugin's name</span>
  */
 RIPPLE.namespace('session');
 // Set up session components
@@ -73,7 +76,11 @@ function SessionMainController() {
     // Clear Params
     params = GLOBALS.cloneObj( initialParams );
 
-    // Clear AnsObj & Reset Answer Area
+    /**
+     * Hook fired when a question is sent to audience.
+     * 
+     * @event sendQuestionFn
+     */
     var passCheck = RIPPLE.checkClass(type)
     var hasClearFn = RIPPLE.questionType[type].hasOwnProperty('sendQuestionFn');
     if( passCheck && hasClearFn ) RIPPLE.questionType[type].sendQuestionFn();
@@ -99,11 +106,6 @@ function SessionMainController() {
     $('#total').text( that.params("total") );
   };
 
-  /**
-   * Updates the dial data
-   * 
-   * @param  {object} ansDial [Contains all properties related to the current instance of the dial]
-   */
   this.graphUpdate = function(ansObj){
     console.log("[graphUpdate] args", arguments);
     var that = this

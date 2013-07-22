@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 ;(function () { // wrapper in case we're in module_context mode
 
-/**
- * Module dependencies.
- */
+//Module dependencies.
 var program = require('commander')
   , util = require('util')
   , path = require('path')
@@ -32,7 +30,11 @@ program
   .option('-d, --debug', 'debug ripple processing');
 
 /**
- * Install Command
+ * Installs Ripple server at current location.
+ * @class  command-line.install
+ * @method install
+ * @title install
+ * @command Ripple install {-s}
  */
 program
   .command('install')
@@ -46,7 +48,11 @@ program
   });
 
 /**
- * Update Command
+ * Updates Ripple server at current location.
+ * @class  command-line.update
+ * @title update
+ * @method update
+ * @command Ripple update {-s, -a}
  */
 program
   .command('update')

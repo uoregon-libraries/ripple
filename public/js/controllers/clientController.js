@@ -1,7 +1,10 @@
 /**
- * Controls Client Functionality
+ * Client Plugin Session API Module. 
  *
  * @author William Myers
+ * @class plugin-client.client
+ * @title client
+ * @space RIPPLE.questionType['<i>pluginName</i>'].client<br /> <span class="note"><i>pluginName</i> will be replaced by your plugin's name</span>
  */
 RIPPLE.namespace('client');
 // Set up session components
@@ -66,6 +69,11 @@ console.log("Valid ::",VALID);
       $('#answer').removeData('disabled');
 
       // Check for Class, Methods, & Params
+      /**
+       * Hook fired when question is displayed to client
+       *
+       * @event displayFn
+       */
       var passCheck = RIPPLE.checkClass(type, 'displayFn')
       if( !passCheck ) return false;
 

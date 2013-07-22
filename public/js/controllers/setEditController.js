@@ -1,3 +1,11 @@
+/**
+ * Client Plugin Set API Module. 
+ *
+ * @author William Myers
+ * @class plugin-client.set
+ * @title set
+ * @space RIPPLE.questionType['<i>pluginName</i>'].set<br /> <span class="note"><i>pluginName</i> will be replaced by your plugin's name</span> 
+ */
 RIPPLE.namespace('set');
 // Set up session components
 RIPPLE.set.controller = new SetEditController();
@@ -131,6 +139,14 @@ function SetEditController(){
       var hasOptions = RIPPLE.questionType[qType].hasOwnProperty("displaySetEditFn");
       if( hasOptions ) {
         outputOptions += "<hr />";
+        /**
+         * Output to display in question option area
+         *
+         * @event displaySetEditFn
+         * @for plugin-client.set
+         * @param {String} question Html of question
+         * @param {Object} qOptions Question options
+         */
         outputOptions += RIPPLE.questionType[qType].displaySetEditFn(qTxt, qOptions);
       }
     }

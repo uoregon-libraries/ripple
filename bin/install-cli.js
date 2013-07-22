@@ -26,9 +26,6 @@ INSTALL.app = function(params) {
   });
 }
 
-/**
- * Create application at the given directory `installDir`.
- */
 INSTALL.createAppAt = function(params) {
   // Put in filesystem
   UTIL.copyFileSystem(installDir);
