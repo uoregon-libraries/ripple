@@ -468,17 +468,15 @@ everyone.now.distributeAnswer = function(data){
   }
 
   sessionAPI.getSession(that, sessionStore, function(err, session) {
-    var clientNowObj;
-    nowjs.getClient(that.user.clientId, function(){
-      clientNowObj = this.now
-    })
     var room = session.room
-      , name = session.hasOwnProperty('user') ? session.user.name : clientNowObj.name
+      , nowName = nowjs.users[that.user.clientId].now.name
+      , hasSessionName = session.hasOwnProperty('user') && session.user.hasOwnProperty('name')
+      , name = hasSessionName ? session.user.name : nowName
       , group = nowjs.getGroup(room)
       , answer = data.answer
       , qID = data.qID;
 
-    log('Answer Sent: ' + name + ' - ' + that.user.clientId, util.inspect(data));
+    log('Answer Sent ' + name + '\n [' + that.user.clientId + ']', util.inspect(data));
 
     // If we had any errors, exit here
     if (err) {
