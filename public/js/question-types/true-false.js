@@ -37,7 +37,6 @@ RIPPLE.questionType['true-false'].session = function(){
   }
 
   var recAns = function(clientID, name, answer){
-    // console.info("recAns args :: ",arguments);
     var type = now.question.type
       , timer = ASC.params("timer")
       , total = ASC.params("total");
@@ -49,10 +48,8 @@ RIPPLE.questionType['true-false'].session = function(){
     ansObj[answer] = DISPLAY.incrementVal(answer, ansObj[answer]);
 
     // Only regraph if an answer has not come in for 500ms
-
     if( timer.length ) clearTimeout(timer);
     newTimer = setTimeout(function(){
-      console.log(ansObj);
       DISPLAY.adjProgressBar(answer, ansObj, newTotal);
     }, 500);
     ASC.params("timer", newTimer);

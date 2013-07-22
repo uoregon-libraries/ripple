@@ -9,7 +9,7 @@ console.log('Starting Ripple...');
 // Make sure CONFIG is loaded first, since the loader will auto-generate it if it doesn't exist
 var CONFIG = require('./lib/config-loader.js');
 
-// We have to force the DB stuff to happen first - this doesn't seem right, but our application
+// We have to force the DB connection to happen first - our application
 // is completely reliant on having a DB connection right from the start.
 var DB = require('./lib/db-manager.js')
   , logger = require('./lib/log');
@@ -71,6 +71,7 @@ logger.debugPair('Routes', util.inspect(routes));
  * App Information & Configurations
  */
 
+// These are folders that will be publically accessible
 var app = module.exports = express();
 var publicDir = path.join(__dirname, 'public');
 var customDir = path.join(__dirname, 'custom');
@@ -86,18 +87,24 @@ var sessionStore = new MongoStore({
 })
 
 app.configure(function(){
-  // "Global" locals
+  // These are functions and properites that are global to the templating system
+  // through the use of their locals object
   app.use(function(req, res, next) {
     require("./lib/view-helpers.js").addLocals(req, res);
     next();
   });
-
+  // Ripple loads on port 3000 and 4000 for ssl if not defined
   app.set('www_port', process.env.PORT || CONFIG.SERVER('WWW_PORT') || 3000);
   app.set('ssl_port', process.env.SSL_PORT || CONFIG.SERVER('SSL_PORT') || 4000);
   app.set('views', __dirname + '/views');
+  // Ripple use the ejs templating system 
+  // @url http://embeddedjs.com/
   app.set('view engine', 'ejs');
   app.set("view options", { layout: "layout.ejs" });
-  app.use(partials());
+  // Ripple also uses express partials for better reusability
+  app.use( partials() );
+  // Ripple uses html5 boilerplate code to modify the header so IE is set to edge
+  // and to remove the powered by header info
   app.use( h5bp.ieEdgeChromeFrameHeader() );
   app.use( h5bp.removePoweredBy() );
   app.use( express.favicon() );
@@ -105,8 +112,9 @@ app.configure(function(){
   app.use( express.bodyParser() );
   app.use( express.methodOverride() );
   app.use( express.cookieParser( CONFIG.SERVER('SECRET_KEY')) );
-  app.use( express.session({ secret : "zV@4%8sFwFPGK9F9V74QEm9w#EH2Wt2SqypkKGx&p$X7y&jYs8@#$VDfVjjEy&$U", store : sessionStore, cookie: {maxAge: 24 * 60 * 60 * 1000} }) );
+  app.use( express.session({ secret : CONFIG.SERVER('SECRET_KEY'), store : sessionStore, cookie: {maxAge: 24 * 60 * 60 * 1000} }) );
   app.use( app.router );
+  // Set up the static routes for publicly accessible folders
   app.use( '/', express.static(publicDir) );
   app.use( '/custom', express.static(customDir, 'custom') )
   app.use( '/plugins', express.static(pluginDir, 'plugins') )
@@ -191,8 +199,7 @@ app.post('/admin/settings', routes.admin.settingsPost);
 /* Room URL */
 app.get('/room/:id', qTypes.load, routes.client.index);
 
-
-// Special Route for combining Client Side JS
+// Special Route for combining Client Side JS & CSS
 app.get('/static', combo.combine({rootPath: publicDir}), function (req, res) {
     res.send(res.body);
 });
@@ -224,7 +231,8 @@ if (sslOpts) {
       , port = CONFIG.SERVER('SSL_SILENT_REDIRECT') ? "" : ":" + app.get('port')
       , url = req.url
       , newPath = server + port + url;
-      log('SSL Silent', CONFIG.SERVER('SSL_SILENT_REDIRECT'))
+      
+    log('SSL Silent', CONFIG.SERVER('SSL_SILENT_REDIRECT'));
     res.writeHead(302, {
       'Location': newPath
     });
@@ -239,6 +247,7 @@ if (sslOpts) {
   server = https.createServer(sslOpts, app);
 }
 else {
+  // No SSL Configuration found
   app.set('port', app.get('www_port'));
   server = http.createServer(app);
 }
@@ -265,6 +274,7 @@ server.listen(app.get('port'), function(){
 // https protocol
 var everyone = nowjs.initialize(server, {port: app.get('port')});
 
+// Function fired on connect using websockets
 nowjs.on('connect', function(){
   log("Client Initializing Connection", this.user.clientId);
 
@@ -301,7 +311,7 @@ nowjs.on('connect', function(){
     }
 
     logger.debugPair(id + " entered", that.now.room);
-    logger.debugPair("now", util.inspect(that.now));
+    logger.debugPair("[nowjs.on] connect now object", util.inspect(that.now));
 
     // Connect Initialization Function to run.
     nowjs.getClient(that.user.clientId, function(){
@@ -310,6 +320,7 @@ nowjs.on('connect', function(){
   });
 });
 
+// Function fired on close of websockets
 nowjs.on('disconnect', function(){
   logger.debugPair("Client disconnected " + this.user.clientId, this.now.name);
 });
@@ -342,6 +353,9 @@ everyone.now.setName = function(newName) {
   });
 };
 
+/**
+ * Clear Client's UI & Now question variables
+ */
 everyone.now.distributeClear = function(){
   var that = this;
 
@@ -367,6 +381,10 @@ everyone.now.distributeClear = function(){
   });
 }
 
+/**
+ * Send out a message
+ * @param  {String} message The text to be sent to entire virtual room
+ */
 everyone.now.distributeMessage = function(message){
   var that = this;
   sessionAPI.getSession(that, sessionStore, function(err, session) {
@@ -374,11 +392,15 @@ everyone.now.distributeMessage = function(message){
       logger.error("Error retrieving session for nowjs connection [distributeMessage]: " + err.message);
       return;
     }
-
+    // Send message
     nowjs.getGroup(session.room).now.receiveMessage(session.user.name, message);
   });
 };
 
+/**
+ * Send out a question to virtual room
+ * @param  {Object} question Question object with all client needed variables to display question to client.
+ */
 everyone.now.distributeQuestion = function(question){
   var that = this;
   sessionAPI.getSession(that, sessionStore, function(err, session) {
@@ -393,10 +415,12 @@ everyone.now.distributeQuestion = function(question){
       return;
     }
 
+    // Set current room
     var currentRoom = session.room;
+    // Determine Group in virtual room
     var group = nowjs.getGroup(currentRoom);
     var recQFn = group.now.hasOwnProperty('receiveQuestion') || '' ;
-    logger.debugPair("distributeQuestion Group", util.inspect(group) );
+    logger.debugPair("[distributeQuestion] Group", util.inspect(group) );
 
     // Allow reception of answers
     group.receiveAnswer = true;
@@ -404,11 +428,11 @@ everyone.now.distributeQuestion = function(question){
     // Set Question Session ID
     question.qSessionID = session.rippleSession.id;
 
-    log("distributeQuestion Room", currentRoom);
-    log("distributeQuestion now object", util.inspect(that.now) );
+    logger.debugPair("[distributeQuestion] Room", currentRoom);
+    logger.debugPair("[distributeQuestion] now object", util.inspect(that.now) );
 
     // Save Question to db
-    log('Question Sent to db', new Date());
+    logger.debugPair('Question Sent to db', new Date());
     SSM.questionSent(question, function(qID, sessionID){
       question.qID = String(qID);
       question.qSessionID = String(sessionID);
@@ -418,9 +442,8 @@ everyone.now.distributeQuestion = function(question){
         , rippleSession = session.rippleSession
         , hasExpire = rippleSession.hasOwnProperty(expireProp) && rippleSession[expireProp] != ""
         , isSetExpire = group.now.hasOwnProperty(expireProp)
-      log("distributeQuestion Session", util.inspect(session));
-      log("distributeQuestion hasExpire", hasExpire);
-      log("distributeQuestion isSetExpire", isSetExpire);
+      logger.debugPair("distributeQuestion hasExpire", hasExpire);
+      logger.debugPair("distributeQuestion isSetExpire", isSetExpire);
 
       if( hasExpire && !isSetExpire ) {
         question[expireProp] = rippleSession[expireProp];
@@ -445,9 +468,9 @@ everyone.now.distributeQuestion = function(question){
         session.user.name
       );
 
-      logger.log("");
-      logger.log('Question Sent Complete');
-      logger.log("");
+      logger.debugPair("");
+      log('Question Sent Complete', new Date() );
+      logger.debugPair("");
     });
     /**
      * Hook fired when a question is distributed.
@@ -461,6 +484,10 @@ everyone.now.distributeQuestion = function(question){
   });
 };
 
+/**
+ * Client sent in answer
+ * @param  {Object} data Object that contains answer information
+ */
 everyone.now.distributeAnswer = function(data){
   var that = this;
 
@@ -531,6 +558,12 @@ everyone.now.distributeAnswer = function(data){
   });
 };
 
+/**
+ * Santize Answers
+ * @param  {Object} answer      Answer from client
+ * @param  {Object} question    Question responded to
+ * @return {Object} cleanAnswer Santized answer
+ */
 var cleanAnswer = function(answer, question){
   var translation = 'string';
 
@@ -562,12 +595,16 @@ var cleanAnswer = function(answer, question){
     case 'numeric':
       answer = sanitize( answer ).toFloat();
   }
-  log("Answer typed to", translation);
+  logger.debugPair("Answer typed to", translation);
   
   return answer;
 
 }
 
+/**
+ * Set whether answers can or can not be received
+ * @param  {String} status The current status of polling
+ */
 everyone.now.distributePolling = function(status){
   var that = this;
   sessionAPI.getSession(that, sessionStore, function(err, session) {
@@ -593,7 +630,7 @@ everyone.now.distributePolling = function(status){
   });
 }
 console.log("==============================================");
-console.log("Ripple app.js Loaded");
+console.log("Ripple app.js executed");
 console.log("==============================================");
 
 } // end "run" function

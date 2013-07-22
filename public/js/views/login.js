@@ -76,9 +76,7 @@ $(document).ready(function(){
 
 		},
 		success	: function(responseText, status, xhr, $form){
-			console.log(responseText);
 			response = $.parseJSON(responseText);
-			console.log(response);
 			if( response.status == "ok") {
 				var room = $('#room-num').val();
 				if (status == 'success') window.location.href = '/room/' + room;
@@ -93,15 +91,6 @@ $(document).ready(function(){
       lv.showLoginError('Server Error', 'Could not connect to the server. Please try again.');
 		}
 	});
-
-	// Audience Login
-	// Removed routing to accomodate auth plugins
-	// $('#aud-login-btn').click(function(){
-	// 	var roomID = $('#room-num').val();
-	// 	roomID = roomID.toLowerCase();
-	// 	if( isAplhaLower(roomID) ) window.location = '/' + roomID;
-	// 	else alert('Not a Room Number');
-	// })
 });
 
 function LoginValidator(){

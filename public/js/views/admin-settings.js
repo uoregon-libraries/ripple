@@ -11,7 +11,6 @@ $(document).ready(function(){
 	categoryLinks.on('click keypress', function(e){
 		if( !isKeypressEnter(e) ) return;
 
-		//console.log( $(this) );
 		loadTab( $(this) );
 	});
 
@@ -42,8 +41,6 @@ $(document).ready(function(){
 	}
 
 	var displayVariables = function(variableID){
-		//console.log($(variableID));
-
 		// Hide/Show Settings
 		variableContainer.hide();
 		$(variableID).show();
@@ -76,16 +73,12 @@ $(document).ready(function(){
     if( categoryElems.find('.btn-group').length ){
       var buttonData = '';
       categoryElems.find('.btn-group .btn-active').each(function(i){
-        console.log( $(this), i ); 
         buttonData += '&' + $(this).parent().attr("data-ref") + '=' + encodeURIComponent( $(this).attr("data-state") );
       });
       data += buttonData;
     }
     // Check Data for leading &
     data =  ( data.substring(0,1) === "&" ) ? data = data.substring(1, data.length) : data;
-
-		console.log("Category Div :: ",activeCategory);
-		console.log("Data :: ",data);
 
     return data;
 	}

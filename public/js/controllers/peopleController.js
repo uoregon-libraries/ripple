@@ -28,7 +28,6 @@ function PeopleController() {
 	this.findUserObj = function(subquery){
 		var that = this
       , subquery = subquery || false;
-		console.log(that.settings.personID)
 		for( var i =0;  i < docArray.length; i++){
 			if( docArray[i]._id == that.settings.personID ){
         if( !subquery ) return docArray[i];

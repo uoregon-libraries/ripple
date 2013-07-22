@@ -64,7 +64,6 @@ $(document).ready(function(){
   // Action buttons for list
   $('#people').on('mousedown keypress', '.people-action button', function(e){
     var button = e.currentTarget;
-    console.log(e);
 
     if( !isKeypressEnter(e) ) return;
 
@@ -233,13 +232,11 @@ $(document).ready(function(){
   };
 
   function prepFormBody(template){
-    console.log(template);
     template.find('form').removeClass("span12").removeAttr("id");
     template.find('#sub1').html(""); 
     template.find('#account-form-btn2').addClass('btn-primary'); 
 
     // Add System Roles
-    console.log(systemRoles);
     var roleChkBoxs = "";
     $.each(systemRoles, function(index, value){
       var displayName = value.charAt(0).toUpperCase() + value.slice(1);;
@@ -276,7 +273,6 @@ $(document).ready(function(){
       success : function(responseText, status, xhr, $form){
         if (status == 'success') {
           modalConfirm.modal("hide");
-          console.log("Data",data);
           // Add row to table
           var name = data[0].value
             , email = data[1].value
@@ -290,7 +286,6 @@ $(document).ready(function(){
             email,
             role
           ];
-          //console.log("Row",row);
           userList.dataTable().fnAddData( row );
           // Make sure tabindex is set
           // Decided to not allow rows to be selectable because it doesn't have the object Id
@@ -349,14 +344,12 @@ $(document).ready(function(){
         if (e.responseText == 'email-taken'){
             AV.showInvalidEmail();
         } 
-        console.log("ERROR ::" +e.responseText);
       }
     });
   }
 
   function submitDeleteUser(){
     var personID = PC.settings.personID;
-    console.log( "Person ID: ",  personID);
     if( !personID ) {
       $.jGrowl("System error - Can not determine the user.");
     }
@@ -371,7 +364,6 @@ $(document).ready(function(){
       },
       error : function(jqXHR, status, error){
         var response = $.parseJSON(jqXHR.responseText);
-        console.log(response);
         $.jGrowl("ERROR :: " +response.error);
       }
     });
@@ -389,7 +381,6 @@ $(document).ready(function(){
     // Check to see if user has roles
     if( userObj.hasOwnProperty('roles') ){
       $.each(userObj.roles, function(index,role){
-        console.log(role);
         modalConfirm.find('.roleChkBoxs[value="' + role + '"]').prop("checked", true);
       })
     }

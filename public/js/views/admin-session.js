@@ -143,9 +143,8 @@ $(document).ready(function(){
 
   // Expand Response to take full width
   $("#response-resizer").on('click keypress', function(e){
-    //console.log(e.keyCode);
     if( !isKeypressEnter(e) ) return;
-    //console.log($(this).find('i').hasClass('icon-resize-full'))
+
     if( $(this).find('i').hasClass('icon-resize-full') ) sizeResponse('max');
     else sizeResponse('min');
   });
@@ -183,11 +182,7 @@ $(document).ready(function(){
   $("#type").change(function(){
     displayQuestion($(this).val());
     if( $('#set-questions').length ) $('#set-questions').val(0);
-  })
-
-  // Hide Send
-  //$('#send-button').hide();
-  //DISPLAY.open();
+  });
 
   // Hide all the progress labels
   $('.ui-progress .ui-label').hide();
@@ -372,9 +367,7 @@ $(document).ready(function(){
     if( now.hasOwnProperty('distributeClear') ) now.distributeClear();  
 
     // Check for tooltips
-    $('#qOptions [rel="tooltip"]').tooltip();
-    // Clear Initial Display Flag
-    //ASC.params('initialQuestion', false);      
+    $('#qOptions [rel="tooltip"]').tooltip();    
   }
 
   function cycleSetQuestion(e, direction){
@@ -539,7 +532,6 @@ $(document).ready(function(){
       , state = "";
 
     // Toggle state & attributes
-    console.log("Current Status :: ",status);
     if( status === "stop") {
       state = "off";
       newStatus = "stop";
@@ -547,7 +539,6 @@ $(document).ready(function(){
       state = "on";
       newStatus = "start";
     }
-    console.log("Polling State :: ", state);
 
     setPolling( state );
     if( $('#type').val() === 'dial' 
@@ -585,7 +576,6 @@ function popoverOpen() {
 }
 
 function popoverFocus(){
-  console.log("Focus");
   setTimeout(function(){
     $('.popover button:first').focus();
   }, 250);

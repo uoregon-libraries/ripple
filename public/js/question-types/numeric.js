@@ -41,7 +41,6 @@ RIPPLE.questionType['numeric'].session = function(){
     if( min !== 0 ) {
       min = min - 1;
       data = [[min, 0]];
-      //ansObj.numeric.data[ String(min) ] = 0;
     } else data = [[-1,0]]
     // Graph Options
     var graphOptions =       {
@@ -176,7 +175,6 @@ RIPPLE.questionType['numeric'].set = function(){
 
     // Set qOptions from db
     if( qOptions != undefined ) {
-      console.log("Numeric qOptions ::",typeof(qOptions) );
       if( qOptions.hasOwnProperty("min") ) min = qOptions.min;
       if( qOptions.hasOwnProperty("max") ) max = qOptions.max;
       if( qOptions.hasOwnProperty("step") ) step = qOptions.step;
@@ -219,11 +217,8 @@ RIPPLE.questionType['numeric'].client = function(){
     // Correct Interval to 4 decimal places
     interval = interval.toFixed(10);
     // Format Closest Step String to at most 4 decimal places 
-    // // and no insignificant zeros
+    // and no insignificant zeros
     closestStep = closestStep.toFixed(4).replace(/(\.[0-9]*?)0+$/, "$1");;
-    console.log("Numeric Value :: ", numericNum );
-    console.log("Min :: ", min  );
-    console.log("Interval :: ", interval  );
     var isInInterval = step != 0 && parseInt( interval ) != interval;
     if ( answer === ""  ) errMsg = "Please provide a number to submit.";
     else if( min > answer ) errMsg = "Provided number is below the <strong>minimum of " + min + "</strong>";
@@ -240,7 +235,6 @@ RIPPLE.questionType['numeric'].client = function(){
   var send = function(){
     CC.answer = $('#'+inputID).val();
     now.distributeAnswer({ answer: CC.answer, qID: now.question.qID });
-    //$("#send-button").attr("disabled", "disabled");
     $("#send-button").hide();    
   };
 

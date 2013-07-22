@@ -39,19 +39,11 @@ $(document).ready(function(){
   }
 
   now.receiveAnswer = function(clientID, name, answer){
-    // console.log(answer);
-    // console.log(clientID);
     if( !stopPolling ){
       if( now.question.type == "dial") {
-        //console.log(answer);
-        //if( !ansDial.users.hasOwnProperty( clientID ) ) console.log(ansDial.users, clientID);
-
         var t = new Date();
 
         if( !ansDial.users.hasOwnProperty( clientID ) ) {
-          //console.log("Not in Array");
-          //console.log(ansDial);
-
           // Increment the User Counter
           ansDial.usersCount++
           ansDial.users[clientID] = ansDial.usersCount;
@@ -90,19 +82,14 @@ $(document).ready(function(){
           ansObj["total"] = UTIL.incrementVal("total", ansObj);
 
         } else {
-          //console.log("In Array");
-
           // Update data
           var userIndex = parseInt(ansDial.users[clientID]);
           var dataIndex = parseInt(ansDial.data.length -1);
 
           // Put Current Answer in the last data array in correct position
           ansDial.data[dataIndex][userIndex] = answer;
-
-          //clearInterval(graphRoller);
         }
 
-        //console.log(ansDial);
       } else if ( now.question.type == "multiple-choice" || now.question.type == "true-false"){
         // Increment Total
         ansObj["total"] = UTIL.incrementVal("total", ansObj);
@@ -110,11 +97,7 @@ $(document).ready(function(){
         // Increment and Set Answer
         ansObj[answer] = UTIL.incrementVal(answer, ansObj);
         
-        // Only regraph if an answer has not come in for 500ms
-        //clearTimeout(barTimer);
-        //barTimer = setTimeout(function(){
-          UTIL.adjProgressBar(answer, ansObj);
-        //}, 500);
+        UTIL.adjProgressBar(answer, ansObj);
 
         // Show Response
         $('#responses').prepend("<br />A: " + name + " - " + answer);
@@ -137,7 +120,6 @@ $(document).ready(function(){
       // Display Total number of responses
       $('#total').text(ansObj["total"] );
     }
-    //console.log(total);
   }
 
   // handle user logout //  
@@ -271,7 +253,6 @@ $(document).ready(function(){
   })
 
   // Hide Send
-  //$('#send-button').hide();
   grapher = DISPLAY.open();
 
   function setPolling (status){

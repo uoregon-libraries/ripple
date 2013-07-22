@@ -120,7 +120,6 @@ RIPPLE.questionType['multiple-choice'].set = function(){
   };
 
   _createQuestionArea = function(qName, qNum, index,  value ){
-    // console.log("_createQuestionArea args :: ",arguments);
     var html = ""
       , label = "Write answer here..."
       , value = value || "";
@@ -129,9 +128,6 @@ RIPPLE.questionType['multiple-choice'].set = function(){
     html += "<label  class='label-highlight letter-highlight'>" + qName + ": </label>";
     html += "<span>"
     html += "<a href='#' id='answer-" + qName + "-" + qNum + "' class='editable' data-name='" + qName + "' data-emptytext='" + label + "'>" + value + "</a>";
-    // html += "<span for='answer-" + qName + "-" + qNum + "' data-type='editable' data-for='#answer-" + qName + "-" + qNum + "'  class='answer-label show-focus' tabindex='0'>" + optionLabel + "</span>";
-    // html += "<input type='textbox' id='answer-" + qName + "-" + qNum + "' name='answer-" + qName + "-" + qNum + "' value='" + value + "' class='answer-option' data-dbKey ='qOptions' data-dbOptionIndex='" + qName + "' data-dbNameVal='choice-" + qName + "'/>";
-    // html += "</span>";
     html += "</div>";
 
     // Add in rows

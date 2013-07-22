@@ -17,7 +17,6 @@ $(document).ready(function(){
       , btnGroup = $(this).parent()
       , pluginName =  encodeURIComponent( btnGroup.attr("data-ref") )
       , data = "state=" + btnState + "&plugin=" + pluginName;
-    //console.log(data);
 
     // Change Classes for Buttons
     btnGroup.children().removeClass('bnt-active').removeClass('btn-primary').prop('disabled', 'disabled');

@@ -24,7 +24,6 @@ function ClientController(){
     , displayAnswer = ''
     , sendBtn = $('#send-button');
 
-console.log("Valid ::",VALID);
 	/**
 	 * Clears previous question information
 	 */
@@ -49,7 +48,6 @@ console.log("Valid ::",VALID);
 
 	  // Compile Question Options
 	  if( now.question != null){
-      console.log("Count :: ", cnt);
       cnt++;
       var type = now.question.type;
 
@@ -103,7 +101,6 @@ console.log("Valid ::",VALID);
     that.displayAnswer = "";
 
     isValid = VALID.answer( type );
-    console.log("Valid Input :: ",isValid);
     if( !isValid ) return false;
 
     // Check for Class, Methods, & Params
@@ -186,17 +183,7 @@ console.log("Valid ::",VALID);
     // Set min, max, and step
   	controls.slider.minScale = 0;
   	controls.slider.maxScale = (qOptions["scale"] != undefined) ? parseInt(qOptions["scale"]) : 10;
-    // Currently removed from the Admin Interface but may be used later
-    // Replace with a scale of 1 for all sliders
-    //controls.slider.stepScale = (qOptions["step"] != undefined) ? parseInt(qOptions["step"]) : 1;
   	controls.slider.stepScale = 1;
-    // console.log("Values",
-    //   controls.slider.minScale,
-    //   controls.slider.maxScale,
-    //   controls.slider.stepScale
-    // );
-    
-    //$.fn.slider != 'undefined' ? alert("Slider Loaded") : alert("Not Loaded");
 
     // Create the Slider
     $("#slider").slider({
@@ -284,7 +271,6 @@ console.log("Valid ::",VALID);
 
   this.jqSliderSendResponseDelay = function(answer, wait){
     var notifySpeed = wait || notifySpeed;
-    //console.log(answer);
     // Clear Timer
     clearTimeout( notifyTimer );
     // Reset Timer
@@ -407,8 +393,6 @@ console.log("Valid ::",VALID);
      $('.key').on('click keypress', function(e){
       if( !isKeypressEnter(e) ) return;
       
-      console.log( numeric.length );
-      console.log( numeric.val() === "" );
       var inputValue = ( numeric.val() ==="" && $(this).html() === "." ) ? "0." : this.innerHTML
       numeric.val( numeric.val() + inputValue ).focus();
       e.preventDefault();
@@ -453,7 +437,6 @@ console.log("Valid ::",VALID);
           , buttonHeight = button.height()
           , topMargin = -( (parentHeight - buttonHeight) -20);
 
-          // console.log(".button-answer height :: ", parentHeight, " buttonHeight :: ", buttonHeight);
       } else {
         topMargin = 0;
       }
@@ -469,7 +452,6 @@ console.log("Valid ::",VALID);
     var parent = $(elem).parent()
       , container = $('#answer')
       , display = "";
-    // console.log("Status ::", container.data('disabled') );
 
     // If well is disabled exit function
     if( container.data('disabled') === true) {
@@ -490,7 +472,6 @@ console.log("Valid ::",VALID);
       $(elem).closest('.button-answer').addClass("highlight"); 
       display = $(elem).closest('.button-answer').find('.text-wrap').html(); 
     }
-    // console.log("Button Answer Distribute :: ",answer);
 
     // Disable Buttons & further clicks
     container.data('disabled', true);

@@ -24,8 +24,6 @@ $(document).ready(function(){
 
   now.receiveQuestion = function(name){
     var timestamp = new Date().getTime();
-    console.log("Recieve Question @ ", timestamp);
-    console.log(now.question);
     
     // Make sure that overlay is closed
     holdModal.modal('hide');
@@ -48,9 +46,7 @@ $(document).ready(function(){
     CHAT.receiveMessage(name, message);
   }
 
-  now.initialize = function(){
-    //console.log('connected');
-    
+  now.initialize = function(){    
     // Set initial question
     $('#question').html("<h2>You're in Room <span id='displayRoom'>" + now.room + "</span>... Waiting for Question</h2>");
     
@@ -106,7 +102,6 @@ $(document).ready(function(){
   $('#content').on('click', activeInputs, function(e){
     CC.sendInAnswer(this, e);
   }).on('keydown', activeTxtboxs, function(e){
-    console.log("keypress", e)
     if( isOnlyKeypressEnter(e) ) CC.sendInAnswer(e);
   })
 

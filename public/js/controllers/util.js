@@ -10,12 +10,9 @@ Util.prototype.postData = function(postURL, postData) {
 		type: 'POST',
 		data: postData,
 		success: function(json){
-			//console.log('success');
-			//json = $.parseJSON(json);
 			if( json.success !== "1") $.jGrowl(json.message, { header: "ERROR" });
 		},
 		error: function(jqXHR){
-			//console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
 			$.jGrowl(jqXHR.responseText+' :: '+jqXHR.statusText);
 		}	
 	});

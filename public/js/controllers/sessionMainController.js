@@ -18,7 +18,6 @@ function SessionMainController() {
     , DISPLAY = RIPPLE.session.displayController
   
   console.log(RIPPLE);
-  // console.log(RIPPLE.questionType);
   var initialParams = {
     "total":0,
     "setPolling":false,
@@ -34,11 +33,9 @@ function SessionMainController() {
     var that = this;
     
     var get = function(){
-      // console.log("Params ["+param+"] get :: ",params[param])
       return params[param];
     }
     var set = function(){
-      // console.log("Params ["+param+"] set :: ",value)
       params[param] = value;
     }
 
@@ -57,15 +54,8 @@ function SessionMainController() {
       "type":type,
       "qTxt":$("#question textarea").val(),
       "authorID":now.name,
-      // "qSessionID":$('#sessionID').val(),
       "qOptions":qOptionsArr
     };
-    // if('question' in now 
-    //   && 'sessionID' in now.question 
-    //   && now.question.sessionID != '') {
-    //     console.log(now.question.sessionID);
-    //     question.sessionID = now.question.sessionID;
-    //   }
 
     // Distribute Question
     nowDistributeQuestion(question);
@@ -94,7 +84,6 @@ function SessionMainController() {
   this.recieveAnswer = function(clientID, name, answer){
     var that = this
       , type = now.question.type;
-    //if( !that.params("setPolling") ) return;
 
     // Check for Class, Methods, & Params
     var passCheck = RIPPLE.checkClass(type, 'recieveAnswerFn');    
@@ -107,7 +96,6 @@ function SessionMainController() {
   };
 
   this.graphUpdate = function(ansObj){
-    console.log("[graphUpdate] args", arguments);
     var that = this
       , graph = params.graph;
     
