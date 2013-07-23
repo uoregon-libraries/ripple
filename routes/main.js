@@ -19,14 +19,13 @@ exports.index = function(req, res){
     plugin.invokeAll("auth.clientUI", locals);
     locals.title = 'Ripple';
     locals.audienceTitle = 'Audience';
-    logger.log("Show Login");
     // Get alternative audience title
     var variables = DB.init.collection('variables');
     var variableItems = ['audience-name','password-recovery','password-change','allow-registration', 'system-alert'];
     variables.find({"name":{$in:variableItems}}, {name: 1, value: 1}, function(err, cursor){
       cursor.toArray( function(err, docArray){
         if(!err) {
-          log('Variables', util.inspect(docArray) );
+          logger.debugPair('Variables', util.inspect(docArray) );
           locals.variables = {};
           docArray.forEach(function(item,index){
             // Pass system variable into locals for ejs 
@@ -38,15 +37,12 @@ exports.index = function(req, res){
       });
     });
   } else {
-    console.log('login Page', req.session.user);
     // attempt automatic login //
     AM.autoLogin(req.session.user, req.session.pass, function(o){
       if (o != null){
-        console.log("Show Prof Page");
         req.session.user = o;
         res.redirect('/admin');
       } else{
-        console.log("Show Login");
         res.render('index',{ title: 'Hello - Please Login To Your Account'});
       }
     });
@@ -58,7 +54,7 @@ exports.index = function(req, res){
  * @dependencies /lib/Account-Manager.js
  */
 exports.indexPost = function(req, res){
-  log("Params", util.inspect(req.param("login-type")));
+  logger.debugPair("Params", util.inspect(req.param("login-type")));
   if (req.param("login-type") == "client") {
     clientLogin(req, res);
   }
@@ -105,13 +101,14 @@ function clientLogin(req, res) {
 }
  
 function presenterLogin(req, res) {
-  logger.logPair("indexPost login", req.body.user);
+  logger.logPair("[presenterLogin] User", req.body.user);
   if (req.body.email != null){
     AM.getEmail(req.body.email, function(o){
       if (o){
         res.send('ok', 200);
-        logger.logPair("Req Headers", util.inspect(req.headers) );
-        EM.send(o, req.headers.origin, function(e, m){ console.log('error : '+e, 'msg : '+m)}); 
+        EM.send(o, req.headers.origin, function(e, m){ 
+          logger.errorPair('error : '+e, 'msg : '+m);
+        }); 
       } else{
         res.send('email-not-found', 400);
       }
@@ -136,14 +133,13 @@ function presenterLogin(req, res) {
  * Sign Up - Display Account Form
  */
 exports.signup = function(req, res){
-  logger.logPair("locals",util.inspect(req.b) );
   var locals ={};
   var variables = DB.init.collection('variables');
   var variableItems = ['audience-name','password-recovery','allow-registration']
   variables.find({"name":{$in:variableItems}}, {name: 1, value: 1}, function(err, cursor){
     cursor.toArray( function(err, docArray){
       if(!err) {
-        log('Variables', util.inspect(docArray) );
+        logger.debug('[signup] Variables', util.inspect(docArray) );
         locals.variables = {};
         docArray.forEach(function(item,index){
           // Pass system variable into locals for ejs 
@@ -174,13 +170,12 @@ exports.signup = function(req, res){
 exports.resetPwd = function(req, res) {
   var guid = req.params.guid
   AM.validateLink(guid, function(err, doc){
-    log("doc", doc)
+    logger.debugPair("[resetPwd] validation doc", doc)
     if ( err ){
       sendErrorPage(res, err);
     } else if (!doc) {
       sendErrorPage(res, "This link is no longer available");
     } else {
-      log("Link is valid");
       res.render('reset',{
           title : 'Reset Password'
         }
@@ -205,7 +200,7 @@ exports.resetPwdPost = function(req, res) {
  */
 exports.signupPost = function(req, res){
   var post = req.body;
-  log("Post Data", util.inspect(post) );
+  logger.debugPair("[signupPost] Post Data", util.inspect(post) );
   var data = {
     name  : post.name,
     email : post.email,
@@ -215,7 +210,6 @@ exports.signupPost = function(req, res){
   };
   // Correct format of roles data
   if( post.hasOwnProperty('roles') ) {
-    log("Roles", post.roles);
     var roles = post.roles
       , pos = roles.indexOf(",");
 
@@ -229,7 +223,7 @@ exports.signupPost = function(req, res){
     }
     
   }
-  log("Data Sent to db", util.inspect(data) );
+  log("[signupPost] Data Sent to db", util.inspect(data) );
   AM.signup(data, function(err, o){
     if(err){
       if( post.hasOwnProperty('redirect') || post.redirect == 'false' ) 
@@ -248,12 +242,10 @@ function signUpAutoLogin(err, req, res, o, post){
     return;
   }
   var userObj = o[0];
-  log("User Object", util.inspect(userObj) );
+  logger.debugPair("User Object", util.inspect(userObj) );
   if (err){
     res.send(e, 400);
   } else {
-    log("Username", userObj.user)
-    log("User Pass", post.pass)
     // Login w/ username and password
     AM.manualLogin(userObj.user, post.pass, function(err){
       if( !err ) {

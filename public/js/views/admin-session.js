@@ -8,7 +8,6 @@ $(document).ready(function(){
     , clearBtn = $('#clear-btn')
     , responseResizerHold = false;
 
-  //var barTimer = 0;
   now.initialize = function(){
     // Clear Student Questions
     now.distributeClear();
@@ -144,9 +143,8 @@ $(document).ready(function(){
 
   // Expand Response to take full width
   $("#response-resizer").on('click keypress', function(e){
-    //console.log(e.keyCode);
     if( !isKeypressEnter(e) ) return;
-    //console.log($(this).find('i').hasClass('icon-resize-full'))
+
     if( $(this).find('i').hasClass('icon-resize-full') ) sizeResponse('max');
     else sizeResponse('min');
   });
@@ -162,12 +160,6 @@ $(document).ready(function(){
   $('#slidebar-btn').click(function(){
     checkResponseSize();
   });
-
-  // $('#answers').on("click", "#word-cloud", function(){
-  //   ASC.setOpenCloud( true );    
-  //   $(".dynacloud").dynaCloud();
-  //   $(this).prop("disabled","disabled");
-  // })
 
   $('#answers').on("click keypress", "#flash-show", function(e){
     if( !isKeypressEnter(e) ) return;
@@ -190,11 +182,7 @@ $(document).ready(function(){
   $("#type").change(function(){
     displayQuestion($(this).val());
     if( $('#set-questions').length ) $('#set-questions').val(0);
-  })
-
-  // Hide Send
-  //$('#send-button').hide();
-  //DISPLAY.open();
+  });
 
   // Hide all the progress labels
   $('.ui-progress .ui-label').hide();
@@ -344,11 +332,23 @@ $(document).ready(function(){
     // Clear Timers
     ASC.clearTimers();
 
-    // Fill Display with Question Type
+    /**
+     * Hook fired when a question type is displayed.
+     * 
+     * @event displayQuestionFn
+     */
     var hasClearFn = qTypeClass.hasOwnProperty('displayQuestionFn');
     if( passCheck && hasClearFn ) qTypeClass.displayQuestionFn();
 
-    // Show/Hide Answer Option Area
+    /**
+     * Property to determine if a question type displays the answer
+     * option area.
+     *
+     * @property displayOptions
+     * @for plugin-client.session
+     * @type boolean
+     * @default null
+     */
     var hasClearFn = qTypeClass.hasOwnProperty('displayOptions');
     if( passCheck && hasClearFn ) DISPLAY.answerOptionDisplay( qTypeClass.displayOptions );
     else DISPLAY.answerOptionDisplay( false );
@@ -367,9 +367,7 @@ $(document).ready(function(){
     if( now.hasOwnProperty('distributeClear') ) now.distributeClear();  
 
     // Check for tooltips
-    $('#qOptions [rel="tooltip"]').tooltip();
-    // Clear Initial Display Flag
-    //ASC.params('initialQuestion', false);      
+    $('#qOptions [rel="tooltip"]').tooltip();    
   }
 
   function cycleSetQuestion(e, direction){
@@ -462,6 +460,12 @@ $(document).ready(function(){
       responseResizerHold = false;
     }, 100)
 
+    /**
+     * Hook fired when the response area is resized on Client UI
+     *
+     * @event resizeAnswersFn
+     * @for plugin-client.session
+     */
     // Check for Class, Methods, & Params
     var passCheck = RIPPLE.checkClass(type);
     var hasClearFn = RIPPLE.questionType[type].hasOwnProperty('resizeAnswersFn');
@@ -485,7 +489,6 @@ $(document).ready(function(){
       position = ( $(this).attr('data-panel-position') ) ? $(this).attr('data-panel-position') : "";
       positionRef = $(this).closest('.question-set-section');
       popoverToggle();
-      //console.log("e :: ", e);
       // Current focus of popover cases consistency issue so it is commented out
       // May be added back in at a later point if resolved
       // if( keyCode(e) ) popoverFocus();
@@ -529,7 +532,6 @@ $(document).ready(function(){
       , state = "";
 
     // Toggle state & attributes
-    console.log("Current Status :: ",status);
     if( status === "stop") {
       state = "off";
       newStatus = "stop";
@@ -537,7 +539,6 @@ $(document).ready(function(){
       state = "on";
       newStatus = "start";
     }
-    console.log("Polling State :: ", state);
 
     setPolling( state );
     if( $('#type').val() === 'dial' 
@@ -575,7 +576,6 @@ function popoverOpen() {
 }
 
 function popoverFocus(){
-  console.log("Focus");
   setTimeout(function(){
     $('.popover button:first').focus();
   }, 250);

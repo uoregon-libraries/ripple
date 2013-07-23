@@ -17,7 +17,6 @@ RIPPLE.questionType['open-response'].session = function(){
   var _resetObj = function(){
     // Reset ansObj
     ansObj = GLOBALS.cloneObj(initialObj);
-    console.log( ASC.params("flashAnswers") )
   }
 
   var send = function(){
@@ -34,7 +33,6 @@ RIPPLE.questionType['open-response'].session = function(){
       , total = ASC.params("total");
 
     answerWell.prependTo('#flash-display');
-    console.log( ASC.params("flashAnswers") )
     if( ASC.params("flashAnswers") ) answerWell.hide().fadeIn(100).fadeOut(15000);
 
     // Show Response
@@ -80,7 +78,6 @@ RIPPLE.questionType['open-response'].client = function(){
     var ansInput = $('#'+inputID)
     CC.answer = ansInput.val();
     now.distributeAnswer({ answer: CC.answer, qID: now.question.qID });
-    //ansInput.prop('disabled', 'disabled');
     ansInput.hide();
     $('#answer button').prop('disabled', 'disabled');    
   };

@@ -7,7 +7,6 @@ $(function(){
 	
 	$('#set-password-form').ajaxForm({
 		beforeSubmit : function(formData, jqForm, options){
-      console.log(passInput);
 			rv.hideAlert();			
       // Check for valid password
       if (!rv.validatePassword( passInput.val() ) ) {

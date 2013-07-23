@@ -2,7 +2,6 @@ $(document).ready(function(){
 	var NOTIFY = new NotifyController();
 	// Send Role Change to server
 	$('#permissions input[type="checkbox"]').click(function(){
-		// console.log( $(this) );
 		var that = $(this)
       , objID = $(this).attr("id")
       , role = $(this).attr("data-role")

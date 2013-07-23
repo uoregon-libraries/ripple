@@ -1,3 +1,10 @@
+## 1.0.4 (July 22, 2013)
+
+* Cleaned code of old comments and comment code for auto-generation of documentation with yuidoc.
+
+* Bug Fix client name not associating with answers continued
+
+
 ## 1.0.3 (July 3, 2013)
 
 * Bug Fix reports not creating cvs

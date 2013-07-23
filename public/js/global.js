@@ -75,7 +75,6 @@ var GLOBALS = {}
     $('.admin-page #content').swipe({
       allowPageScroll: "vertical",
       swipe:function(e,direction){
-        console.log("swiped "+direction);
         switch(direction){
           case "left":
             if( GLOBALS.jPM.isOpen() && !isClientPage ) GLOBALS.jPM.close();
@@ -163,7 +162,6 @@ var GLOBALS = {}
   function jPanelStatic(){
     $('.jPanelMenu-panel').css('position','static');
   }
-  //console.log('done');
 })(jQuery);
 
 GLOBALS.params = {
@@ -180,7 +178,7 @@ GLOBALS.attemptLogout = function(){
       GLOBALS.showLockedAlert('You are now logged out.<br>Redirecting you back to the homepage.');
     },
     error: function(jqXHR){
-      console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+      console.error(jqXHR.responseText+' :: '+jqXHR.statusText);
     }   
   });
 }; 
@@ -198,7 +196,6 @@ GLOBALS.openSessionWindow = function(URL, e){
   e.preventDefault();
   var newWindowWidth = ',width=' + $(window).width()
     , newWindowHeight = ',height=' + $(window).height();
-  console.log(newWindowWidth);
   var newWindow = window.open(
     URL,
     'Session',
@@ -246,7 +243,6 @@ GLOBALS.dynamicPopoverDirection = function(element, tooltip) {
   bottom = isWithinBounds(elementBelow);
   left = isWithinBounds(elementLeft);
   right = isWithinBounds(elementRight);
-  //console.log("Position top :: ", above, "\n Position bottom :: ", bottom, "\n Position Left :: ", left, "\n Position Right :: ", right);
 
   // Prioritize Directions
   if (bottom) return "bottom";
@@ -394,7 +390,6 @@ RIPPLE.namespace = function() {
 RIPPLE.namespace('questionType');
 
 RIPPLE.checkClass = function(rippleClass, methods, params){
-    // console.log("checkClass args :: ", arguments);
     var err = []
       , methods = methods || 0
       , params = params || 0;
@@ -445,10 +440,8 @@ RIPPLE.checkClass = function(rippleClass, methods, params){
     return err;
 };
 RIPPLE.questionTypeBootstrap = function(refObj){
-  // console.log("RIPPLE.questionTypeBootstrap args :: ", arguments);
   var controller = RIPPLE.activeController;
   var hasFn = refObj.hasOwnProperty(controller) && (typeof refObj[controller] === 'function');
-  // console.log("Has " + controller + " controller fn :: ",refObj.hasOwnProperty(controller));
   if( !hasFn ) return false 
   // Add properties and methods to parent
   returnedObj = refObj[controller]();

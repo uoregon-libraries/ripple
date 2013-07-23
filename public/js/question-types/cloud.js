@@ -30,7 +30,6 @@ RIPPLE.questionType['cloud'].session = function(){
     // Set Word Cloud Option
     $.dynaCloud.auto = false;
     $.dynaCloud.scale = 2;
-    //$.dynaCloud.stopwords = ["I", "me", "him"];
     $(".dynacloud").dynaCloud();    
   } 
 

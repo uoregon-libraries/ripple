@@ -40,7 +40,6 @@ RIPPLE.questionType['slider'].session = function(){
       // Bug Fix where graph doesn't load correctly initially if 
       // first question in set
       setTimeout(function(){
-        console.log( ASC.params('graph').instance );
         ASC.params('graph').instance.resizeHandler_();
       }, 500);
     }
@@ -59,7 +58,7 @@ RIPPLE.questionType['slider'].session = function(){
       var maxInput = $('#qOptions input[name="scale"]:checked')
         , maxValue = parseInt( maxInput.val() ) * 1.1
         , graph = ASC.params('graph');
-      console.log( maxInput );
+
       // Create the initial graph
       graph.instance = new Dygraph(
         document.getElementById("graphWrap"), 
@@ -94,11 +93,6 @@ RIPPLE.questionType['slider'].session = function(){
               // if( value !== false ) output += p.name + ": " + value + "<br />";
               if( value !== false ) DISPLAY.updateIndResp(p.name, value);
             }
-
-            // Put Output in #responses div
-            // DISPLAY.responses(output);
-
-            // Refine Legend display info
             
           },
           unhighlightCallback: function() {
@@ -111,7 +105,6 @@ RIPPLE.questionType['slider'].session = function(){
 
     var fillOptions = function(qArray){
       for( x in qArray.qOptions ){
-        console.log("Slider qOption " + x, qArray.qOptions[x]);
         if( x === 'scale') {
           var input = $("#qOptions input[name='" + x + "'][value=" + qArray.qOptions[x] + "]");
           input.prop("checked", true);
@@ -253,21 +246,6 @@ RIPPLE.questionType['slider'].set = function(){
     outputControls = "<label class='lead-label'>Scale:</label>";
     outputControls += "<a href='#' data-name='scale' class='editable' data-type='select' data-source='" + scaleSelect + "' data-value='" + scale + "' data-emptytext='Select Scale [Default: 0 to 10]' data-showbuttons='false'></a>"; 
     outputControls = "<div>" + outputControls + "</div>";
-    // outputControls += "<input type='radio' name='scale' value='" + max + "' data-dbkey='qOptions' data-dbOptionIndex='scale'" + checked + ">";
-    // outputControls += "0 to " + max;
-    //outputControls = "<div class='scale-values'>" + outputControls + "</div>";
-
-    // // Generate Submission Type Controls
-    // for (var i = submitTypes.length - 1; i >= 0; i--) {
-    //   var checked = "";
-    //   if( submitOption !== ""){
-    //     if( submitOption === submitTypes[i].value) checked = "checked";
-    //   } else {
-    //     if( submitTypes[i].value === 'variable') checked = "checked";
-    //   }         
-
-    //   // outputControls2 += "<div><input type='radio' name='submitOption' id='submitOption' data-dbkey='qOptions' data-dbOptionIndex='submitOption' " + i + " value='" + submitTypes[i].value + "' " + checked + "> " + submitTypes[i].title + "</div>";
-    // };
     
     // Submit Options Inputs
     var hint = "";

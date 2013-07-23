@@ -121,7 +121,6 @@ function SessionDisplayController () {
           $('#bar' + key).stop().animate({width: percent+'%'}, 1000);
 
         } 
-        //console.log('Precentage: ' + percent);
 
         // Show Label for Responses
         if( percent != 0 ){
@@ -180,7 +179,6 @@ function SessionDisplayController () {
   }
 
   this.createTxtInput = function(inputID, inputLabel, defaultValue){ 
-    console.log("createTxtInput args ::",arguments);
     // Check arguments
     isIDString = GLOBALS.isString(inputID);
     if( !isIDString ) 
@@ -242,7 +240,6 @@ function SessionDisplayController () {
     if( !passCheck ) return false;
 
     var hasOptionsFn = RIPPLE.questionType[type].hasOwnProperty('fillOptionsFn');
-    console.log("hasOptionsFn :: ",hasOptionsFn);
     if( hasOptionsFn ) RIPPLE.questionType[type].fillOptionsFn(qArray);
 
   };

@@ -41,7 +41,7 @@ LC.init = function(options){
 
 LC.watch = function(){
     // Continually Watch Folder
-  log("Watching for less changes in", LC.lessDir);
+  log("Watching for LESS changes in", LC.lessDir);
   fs.watch(LC.lessDir, function(e, file){
     var timer = LC.timer;
     if( !LC.parsing ) {
@@ -65,7 +65,7 @@ LC.run = function(){
     function(filename, callback){
       // Parses file
       var parser, contents;
-      log('Parsing...', filename);
+      logger.debugPair('Parsing...', filename);
 
       fullPath = path.join(lessDir, filename);
       if(!filename.match(/\.less$/) || !fs.statSync(fullPath).isFile()) return;
@@ -78,7 +78,6 @@ LC.run = function(){
 
       // Check contents of directory
       contents = fs.readFileSync(fullPath).toString();
-      //log("contents", contents);
       
       // Parse LESS
       parser.parse(contents, function(err, tree){
@@ -97,7 +96,7 @@ LC.run = function(){
           function(err){
             if(err) callback(err);
             else {
-              log("Parsed LESS into ", cssFilename);
+              logger.debugPair("Parsed LESS into ", cssFilename);
               callback && callback();  
             }
         });
@@ -106,9 +105,9 @@ LC.run = function(){
     }, 
     function(err){
       LC.parsing = false;
-      if(err) log("Error parsing LESS",err);
+      if(err) logger.errorPair("Error parsing LESS",err);
       else {
-        logger.log("---- Parsing Complete");
+        logger.log("---- LESS Parsing Complete");
         return true;
       }
     }

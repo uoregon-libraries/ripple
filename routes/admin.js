@@ -18,7 +18,6 @@ exports.dashboard = function(req, res){
   AM.userAuth({}, req, res, function(err, userObj){
     SM.sets.find({"authorID":userObj._id}, { limit : 5, sort:{_id:-1} }, function(err, cursor){
       cursor.toArray( function(err, docArray){
-        //console.log(util.inspect(docArray));
         if( !err || records ) {
           var locals = convertUserObjToLocals(userObj, req.session);
           locals.title = "Dashboard";
@@ -38,7 +37,7 @@ exports.session = function(req, res){
     RoomManager.getPresenterRoom(userObj, function(err, room) {
       // No room available?  Not much can be done but return an error....
       if (err) {
-        log("Room error", err);
+        logger.errorPair("Room error", err);
         return res.render('admin/room-error', {
           title: "Room Error",
           name: userObj.name,
@@ -64,8 +63,7 @@ exports.session = function(req, res){
         locals.sessionID = qSessionID;
         locals.qSortedArray = [];
         if(req.session.rippleSession.reload) locals.sessionReload = true;
-        // Note: qeustion-type-middleware adds locals.questionTypes
-        //log("Session questionTypes",util.inspect(res.locals.questionTypes) );
+        // Note: question-type-middleware adds locals.questionTypes
 
         var setID = ( req.params.setID ) ? req.params.setID : "";
         if( setID ){
@@ -76,7 +74,6 @@ exports.session = function(req, res){
             keysQuestionTypes.push( key );
           };
           
-          log("Keys :: ", keysQuestionTypes);
           SM.getSetQuestions(setID, keysQuestionTypes, function(err, qSortedArray){
             if(!err){
               locals.qSortedArray = qSortedArray
@@ -93,7 +90,6 @@ exports.session = function(req, res){
 
 exports.sessionClose = function(req, res){
   SSM.closeSession(req, res, function(){
-    console.log(util.inspect(req.query));
     if( req.query.hasOwnProperty('reload') ) res.redirect(req.query.reload);
     else res.render('admin/session-close',{title:'End Session'});
   });
@@ -145,7 +141,6 @@ exports.setEdit = function(req,res){
     var setID = req.params['setID'].split("~")[0];
     req.session.questionSet = ( req.session.questionSet ) ? req.session.questionSet : {};
     req.session.questionSet.id = setID;
-    log("Split to ID", setID);
     if( setID ) {
       // Get Set Info
       SM.getSet(setID, function(err, record){
@@ -163,7 +158,7 @@ exports.setEdit = function(req,res){
             return;
           };
 
-          log("Record", util.inspect(record) );
+          logger.debugPair("[setEdit] Set Information", util.inspect(record) );
           // Define locals
           var locals = convertUserObjToLocals(userObj, req.session);
           locals.title = "Set: " + record.name;
@@ -214,7 +209,7 @@ exports.setEditPost = function(req, res){
       var updateData = req.body
         , pk = updateData.pk
         , data = {};
-      log("[setEditPost] data", util.inspect( updateData ) );
+      logger.debugPair("[setEditPost update-question] data", util.inspect( updateData ) );
       delete updateData.process;
       delete updateData.pk;
       // Decode Strings
@@ -227,7 +222,7 @@ exports.setEditPost = function(req, res){
         // Convert Question Options to 1D object for mongodb save process
         data["qOptions."+updateData.name] = updateData.value;
       }
-      log("[setEditPost] data save", util.inspect( data ) );
+      logger.debugPair("[setEditPost update-question] data save", util.inspect( data ) );
       //Post Data
       SM.updateQuestion(pk, data, function(err){
         if( !err ) sendJSONSuccess(res);
@@ -243,8 +238,8 @@ exports.setEditPost = function(req, res){
     case 'update-order':
       var qOrderArr = req.body.qOrderArr;
 
-      log("qSetID", qSetID);
-      log("qOrderArr", qOrderArr);
+      logger.debugPair("[setEditPost update-order] qSetID", qSetID);
+      logger.debugPair("[setEditPost update-order] qOrderArr", qOrderArr);
 
       SM.updateOrder(qSetID, qOrderArr, function(err){
         if( !err ) sendJSONSuccess(res);
@@ -252,7 +247,7 @@ exports.setEditPost = function(req, res){
       });
       break;
     case 'remove-set':
-      log("Remove SetID", qSetID);
+      logger.infoPair("[setEditPost remove-set] Remove SetID", qSetID);
 
       if( qSetID ){
         // Get ID
@@ -268,13 +263,13 @@ exports.setEditPost = function(req, res){
       var updateData = req.body
         , pk = updateData.pk
         , data = {};
-      log("updateData", util.inspect(updateData));
+      logger.debugPair("[setEditPost update-set] updateData", util.inspect(updateData));
       delete updateData.process;
       delete updateData.pk;
 
       data[updateData.name] = updateData.value; 
 
-      log("Update Set " + pk, util.inspect(data) );
+      logger.debugPair("[setEditPost update-question] Update Set " + pk, util.inspect(data) );
       SM.updateSet(pk, data, function(err){
         if( !err ) sendJSONSuccess(res);
         else res.send("Database Error - Could not update title.", 400);        
@@ -294,8 +289,6 @@ exports.setList = function(req, res){
 
     SM.sets.find({"authorID":userObj._id}, { sort:{_id:-1} }, function(err, cursor){
       cursor.toArray( function(err, docArray){
-        //console.log(util.inspect(docArray));
-
         if( !err || records ) {
           var locals = convertUserObjToLocals(userObj, req.session);
           locals.title = "Set List:";
@@ -364,7 +357,7 @@ exports.pluginListPost = function(req, res){
       , reqState = req.body.state;
 
     // Enable or Disable Plugin
-    log("Request Body", util.inspect( req.body ) );
+    logger.debugPair("Request Body", util.inspect( req.body ) );
     var pluginState = ( reqState === "1" ) ? "Enabled" : "Disabled";
     msg = msg + pluginState;
 
@@ -407,6 +400,13 @@ exports.pluginConfig = function(req, res){
       // Use a temporary object to ensure locals only add inputs, otherwise the menu handler could
       // muck with all locals, potentially leading to hard-to-debug errors
       var menu = {};
+      /**
+       * Hook fires when plugin config page loads and allow for addition of inputs to config page.
+       *
+       * @event configMenuInputs
+       * @for plugin-server.plugin
+       * @param {Object} menu An empty object that can be modified to include inputs for the configuration of the plugin
+       */      
       plugin.invoke(pluginName, "plugin.configMenuInputs", menu);
       locals.inputs = menu.inputs;
 
@@ -416,20 +416,25 @@ exports.pluginConfig = function(req, res){
           return false;
         }
         locals.plugins = {};
+        /**
+         * Hook fires when plugin config page is loaded
+         *
+         * @event pageLoad
+         * @for plugin-server.plugin
+         * @param {Object} sessionVariables An object of available session variables
+         * @param {Object} req The <a href="http://expressjs.com/api.html#req.params">express req</a> object with information
+         * about the server page request
+         */ 
         plugin.invoke(pluginName, "plugin.pageLoad", locals, req);
         if( obj == null){
           res.render('admin/pluginMenu', locals);
-        } else {
-          // log("DB Record", util.inspect(obj) );
-          
+        } else {          
           // Iterate through inputs
           async.forEach(locals.inputs, function(item, done){
-            // log( "forEach Item",util.inspect(item) );
             var iKey = item.key;
             if( obj.hasOwnProperty(iKey) ) item['value'] = obj[iKey];
             done();
           }, function(err){
-            // log("locals", util.inspect(locals));
             res.render('admin/pluginMenu', locals);
           });
 
@@ -458,19 +463,19 @@ exports.pluginConfigPost = function(req, res){
       return;
     }
     
-    logger.debugPair("Plugin Name", req.params['pluginName'] );
-    logger.debugPair("Request Body", util.inspect(req.body) );
+    logger.debugPair("[pluginConfigPost] Plugin Name", req.params['pluginName'] );
+    logger.debugPair("[pluginConfigPost] Request Body", util.inspect(req.body) );
     DB.pluginConfig.findOne({name: req.params['pluginName']}, function(err, obj) {
       var record = req.body;
       res.contentType('json');
       if( obj == null ) {
-        logger.debugPair('not found => insert', util.inspect(record));
+        logger.debugPair('[pluginConfigPost] not found => insert', util.inspect(record));
         record.name = req.params['pluginName'];
         DB.pluginConfig.insert(record, function(err, result){
           pluginSaveCallback(err, record, req, res);
         });
       } else {
-        logger.debugPair('found => update', util.inspect(record));
+        logger.debugPair('[pluginConfigPost] found => update', util.inspect(record));
         DB.pluginConfig.update(obj, {$set:record}, function(err, result){
           pluginSaveCallback(err, record, req, res);
         });
@@ -489,6 +494,13 @@ pluginSaveCallback = function(err, record, req, res) {
   else {
     sendJSONSuccessMessage(res, "Configurations Saved");   
     var pluginName = req.params['pluginName'].toLowerCase();
+    /**
+     * Hook fires when plugin config page is saved
+     *
+     * @event saveConfig
+     * @for plugin-server.plugin
+     * @param Object config An object containing the configuration at time of save
+     */
     plugin.invoke(pluginName, "plugin.saveConfig", record);
   }
 }
@@ -502,7 +514,7 @@ exports.profile = function(req, res) {
     locals.variables = {};
     DB.variables.findOne({name:'password-change'},function(err,doc){
       if( !err ){
-        log("Variable password-change", util.inspect(doc) );
+        logger.debugPair("[profile] Variable password-change", util.inspect(doc) );
         locals.variables[doc.name] = doc.value;
         res.render('admin/profile', locals);
       } else sendErrorPage(res, err);
@@ -531,11 +543,11 @@ exports.reportList = function(req, res){
   AM.userAuth({}, req, res, function(err, userObj){
     genReportList(userObj, function(err, userObj, docArray){
       if( !err || records ) {
-        log('userObj', util.inspect(userObj, req.session));
+        logger.debugPair('[reportList] userObj', util.inspect(userObj, req.session));
         var locals = convertUserObjToLocals(userObj, req.session);
         locals.title = "Session Report List:";
         locals.docArray = docArray;
-        log('locals', util.inspect(locals) );
+        logger.debugPair('[reportList] locals', util.inspect(locals) );
         res.render('admin/report-list', locals);
       } 
       else sendErrorPage(res, 'Currently you do not have any reports to display.');
@@ -547,7 +559,7 @@ genReportList = function(userObj, fnCallback){
   // Get Sessions
   SSM.dbSession.find({"author":userObj._id}, { sort:{_id:-1} }, function(err, cursor){
     cursor.toArray( function(err, docArray){
-      log("docArray", util.inspect(docArray));
+      logger.debugPair("[genReportList] Reports", util.inspect(docArray));
       fnCallback(err, userObj, docArray);
     });
   });
@@ -555,7 +567,7 @@ genReportList = function(userObj, fnCallback){
 
 exports.reportListPost = function(req, res){
   AM.userAuth({}, req, res, function(err, userObj){
-    log("reportListPost - Params",util.inspect(req.body) );
+    logger.debugPair("[reportListPost] Params",util.inspect(req.body) );
     // Remove Session
     SSM.removeSession(req.body.sessionID, function(err){
       if(!err) sendJSONSuccess(res);
@@ -597,7 +609,7 @@ exports.reportItem = function(req, res){
           req.session.report = {};
           req.session.report.sessionObj = sessionObj;
           req.session.report.answers = JSON.parse(JSON.stringify(docArray));
-          log('[req.session.report]', util.inspect(req.session.report) );
+          logger.debugPair('[reportItem] session.report', util.inspect(req.session.report) );
           res.render('admin/report-item', locals);
         });
       })
@@ -609,15 +621,13 @@ exports.reportItem = function(req, res){
 exports.reportItemCSV = function(req, res){
   // Determine Session ID
   var sessionID = req.params.sessionID;
-  log("CSV SessionID", sessionID);
+  logger.debugPair("[reportItemCSV] CSV SessionID", sessionID);
   // Check authorization to get CSV
   authCheckObj = {
     element: sessionID,
     type: 'session'
   }
   AM.userAuth(authCheckObj, req, res, function(err, userObj, sessionObj){
-    logger.debugPair("[AM.userAuth] args", util.inspect(arguments) );
-    logger.debugPair("[AM.userAuth] req.session", util.inspect(req.session) );
     if( typeof req.session.report === 'undefined' ) return;
     var r = req.session.report
       , s = r.sessionObj
@@ -625,7 +635,7 @@ exports.reportItemCSV = function(req, res){
       , csv = ""
       , parsedItem = {};
     
-    logger.debugPair("[req.session.report] Obj", util.inspect(r));
+    logger.debugPair("[reportItemCSV] req.session.report", util.inspect(r));
 
     // Create CSV header info
     var sTime = new Date( r.sessionObj.startTime );
@@ -633,9 +643,6 @@ exports.reportItemCSV = function(req, res){
 
     // Compile CSV
     var parseQuestions = function(item, callback){
-      log("Parse Question", util.inspect(item) );
-      log("Parse Answers Obj", util.inspect(parsedItem) );
-      log("Answers", a);
       if( !a ) return false;
       qID = item.qID;
       parsedItem[qID] = "";
@@ -657,7 +664,6 @@ exports.reportItemCSV = function(req, res){
     }
 
     var parseAnswers = function(item, callback){
-      log("Individual Answer", item);
       if( !item ) {
         callback("No answer to parse")
         return false;
@@ -670,7 +676,6 @@ exports.reportItemCSV = function(req, res){
         row += '"' + item.clientName + '",';
         row += '"' + item.answer + '"\n';
         parsedItem[qID] += row;
-        log("Answer Row", row);
       }
       callback(null);
     }
@@ -723,7 +728,6 @@ exports.permissions = function(req, res){
           docArray.forEach(function(item, index){
             if( item.hasOwnProperty("systemRoles") ){
               systemRoles = item.systemRoles;
-              log("System Roles", systemRoles);
               return;
             }
           });
@@ -750,13 +754,13 @@ exports.permissionsPost = function(req, res){
       sendErrorPage(res, err);
       return;
     }
-    log('Posted Variables', util.inspect(req.body) );
+    logger.debugPair('Posted Variables', util.inspect(req.body) );
 
     var permissionRecord = DB.convertToObjID(req.body.objid)
       , action = false;
     if( req.body.action === 'add' ) action = {$push:{'roles':req.body.role}};
     else if( req.body.action === 'remove' ) action = {$pull:{'roles':req.body.role}};
-    log('Action', util.inspect(action) );
+
     if( !action ) res.send("Action not defined", 200);
 
     AM.permissions.update({_id:permissionRecord}, action, function(){
@@ -807,14 +811,14 @@ exports.people = function(req, res){
         if( !err ) {
           // Find System Roles
           AM.permissions.findOne({systemRoles:{$exists:true}}, function(err, record){
-            log("User Array", util.inspect(docArray));
+            logger.debugPair("[people] User Array", util.inspect(docArray));
             var locals = convertUserObjToLocals(userObj, req.session);
             locals.docArray = docArray;
             locals.title = "People";
             locals.systemRoles = record.systemRoles;
             locals.variables = {};
             locals.variables["password-change"] = "1";
-            log(util.inspect(locals) );
+
             res.render('admin/people', locals);
             return true
           });      
@@ -838,7 +842,6 @@ exports.peoplePost = function(req, res){
     }
 
     var params = req.body;
-    log("Params", util.inspect(params) );
     // Check for action
     if( typeof params.action === "undefined") 
       sendJSON400(res, "Action is not defined.");
@@ -950,27 +953,16 @@ exports.settingsPost = function(req, res){
 saveSettings = function(req, res, userObj){
   var params = req.body;
 
-  log("Post Params",util.inspect(params) );
   // Check for data
   if( !params ) {
     sendJSON400(res, "No Post Parameters");
     return;
   }
-  // Iterator over Params
-  // for(key in params ) {
-  //   // Convert ID to ObjID
-  //   var ObjID = DB.convertToObjID(key);
-  //   log("key", ObjID);
-  //   // Create Query for each variable
-  //   var query = "{_id:"+ObjID+",{$set:{value:"+params[key]+"}}}";
-  //   log("query", query);
-  //   updateQuery.push(query);
-  // }
+
   async.forEach(
     Object.keys(params),
     function(key,callback){
-      log("Param Key",key);
-      log("Param Value", params[key]);
+      logger.debugPair("Param " + key, params[key]);
       // Convert ID to ObjID
       var ObjID = DB.convertToObjID(key);
       // Create Query for each variable

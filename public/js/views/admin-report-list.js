@@ -1,8 +1,3 @@
-/**
- * View for Set Creation
- *
- * @author William Myers
- */
 $(function(){
 	var modalConfirm = $('.modal-confirm')
 	 , activeForm = {};

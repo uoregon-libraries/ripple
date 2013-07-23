@@ -13,16 +13,11 @@ $(function(){
     , jQuestion1 = ""
     , lastTabElem = "";
 
-  $(window).on('focusin', function(e){
-    console.log(e.target);
-  })
-
   // Inline Edits Configuration
   $.fn.editable.defaults.mode = 'inline';
 
 	// Load up previous questions
 	if( questions.length ){
-    //console.log("Questions Found", questions);
 		$.each(questions, function(i, v){
 			SC.displayPrevQuestion(questions[i], null);
 		});
@@ -60,13 +55,8 @@ $(function(){
       $(e.currentTarget).find( GLOBALS.params.tooltipSelector ).tooltip("hide");
       var qID = $(this).closest('.question-set-section').prop('id');
 
-      // prevSibling = $('#'+qID).prev();
-      // prevSibling.find(".question-text").show().focus().siblings('span').hide();  
-      //   console.log(prevSibling.find(".question-text"));
-
       $('#'+qID).remove();
       SC.deleteQuestion(qID, qSetID.value, function(){
-        console.log(prevSibling);
       });
       
       e.preventDefault();
@@ -81,7 +71,6 @@ $(function(){
       // Keypress Enter
       if(code == 13) {
         // Highlight & Select Question
-        console.log("KB Select :: ",parentForm.data('keyboard-select') )
         if( parentForm.data('keyboard-select') != true ){
           // Change Well Color
           parentForm.addClass('highlight'); 
@@ -104,7 +93,6 @@ $(function(){
       if( code == 38 ){
         var prevForm = parentForm.prev()
           , prevFormID = "#"+prevForm.attr('id');
-        // console.log( prevFormID);
 
         // If id found move and save order
         if( prevForm.length ){
@@ -119,7 +107,6 @@ $(function(){
       } else if ( code == 40 ){
         var nextForm = parentForm.next()
           , nextFormID = "#"+nextForm.attr('id');
-        // console.log( nextFormID );
         
         // If id found move and save order
         if( nextForm.length ){
@@ -154,7 +141,6 @@ $(function(){
     });
   jQuestions
     .on('mouseup keyup touchend', '.btn-add-question', function(e){
-      console.log("Keyup :: ",keyCode(e));
      popoverToggle(e);
     })
     .on('click keypress', '.btn-add-question', function(e){
@@ -210,7 +196,6 @@ $(function(){
     });
 
 	// Create Popover for Type of Questions
-  // console.log("Button onScreen ::", choiceBtn.is(':onScreen'));
   var popDirection = GLOBALS.dynamicPopoverDirection( choiceBtn, $('#question-choices-wrap') );
   popover( choiceBtn );
   // Open Popover by default
@@ -226,7 +211,6 @@ $(function(){
   choiceBtn
     .attr('data-placement', popDirection)
     .on('mousedown keydown touchstart', function(e){
-      // console.log("choiceBtn event :: ",e.type)
       if( !isKeypressEnter(e) ) return;
 
       // Reload Direction
@@ -252,7 +236,6 @@ $(function(){
       //Do not Fire Action for Question Choice Button
       if( isAddBtn ) return false;
    
-      // console.log("isOpen :: ", SC.popoverOpen);
       // Close Popover if open
       if( SC.popoverOpen ) {
         popoverClose();
@@ -307,7 +290,6 @@ $(function(){
 
     // formID is returned when question is added by ajax
     var formID = (formID != undefined) ? '#'+formID+' ' : '';
-    console.log(formID);
 		popover( $(formID+'.btn-add-question'), "left" );
     jQuestions.find(formID +'.icon-remove').css('color', "red").hide();	
 
@@ -316,7 +298,6 @@ $(function(){
       .find(".editable")
         .on('shown', function(e, editable) {
           var pkID = editable['$element'].closest('form').attr('id');
-            console.log( pkID );
             SC.params('editpkID', pkID );
         })
         .editable({
@@ -350,15 +331,10 @@ $(function(){
             $(this).focus();
           }
         })
-
-    // console.log("Editor Data", $('body '+formID).find(".editable").data("wysihtml5").editor )
-    console.log($.fn.wysihtml5());
      
     $('body '+formID)
       // Allow for inputs with class .auto-submit to ajax save
       .on("mouseout blur","input.auto-submit", function(e){
-        console.log(e.currentTarget + " Input ::",this);
-        console.log("Input Val ::", $(this).val() );
         SC.saveQuestionData($(this) );
       })
       // Make number input grab focus so that it can be edited 
@@ -392,7 +368,6 @@ $(function(){
     };
 
     function findFormID(){
-      // console.log( 'pk', SC.params('editpkID') );
       return SC.params('editpkID');
     };
 	}
@@ -423,7 +398,6 @@ $(function(){
         jElem.find('.icon-remove').hide();
         jElem.find('.sort-icon').hide();        
       }
-      //jElem.find('.btn-add-question').css('visibility', 'hidden');
     }
   }
 

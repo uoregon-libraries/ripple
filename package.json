@@ -1,7 +1,7 @@
 {
   "name": "ripple-core",
   "preferGlobal": true,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "author": "William Myers",
   "description": "Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices.",
   "keywords": [

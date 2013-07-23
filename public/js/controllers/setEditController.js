@@ -1,3 +1,11 @@
+/**
+ * Client Plugin Set API Module. 
+ *
+ * @author William Myers
+ * @class plugin-client.set
+ * @title set
+ * @space RIPPLE.questionType['<i>pluginName</i>'].set<br /> <span class="note"><i>pluginName</i> will be replaced by your plugin's name</span> 
+ */
 RIPPLE.namespace('set');
 // Set up session components
 RIPPLE.set.controller = new SetEditController();
@@ -13,8 +21,6 @@ function SetEditController(){
 		, positionRef = ""
 		, popovers = $('#btn-question-choice, .btn-add-prepend, .btn-add-append');
 
-  // console.log(RIPPLE);
-  // console.log(GLOBALS.questionTypes);
   var initialParams = {
     qNumTotal:0,
     editpkID:null
@@ -25,11 +31,9 @@ function SetEditController(){
     var that = this;
     
     var get = function(){
-      // console.log("Params ["+param+"] get :: ",params[param])
       return params[param];
     }
     var set = function(){
-      // console.log("Params ["+param+"] set :: ",value)
       params[param] = value;
     }
 
@@ -43,9 +47,6 @@ function SetEditController(){
 	 * @param {jQuery element} jElem [The element to add html to]
 	 */
 	this.addNewQuestion = function(qType, jElem, position, callback){
-		//console.log("Elem: ", jElem);
-		//console.log("qType: ", qType);
-		//console.log("Position", position);
 		
 		var that = this
       , postData = 'process=new-question&qType='+qType
@@ -54,7 +55,6 @@ function SetEditController(){
 		
 		UTIL.postData(document.URL, postData)
       .success(function(json){
-      	console.log(UID + "-" + json.returnData);
         $('#' + UID).html(outputHTML).prop('id',json.returnData);
 			  callback(json.returnData);
       });
@@ -84,7 +84,6 @@ function SetEditController(){
 	}
 
   this.newQuestionDisplay = function(qType, qTxt, qOptions){
-    // console.log("newQuestionDisplay args :: ", arguments)
     
     // Check for properties
     var hasType = GLOBALS.questionTypes.hasOwnProperty(qType);
@@ -119,8 +118,6 @@ function SetEditController(){
 		outputOptions += "<label for='qTxt" + params.qNumTotal + "' class='pull-left label-highlight question-label'>Q? - " + qTypeTitle + " </label>";
 		outputOptions += "<div>";
     outputOptions += "<a href='#' id='qTxt" + params.qNumTotal + "' class='editable' data-name='qTxt' data-type='wysihtml5' data-emptytext='Write question here...'>"+ qTxt + "</a>";
-		// outputOptions += "<span class='span10 qTxtLabel show-focus' data-type='editable' data-for='#qTxt" + params.qNumTotal + "' tabindex='0'>" + qTxtlabel + "</span>";
- 	  // 	outputOptions += "<input type='text' id='qTxt" + params.qNumTotal + "' class='question-text' data-dbKey='qTxt' value='" + qTxt + "' tabindex='0'/>";
 		outputOptions += "</div>";
 		outputOptions += "</div><div class='span1'></div></div>";
 
@@ -131,6 +128,14 @@ function SetEditController(){
       var hasOptions = RIPPLE.questionType[qType].hasOwnProperty("displaySetEditFn");
       if( hasOptions ) {
         outputOptions += "<hr />";
+        /**
+         * Output to display in question option area
+         *
+         * @event displaySetEditFn
+         * @for plugin-client.set
+         * @param {String} question Html of question
+         * @param {Object} qOptions Question options
+         */
         outputOptions += RIPPLE.questionType[qType].displaySetEditFn(qTxt, qOptions);
       }
     }
@@ -171,7 +176,6 @@ function SetEditController(){
   }
 
   this.saveQuestionData = function(elem){
-  	//console.log('SC.saveQuestionData', $(elem));
   	// Make sure that the elem has a value
   	if( !elem || elem.val() === "")	return false;
 
@@ -188,15 +192,12 @@ function SetEditController(){
 		// Postback Routing
   	data.process = "update-question";
   	// Turn Object into serialized string
-  	console.log("postData",data);
-
   	data = $.param(data);
   	// Postback Data
   	UTIL.postData(document.URL, data);
   };
 
   this.saveSetData = function(elem){
-    console.log('SC.saveSetData', $(elem));
     // Make sure that the elem has a value
     if( !elem || elem.val() === "") return false;
 
@@ -205,7 +206,6 @@ function SetEditController(){
     // Get Question ID from Form ID
     var qSetID = $("#qSetID").val();
     data["qSetID"] = qSetID;
-    //console.log("qID",qID)
     // Get the dbKey
     var dbKey = $(elem).attr('data-dbKey');
     data[dbKey] = elem.val().toString();
@@ -213,17 +213,12 @@ function SetEditController(){
     // Postback Routing
     data.process = "update-set";
     // Turn Object into serialized string
-    console.log("postData",data);
-
     data = $.param(data);
     // Postback Data
     UTIL.postData(document.URL, data);
   };
 
   this.displayPrevQuestion = function(qData, callback){
-  	// console.log("displayPrevQuestion qData:", qData);
-  	// console.log("displayPrevQuestion: qTxt", qData['qTxt'] );
-  	// console.log("displayPrevQuestion: qOptions",qData["qOptions"] );
   	qContent = that.newQuestionDisplay( qData['type'], qData['qTxt'], qData["qOptions"] );
     if( !qContent ) return false;
 		qContent = "<form id='" + qData['_id'] + "' class='well question-set-section'>" + qContent + "</form>";
@@ -232,8 +227,6 @@ function SetEditController(){
   };
 
   this.deleteQuestion = function(qID, qSetID, callback){
-  	console.log("Delete This", qID);
-  	console.log("qSetID This", qSetID);
   	var data = {};
   	data.process = 'remove-question';
   	data.qID = qID;
@@ -249,9 +242,6 @@ function SetEditController(){
   };
 
   this.updateOrder = function(qSetID, qOrderArr){
-    console.log("qSetID", qSetID);
-    console.log("qOrderArrqOrderArr", qOrderArr);
-
     var data = {};
     data.process = 'update-order';
     data.qSetID = qSetID;

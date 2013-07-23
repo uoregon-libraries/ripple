@@ -21,7 +21,7 @@ function AccessController() {
 	 			GLOBALS.showLockedAlert('Your account has been deleted.<br>Redirecting you back to the homepage.');
 			},
 			error: function(jqXHR){
-				console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+				console.error(jqXHR.responseText+' :: '+jqXHR.statusText);
 			}
 		});	
 	}

@@ -23,7 +23,6 @@ exports.index = function(req, res){
     req.session.room = room.roomString;
     locals.roomNum = room.roomString;
     // If authenication is on check for session information
-    log("Params", util.inspect(req.session) );
     if( locals.hasOwnProperty('auth') || locals.auth === 'true'){
       if( req.session.hasOwnProperty('user') ) return res.render('client', locals );
       else return res.render('404', {title: 'ERROR', error: "You must be logged in to access this room."});

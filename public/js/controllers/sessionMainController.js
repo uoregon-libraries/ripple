@@ -1,8 +1,11 @@
 
 /**
- * Controls for Room Assignment
+ * Client Plugin Session API Module. 
  *
  * @author William Myers
+ * @class plugin-client.session
+ * @title session
+ * @space RIPPLE.questionType['<i>pluginName</i>'].session<br /> <span class="note"><i>pluginName</i> will be replaced by your plugin's name</span>
  */
 RIPPLE.namespace('session');
 // Set up session components
@@ -15,7 +18,6 @@ function SessionMainController() {
     , DISPLAY = RIPPLE.session.displayController
   
   console.log(RIPPLE);
-  // console.log(RIPPLE.questionType);
   var initialParams = {
     "total":0,
     "setPolling":false,
@@ -31,11 +33,9 @@ function SessionMainController() {
     var that = this;
     
     var get = function(){
-      // console.log("Params ["+param+"] get :: ",params[param])
       return params[param];
     }
     var set = function(){
-      // console.log("Params ["+param+"] set :: ",value)
       params[param] = value;
     }
 
@@ -54,15 +54,8 @@ function SessionMainController() {
       "type":type,
       "qTxt":$("#question textarea").val(),
       "authorID":now.name,
-      // "qSessionID":$('#sessionID').val(),
       "qOptions":qOptionsArr
     };
-    // if('question' in now 
-    //   && 'sessionID' in now.question 
-    //   && now.question.sessionID != '') {
-    //     console.log(now.question.sessionID);
-    //     question.sessionID = now.question.sessionID;
-    //   }
 
     // Distribute Question
     nowDistributeQuestion(question);
@@ -73,7 +66,11 @@ function SessionMainController() {
     // Clear Params
     params = GLOBALS.cloneObj( initialParams );
 
-    // Clear AnsObj & Reset Answer Area
+    /**
+     * Hook fired when a question is sent to audience.
+     * 
+     * @event sendQuestionFn
+     */
     var passCheck = RIPPLE.checkClass(type)
     var hasClearFn = RIPPLE.questionType[type].hasOwnProperty('sendQuestionFn');
     if( passCheck && hasClearFn ) RIPPLE.questionType[type].sendQuestionFn();
@@ -87,7 +84,6 @@ function SessionMainController() {
   this.recieveAnswer = function(clientID, name, answer){
     var that = this
       , type = now.question.type;
-    //if( !that.params("setPolling") ) return;
 
     // Check for Class, Methods, & Params
     var passCheck = RIPPLE.checkClass(type, 'recieveAnswerFn');    
@@ -99,13 +95,7 @@ function SessionMainController() {
     $('#total').text( that.params("total") );
   };
 
-  /**
-   * Updates the dial data
-   * 
-   * @param  {object} ansDial [Contains all properties related to the current instance of the dial]
-   */
   this.graphUpdate = function(ansObj){
-    console.log("[graphUpdate] args", arguments);
     var that = this
       , graph = params.graph;
     
