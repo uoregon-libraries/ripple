@@ -269,7 +269,7 @@ $(function(){
   			wireUpQuestions(currentPosition, ID);
 
         // Take focus to question
-        $('#'+ID+' .editable:first').editable('show');
+        $('#'+ID+' .editable:first').focus();
   		});
   	})    
     .on('click keypress', 'button.question-type', function(e){

@@ -241,6 +241,7 @@ RIPPLE.questionType['slider'].set = function(){
       } else scaleTxt = "";
       if( qOptions.hasOwnProperty("submitOption") ) submitOption = qOptions.submitOption;
     }
+    console.log( submitSelect);
 
     // Scale Options Inputs
     outputControls = "<label class='lead-label'>Scale:</label>";
