@@ -31,11 +31,11 @@ var GLOBALS = {}
     // Make iOS delay touchend
     FastClick.attach(document.body);
     
-  // handle user logout //  
-  $('#btn-logout').click(function(e){ 
-    GLOBALS.attemptLogout();
-    e.preventDefault();
-  });
+    // handle user logout //  
+    $('#btn-logout').click(function(e){ 
+      GLOBALS.attemptLogout();
+      e.preventDefault();
+    });
 
     // Put Pathname into body class
     var pathArray = location.pathname.split('/')

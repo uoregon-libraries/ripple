@@ -23,7 +23,8 @@ function SetEditController(){
 
   var initialParams = {
     qNumTotal:0,
-    editpkID:null
+    editpkID:null,
+    activeInput:""
   }
   var params = GLOBALS.cloneObj( initialParams );
   // Expose function to set and get params
@@ -61,7 +62,7 @@ function SetEditController(){
 
 		// Add Container 
 		outputOptions = "<form id='" + UID + "' class='well question-set-section'><img src='/img/loader.gif'/></form>";
-    
+
 		switch(position){
 			case 'append':
 				jElem.append(outputOptions);
@@ -221,7 +222,7 @@ function SetEditController(){
   this.displayPrevQuestion = function(qData, callback){
   	qContent = that.newQuestionDisplay( qData['type'], qData['qTxt'], qData["qOptions"] );
     if( !qContent ) return false;
-		qContent = "<form id='" + qData['_id'] + "' class='well question-set-section'>" + qContent + "</form>";
+		qContent = "<form id='" + qData['_id'] + "' class='well question-set-section' tabindex='0'>" + qContent + "</form>";
 		$('#questions').append( qContent );
 		callback;
   };

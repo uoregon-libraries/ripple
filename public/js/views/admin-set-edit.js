@@ -306,6 +306,8 @@ $(function(){
             process: 'update-question'
           },
           url: location,
+          showbuttons: false,
+          onblur: "submit",
           wysihtml5: GLOBALS.wysihtml5Options
         })
         .on('shown', function(e, editable){
@@ -324,12 +326,14 @@ $(function(){
           $('form .editable-buttons button.editable-cancel')
             .attr('title', 'Cancel')
             .attr('data-placement', "top")
-            .tooltip();             
+            .tooltip();  
+          SC.params('activeInput',$(this));           
         })
         .on('hidden', function(e, reason){
-          if(reason === 'save' || reason === 'nochange') {
-            $(this).focus();
-          }
+          // Check for which element is in focus and thus active
+          var isActiveInput = SC.params('activeInput') === $(this);
+          var focusElem = ( isActiveInput ) ? $(this) : SC.params('activeInput');
+          focusElem.focus();
         })
      
     $('body '+formID)
