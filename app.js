@@ -16,6 +16,9 @@ var DB = require('./lib/db-manager.js')
 
 DB.connect(run);
 
+// Default to production mode
+process.env.NODE_ENV = process.env.NODE_ENV || "production";
+
 // This is intentionally NOT indented in order to make it clear this code is the main app and
 // not just some random function.  This is created to satisfy the need for our DB to be ready
 // when the app starts up while still dealing with the JS asynchronous nuances.
