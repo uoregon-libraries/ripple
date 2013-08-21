@@ -61,7 +61,7 @@ function SetEditController(){
 
 		// Add Container 
 		outputOptions = "<form id='" + UID + "' class='well question-set-section'><img src='/img/loader.gif'/></form>";
-
+    
 		switch(position){
 			case 'append':
 				jElem.append(outputOptions);
@@ -157,7 +157,7 @@ function SetEditController(){
 
     switch(type){
       case "prepend":
-        panelPositon = "before";
+        panelPosition = "before";
         placement = "Above";
         break;
       case "append":
