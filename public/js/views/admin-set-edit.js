@@ -345,6 +345,16 @@ $(function(){
       .find("input").click(function(e){
         $(this).focus();
       })
+    
+    // Move between Questions
+    $('#questions').on('keydown', 'form.question-set-section', function(e){
+      // Only proceed if it is a question set form
+      if( $('#'+e.target.id).hasClass('question-set-section') ){
+        var code = keyCode(e);
+        if( code === 38 ) $(this).prev().focus();
+        if( code === 40) $(this).next().focus();        
+      }
+    });
 
     // Make sortable
     jQuestions
