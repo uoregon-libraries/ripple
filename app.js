@@ -634,4 +634,14 @@ console.log("==============================================");
 console.log("Ripple app.js executed");
 console.log("==============================================");
 
+
+// Graceful Shutdown
+process.once('SIGINT', function () {
+  console.log("\nGracefully shutting down from SIGINT (Ctrl+C)");
+
+  // Remove pid file 
+  fs.unlinkSync('custom/pid.txt');
+  process.exit();
+});
+
 } // end "run" function

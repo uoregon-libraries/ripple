@@ -131,7 +131,7 @@
 .admin-page #people #account-template{display:none;}
 .admin-page #settings #categories>li.active>a{background-color:#FFF;color:#00B7FF;}
 .admin-page #settings #categories>li>a{background-color:#EEE;border-right:none;color:#005580;}.admin-page #settings #categories>li>a:hover{color:#00B7FF;}
-.admin-page #settings #variable-container{background-color:#FFF;-webkit-border-radius:0 4px 4px 4px;-moz-border-radius:0 4px 4px 4px;border-radius:0 4px 4px 4px;margin-left:0;padding:1em;border:1px #DDD solid;}
+.admin-page #settings #variable-container{background-color:#FFF;-webkit-border-radius:0 4px 4px 4px;-moz-border-radius:0 4px 4px 4px;border-radius:0 4px 4px 4px;margin-left:0;padding:1em;border:1px #DDD solid;box-sizing:border-box;}
 .admin-page #settings .button-input{width:100%;line-height:2.5em;}.admin-page #settings .button-input label,.admin-page #settings .button-input .btn-group{float:left;display:inline;}
 .admin-page #settings .button-input label{width:70%;}
 .admin-page #settings .button-controls{font-size:1.5em;}
