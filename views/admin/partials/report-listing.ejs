@@ -8,7 +8,7 @@
     // Create index number
     var intOfSession = parseInt(item) + 1;
 %>
-  <div class="row report-list"> 
+  <div class="row-fluid report-list"> 
     <div class="well well-list">
       <div class="span8">
         Session #<%= intOfSession %> | <strong><%= timeStamp %></strong>
@@ -20,12 +20,12 @@
         <span class="question-cnt label pull-right"><%= session.questions.length %> Questions</span>
 <%  } %>
       </div>
-      <div class="span2">
+      <div class="span2 split-wrap">
         <a href="/admin/report/<%=session["_id"]%>" class="btn btn-primary" rel="tooltip" data-placement="bottom" title="View Report for Session #<%= intOfSession %>">
           View <i class="icon icon-share-alt icon-med"></i>
         </a>           
       </div>
-      <div class="span2">        
+      <div class="span2 split-wrap">        
         <form method="post">
           <input type="hidden" name="sessionID" value="<%=session["_id"]%>">
           <input type="hidden" name="sessionNum" value="<%= intOfSession %>">

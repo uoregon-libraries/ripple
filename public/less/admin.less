@@ -1032,6 +1032,22 @@
       .name-cell:before { content: "Individual"; }
       .answer-cell:before { content: "Response"; }
     }
+
+    #report-list-wrap{
+      .report-list > .well{
+        padding-bottom: 0;
+      }
+      .split-wrap{
+        width:47.5%; 
+        box-sizing:border-box;
+        display:inline-block;
+        padding-top:0.5em;
+
+        &:last-child{
+          text-align: right;
+        }
+      }
+    }
   }
 }
 
@@ -1048,6 +1064,19 @@
         min-width: 100px;
       }
     }    
+  }
+}
+
+@media (max-width: 500px){
+  .admin-page{
+    #report-list-wrap {
+      .split-wrap{
+        width:25%;
+        &:last-child{
+          text-align: left;
+        }
+      }
+    }
   }
 }
 
