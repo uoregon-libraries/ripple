@@ -114,7 +114,7 @@
 .admin-page #report-item-wrap .report-items .time-col{width:6em;}
 .admin-page #report-item-wrap .report-items .client-col{width:6em;}
 .admin-page #report-item-wrap tr:nth-of-type(even){background-color:#ddd;}
-.admin-page #report-item-wrap .label-responses{text-align:center;}
+.admin-page #report-item-wrap .label-responses{margin-top:0.5em;text-align:center;}
 .admin-page #report-item-wrap .individual-responses{margin-top:1em;}
 .admin-page #permissions{line-height:2em;border-left:1px #333 solid;}.admin-page #permissions .permission-header{background-color:#4c4c4c;background-image:-moz-linear-gradient(top, #555555, #3e3e3e);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#3e3e3e));background-image:-webkit-linear-gradient(top, #555555, #3e3e3e);background-image:-o-linear-gradient(top, #555555, #3e3e3e);background-image:linear-gradient(to bottom, #555555, #3e3e3e);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff3e3e3e', GradientType=0);margin-top:1em;border-bottom:2px solid #666;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border-bottom-left-radius:0;border-bottom-right-radius:0;color:#CCC;}
 .admin-page #permissions .permission-name{display:inline-block;width:50%;min-width:150px;text-transform:capitalize;padding-left:1em;}
