@@ -191,7 +191,7 @@ function SessionDisplayController () {
     // Create html for question area
     var html = "<div class='row answer-row'>"; 
         html += "<div class='span2'> <label for='" + inputID + "'/>" +  inputLabel + "</lable></div>";
-        html += "<input type='textbox' id='" + inputID + "' name='answer-" + inputID + "' value='" + defaultValue + "'/>";
+        html += "<input type='textbox' id='" + inputID + "' name='" + inputID + "' value='" + defaultValue + "'/>";
         html += "</div>";
     return html;
   }

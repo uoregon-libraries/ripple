@@ -33,9 +33,9 @@ var responses = <%- JSON.stringify(locals.docArray) %>;
           , qType = question.type
           , html = ""
           , qOptionsHtml = ""
-          , currType = questionTypesObj[ qType ]
-          , qTypeTitle = currType.title
-          , qIcon = currType.icon
+          , currType = questionTypesObj[ qType ] ? questionTypesObj[ qType ] : {}
+          , qTypeTitle = currType.title ? currType.title : qType.charAt(0).toUpperCase() + qType.slice(1)
+          , qIcon = currType.icon ? currType.icon : "icon-question-sign"
           , qIconTxt = currType.iconTxt ? currType.iconTxt : ''
           , labelCnt = qCNT + 1;
 
