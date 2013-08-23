@@ -62,7 +62,10 @@ function SessionDisplayController () {
   }
 
   this.createFlashAns = function(answer){
-    return '<p class="flashwell well-small">' + answer + '</p>';
+    var removeIcon = '<i class="icon icon-remove-circle remove-response" tabindex="0"></i>'
+      , removeWrap = '<span class="pull-right"><a href="#" class="remove-response-wrap" title="Remove" data-placement="left">' + removeIcon + '</a></span>'
+      , inner = removeWrap + answer;
+    return '<p class="flashwell well-small">' + inner + '</p>';
   }
 
   this.createAnsPlaceholder = function(){

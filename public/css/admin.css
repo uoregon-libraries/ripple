@@ -45,6 +45,7 @@
 .admin-page #response-wrap #total{margin-left:0.5em;font-size:1.25em;margin-top:3px;}
 .admin-page #response-wrap #word-cloud{margin-right:0.5em;}
 .admin-page #response-wrap #word-display{height:200px;overflow-y:auto;}
+.admin-page #response-wrap #flash-display .remove-response-wrap{padding-left:0.5em;font-size:1.5em;color:#555;text-decoration:none;}
 .admin-page #responses{height:200px;overflow:autoscroll;}
 .admin-page #messages,.admin-page #responses{height:200px;overflow:auto;font-size:14px;padding-top:0;}
 .admin-page #message-txt{width:100%;font-size:.75em;}

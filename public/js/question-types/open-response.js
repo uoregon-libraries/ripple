@@ -35,6 +35,9 @@ RIPPLE.questionType['open-response'].session = function(){
     answerWell.prependTo('#flash-display');
     if( ASC.params("flashAnswers") ) answerWell.hide().fadeIn(100).fadeOut(15000);
 
+    // Add tooltip
+    answerWell.find('.remove-response-wrap').tooltip();
+
     // Show Response
     DISPLAY.updateIndResp(name,answer);    
 

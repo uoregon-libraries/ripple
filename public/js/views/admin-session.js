@@ -161,23 +161,32 @@ $(document).ready(function(){
     checkResponseSize();
   });
 
-  $('#answers').on("click keypress", "#flash-show", function(e){
-    if( !isKeypressEnter(e) ) return;
-    
-    ASC.setOpenFlash( false );
-    $('#answers .flashwell').stop(true, true).show();
-    $('#flash-hide').show();
-    $(this).hide();
-  });
-
-  $('#answers').on("click keypress", "#flash-hide", function(e){
-    if( !isKeypressEnter(e) ) return;
-    
-    ASC.setOpenFlash( true );
-    $('#answers .flashwell').hide();
-    $('#flash-show').show();
-    $(this).hide();
-  });
+  // Flash functionality
+  $('#answers')
+    // Show answers
+    .on("click keypress", "#flash-show", function(e){
+      if( !isKeypressEnter(e) ) return;
+      
+      ASC.setOpenFlash( false );
+      $('#answers .flashwell').stop(true, true).show();
+      $('#flash-hide').show();
+      $(this).hide();
+    })
+    // Hide answers
+    .on("click keypress", "#flash-hide", function(e){
+      if( !isKeypressEnter(e) ) return;
+      
+      ASC.setOpenFlash( true );
+      $('#answers .flashwell').hide();
+      $('#flash-show').show();
+      $(this).hide();
+    })
+    .on("click keypress", ".flashwell .remove-response", function(e){
+      var $this = $(this);
+      if( !isKeypressEnter(e) ) return;
+      // Hide well
+      $this.closest(".flashwell").addClass('hidden');
+    });
 
   $("#type").change(function(){
     displayQuestion($(this).val());

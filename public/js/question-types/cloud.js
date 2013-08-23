@@ -54,6 +54,9 @@ RIPPLE.questionType['cloud'].session = function(){
     // Only Show Cloud if it is requested
     $(".dynacloud").dynaCloud();
 
+    // Add tooltip
+    answerWell.find('.remove-response-wrap').tooltip();
+    
     // Show Response
     DISPLAY.updateIndResp(name,answer);    
 
