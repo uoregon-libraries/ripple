@@ -1,6 +1,6 @@
 $(function(){
-	$('#sets').on('click', '.session-start', function(event){
-		GLOBALS.openSessionWindow( $(this).prop('href'), event );
+	$('#sets').on('click keypress', '.session-start', function(e){
+		if( isKeypressEnter(e) ) GLOBALS.openSessionWindow( $(this).prop('href'), e );
 	});
 
 });

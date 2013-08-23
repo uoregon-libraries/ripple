@@ -127,8 +127,8 @@ var GLOBALS = {}
     $( GLOBALS.params.tooltipSelector ).tooltip();
 
     // Overide Session Start to put in new window
-    $('#nav-session').click(function(e){
-      GLOBALS.openSessionWindow( $(this).prop('href'), e );
+    $('#nav-session').on('click keypress', function(e){
+      if( isKeypressEnter(e) ) GLOBALS.openSessionWindow( $(this).prop('href'), e );
     })
 
     // Move focus to overlay on shown
@@ -147,6 +147,15 @@ var GLOBALS = {}
         }, 100);
       })
     }
+
+    // Allow spacebar to follow links
+    $('body').on("keypress", "a", function(e){
+      console.log(e);
+      var target = e.target.href
+        , jElem = $(e.target)
+        , hasHref = target && target != "#";
+      if( keyCode(e) == 32 && hasHref && !jElem.hasClass("no-autolink") ) document.location = target;
+    })
   });
 
   /**
@@ -308,7 +317,7 @@ function isAplhaLower(x){
 function isKeypressEnter(e){
   if(e.type === "keypress" || e.type === "keyup" || e.type === "keydown"){
     // Check that code was an enter
-    if( keyCode(e) === 13 ) return true;
+    if( keyCode(e) === 13 || keyCode(e) === 32) return true;
     else return false;
   }
   return true;

@@ -4,7 +4,8 @@ $(document).ready(function(){
 	$('#room-fullscreen').hide();
 
 	// Override Default Start Set
-	$('#set-start').click(function(e){
+	$('#set-start').on('click keypress', function(e){
+		if( !isKeypressEnter(e) ) return;
 		var modalAlert = $('.modal-alert');
 			
 		modalAlert.find('.modal-body').load('/admin/set/start/ #set-create-form');
@@ -19,11 +20,15 @@ $(document).ready(function(){
 	})
 
 	// Overide Session Start to put in new window
-	$('#session-start').click(function(e){
+	$('#session-start').on('click keypress', function(e){
+		if( !isKeypressEnter(e) ) return;
 		GLOBALS.openSessionWindow( $(this).prop('href'), e);
+		e.preventDefault();
 	})
-	$('.question-set-section').on('click', '.session-start', function(e){
+	$('.question-set-section').on('click keypress', '.session-start', function(e){
+		if( !isKeypressEnter(e) ) return;
 		GLOBALS.openSessionWindow( $(this).prop('href'), e);
+		e.preventDefault();
 	});
   $('#set-create-form').on('submit',function(e){
     // Validate
