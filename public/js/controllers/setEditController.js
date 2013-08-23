@@ -118,7 +118,7 @@ function SetEditController(){
 		outputOptions += "<div class='row start-question-content'><div class='span1'></div><div class='span10'>";
 		outputOptions += "<label for='qTxt" + params.qNumTotal + "' class='pull-left label-highlight question-label'>Q? - " + qTypeTitle + " </label>";
 		outputOptions += "<div>";
-    outputOptions += "<a href='#' id='qTxt" + params.qNumTotal + "' class='editable' data-name='qTxt' data-type='wysihtml5' data-emptytext='Write question here...'>"+ qTxt + "</a>";
+    outputOptions += "<a href='#' id='qTxt" + params.qNumTotal + "' class='editable' data-name='qTxt' data-type='wysihtml5' data-emptytext='Write question here...' data-showbuttons='true' >"+ qTxt + "</a>";
 		outputOptions += "</div>";
 		outputOptions += "</div><div class='span1'></div></div>";
 
