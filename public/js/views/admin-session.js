@@ -50,6 +50,7 @@ $(document).ready(function(){
 
   // Have logout close parent window
   $('#btn-close-session').on('click keypress', function(e){
+    if( !isKeypressEnter(e) ) return;
     DISPLAY.confirmClose();
   });
   

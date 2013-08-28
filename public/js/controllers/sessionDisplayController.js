@@ -340,6 +340,7 @@ SessionDisplayController.prototype.showRoomFullscreen = function(msg, header){
   $('.modal-fullscreen .modal-header h3').html("&nbsp;");
   $('.modal-fullscreen .modal-body p').html(msg);
   $('.modal-fullscreen').modal('show');
+  $('.modal-full-wrap').focus();
 };
 
 SessionDisplayController.prototype.buildConfirm = function(className){
