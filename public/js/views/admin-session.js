@@ -50,7 +50,6 @@ $(document).ready(function(){
 
   // Have logout close parent window
   $('#btn-close-session').on('click keypress', function(e){
-    if( !isKeypressEnter(e) ) return;
     DISPLAY.confirmClose();
   });
   
@@ -93,8 +92,7 @@ $(document).ready(function(){
   });
 
   // Clear Question
-  clearBtn.on("keydown click", function(e){
-    if( !isKeypressEnter(e) ) return;
+  clearBtn.on("click", function(e){
     DISPLAY.reset('clear');
     ASC.clearAnsVals(now.question.type);
     now.distributeClear();
@@ -102,13 +100,14 @@ $(document).ready(function(){
   });
 
   // Stop and Restart Client Polling
-  $('#client-status-btn').on("keydown click", function(e){
-    if( !isKeypressEnter(e) ) return;
+  $('#client-status-btn').on("click", function(e){
     pollingToggle($(this));
   });
 
   // Window resizer
-  $('#window-resizer').on('click keydown', function(e){
+  $('#window-resizer').on('click', function(e){
+    if( windowResizerHold ) return;
+
     var $this = $(this)
       , newTitle
       , iconContract = 'icon-resize-small'
@@ -116,9 +115,6 @@ $(document).ready(function(){
       , removeClass
       , addClass
       , icon = "";
-
-    if( !isKeypressEnter(e) ) return;
-    if( windowResizerHold ) return;
 
     if( $this.find('i').hasClass(iconContract) ){
       window.resizeTo(320,screen.height);
@@ -148,9 +144,7 @@ $(document).ready(function(){
   })
 
   // Expand Response to take full width
-  $("#response-resizer").on('click keypress', function(e){
-    if( !isKeypressEnter(e) ) return;
-
+  $("#response-resizer").on('click', function(e){
     if( $(this).find('i').hasClass('icon-resize-full') ) sizeResponse('max');
     else sizeResponse('min');
   });
@@ -170,7 +164,7 @@ $(document).ready(function(){
   // Flash functionality
   $('#answers')
     // Show answers
-    .on("click keypress", "#flash-show", function(e){
+    .on("click", "#flash-show", function(e){
       if( !isKeypressEnter(e) ) return;
       
       ASC.setOpenFlash( false );
@@ -179,7 +173,7 @@ $(document).ready(function(){
       $(this).hide();
     })
     // Hide answers
-    .on("click keypress", "#flash-hide", function(e){
+    .on("click", "#flash-hide", function(e){
       if( !isKeypressEnter(e) ) return;
       
       ASC.setOpenFlash( true );
