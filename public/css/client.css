@@ -4,7 +4,7 @@
 .input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 *{-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
 #alert{color:#CCC;}
-#question{font-size:2em;color:#DDD;margin:0 20px 20px;}
+#question{font-size:2em;color:#DDD;margin:0 20px 20px;word-wrap:break-word;}
 .buttonAnswers{list-style:none;width:80%;font-size:1.25em;}
 .buttonAnswers .true-btn-wrap .btn{display:block;margin-left:auto;margin-right:auto;width:4em;}
 .highlight{background:#FFF48F;}
