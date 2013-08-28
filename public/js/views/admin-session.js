@@ -275,16 +275,16 @@ $(document).ready(function(){
 
       // Make popover hide if clicked outside or close w/ "esc"
       $(document)
-        .mousedown(function(e){
+        .on('click', function(e){
           //Do not Fire Action for Question Choice Button
-          if( e.target.id == "btn-question-choice") return false;
-
+          var isChild = $(e.target).parent('#btn-question-choice').length
+          if( e.target.id == "btn-question-choice" || isChild ) return false;
           // Close Popover if open
           if( choicePopoverOpen ) {
             popoverClose();
             choicePopoverOpen = false;
           } 
-
+          e.preventDefault();
         })
         .on('keydown', function(e){
           if( isKeypressEsc(e) ) {
@@ -298,7 +298,7 @@ $(document).ready(function(){
         });
 
       // Make popover buttons functional
-      $(document).on('mousedown', 'button.question-type', function(){
+      $(document).on('click', 'button.question-type', function(){
         var type = $(this).attr('data-qtype') ;
         $('#type').val( type );
         displayQuestion( type );
