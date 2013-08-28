@@ -6,7 +6,8 @@ $(document).ready(function(){
     , choicePopoverOpen = false
     , clientStatusBtn = $('#client-status-btn')
     , clearBtn = $('#clear-btn')
-    , responseResizerHold = false;
+    , responseResizerHold = false
+    , windowResizerHold = false;
 
   now.initialize = function(){
     // Clear Student Questions
@@ -107,7 +108,7 @@ $(document).ready(function(){
   });
 
   // Window resizer
-  $('#window-resizer').on('click keypress', function(e){
+  $('#window-resizer').on('click keydown', function(e){
     var $this = $(this)
       , newTitle
       , iconContract = 'icon-resize-small'
@@ -117,6 +118,7 @@ $(document).ready(function(){
       , icon = "";
 
     if( !isKeypressEnter(e) ) return;
+    if( windowResizerHold ) return;
 
     if( $this.find('i').hasClass(iconContract) ){
       window.resizeTo(320,screen.height);
@@ -137,6 +139,12 @@ $(document).ready(function(){
       .find('i')
         .removeClass(removeClass)
         .addClass(addClass);
+
+    // Make sure resizer is effected by double clicks
+    windowResizerHold = true;
+    setTimeout(function(){
+      windowResizerHold = false;
+    }, 200)
   })
 
   // Expand Response to take full width
@@ -465,7 +473,7 @@ $(document).ready(function(){
     responseResizerHold = true;
     setTimeout(function(){
       responseResizerHold = false;
-    }, 100)
+    }, 200)
 
     /**
      * Hook fired when the response area is resized on Client UI
