@@ -401,16 +401,17 @@ $(function(){
       // Turn all buttons off
       $('#questions .sort-icon').hide();
       $('#questions .icon-remove').hide();
+      $('#questions button.btn-add-question').css('visibility', 'hidden');
       // Turn on only needed buttons for highlight
       jElem.find('.sort-icon').show()
       jElem.find('.icon-remove').show();
-      jElem.find('.btn-add-question').css('visibility', 'visible');
+      jElem.find('button.btn-add-question').css('visibility', 'visible');
       lastTabElem = jElem;
     } else {
       // Check to see if elem is in same div as previous element
       if( jElem.attr('id') != lastTabElem.attr('id') ) {
         jElem.find('.icon-remove').hide();
-        jElem.find('.sort-icon').hide();        
+        jElem.find('.sort-icon').hide();   
       }
     }
   }
