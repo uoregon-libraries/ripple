@@ -181,11 +181,12 @@ $(document).ready(function(){
       $('#flash-show').show();
       $(this).hide();
     })
+    // Remove Response
     .on("click keypress", ".flashwell .remove-response", function(e){
       var $this = $(this);
       if( !isKeypressEnter(e) ) return;
       // Hide well
-      $this.closest(".flashwell").addClass('hidden');
+      $this.closest(".flashwell").remove();
     });
 
   $("#type").change(function(){

@@ -13,6 +13,11 @@ RIPPLE.questionType['cloud'].session = function(){
         ASC.setOpenCloud( true );    
         $(".dynacloud").dynaCloud();
       })
+      // Reload cloud when response is removed
+      $('#answers').on("click", '.remove-response', function(){
+        $('#dynacloud').empty();
+        $(".dynacloud").dynaCloud();
+      })
     })
   }();
 
@@ -55,7 +60,7 @@ RIPPLE.questionType['cloud'].session = function(){
     $(".dynacloud").dynaCloud();
 
     // Add tooltip
-    answerWell.find('.remove-response-wrap').tooltip();
+    //answerWell.find('.remove-response-wrap').tooltip();
     
     // Show Response
     DISPLAY.updateIndResp(name,answer);    
