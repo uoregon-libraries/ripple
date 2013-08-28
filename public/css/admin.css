@@ -72,6 +72,7 @@
 .admin-page #set-titles div[data-type='editable'],.admin-page .question-set-section span[data-type='editable']{cursor:pointer;}.admin-page #set-titles div[data-type='editable']:hover,.admin-page .question-set-section span[data-type='editable']:hover{border:3px #add8e6 solid;-moz-box-shadow:0px 0px 14px #add8e6;-webkit-box-shadow:0px 0px 14px #add8e6;box-shadow:0px 0px 14px #add8e6;margin-top:-3px;}
 .admin-page .question-set-section{min-height:5em;position:relative;}.admin-page .question-set-section label{display:inline-block;}
 .admin-page .question-set-section legend{font-size:0.9em;}
+.admin-page .question-set-section a.editable{word-wrap:break-word;}
 .admin-page .question-set-section .lead-label{width:250px;}
 .admin-page .question-set-section .question-icon{position:absolute;display:inline;top:9px;left:9px;color:#A6A6A6;}
 .admin-page .question-set-section .sort-icon{position:absolute;left:-1px;top:50%;margin-top:-9px;font-size:24px;padding-top:5px;}
