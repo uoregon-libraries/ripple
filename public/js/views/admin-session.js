@@ -23,14 +23,9 @@ $(document).ready(function(){
   }
 
   // Must be available to now or throws errors
-  now.clientClearQuestion = function(){
-
-  }
-
-  // Must be available to now or throws errors
-  now.clientSetPolling = function(){
-
-  }
+  now.clientClearQuestion = function(){};
+  now.clientSetPolling = function(){};
+  now.clientStopSession = function(){};
 
   now.receiveMessage = function(name, message){
     CHAT.receiveMessage(name, message);
@@ -56,9 +51,12 @@ $(document).ready(function(){
   $('#btn-close-session').on('click keypress', function(e){
     if( !isKeypressEnter(e) ) return;
     DISPLAY.confirmClose();
-
   });
   
+  // Presenter closes window
+  $(window).bind("beforeunload", function(){
+    now.distributeStopSession();
+  });
 
   $('#question-response-wrap').hide();
   $('#room-fullscreen').click(function(e){ 

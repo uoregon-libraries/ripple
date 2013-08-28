@@ -297,7 +297,10 @@ function SessionDisplayController () {
       closeConfirm.find('button.submit')
         .text(' End Session ')
         .addClass('btn-danger')
-        .click(function(){window.location.href = '/admin/session/close';})
+        .click(function(){
+          now.distributeStopSession();
+          window.location.href = '/admin/session/close';
+        })
     };
 
     if( !$('.'+comfirmClass).length > 0 ) buildPrompt();

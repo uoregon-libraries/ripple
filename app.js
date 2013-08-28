@@ -385,6 +385,32 @@ everyone.now.distributeClear = function(){
 }
 
 /**
+ * Stop Session sent to client
+ */
+everyone.now.distributeStopSession = function(){
+  var that = this;
+
+  sessionAPI.getSession(that, sessionStore, function(err, session) {
+    // If we had any errors, exit here
+    if (err) {
+      logger.error("Error retrieving session for nowjs connection [distributeClear]: " + err.message);
+      return;
+    }
+
+    if (session.type !== "presenter") {
+      logger.error("Non-presenter trying to call distributeClear()!");
+      return;
+    }
+
+    logger.debug('Presenter Closed Session');
+    var group = nowjs.getGroup(session.room);
+    group.now.clientStopSession();
+    delete group.question;
+    delete group.now.question;
+    delete group.receiveAnswer;
+  });
+}
+/**
  * Send out a message
  * @param  {String} message The text to be sent to entire virtual room
  */

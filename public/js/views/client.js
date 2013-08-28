@@ -37,6 +37,11 @@ $(document).ready(function(){
     holdModal.modal('hide');
   }
 
+  now.clientStopSession = function(){
+    CC.clearQuestion('stop');
+    holdModal.modal('hide');
+  }
+
   now.clientSetPolling = function(status){
     if(status === "off") holdModal.modal('show');
     else holdModal.modal('hide');

@@ -27,8 +27,16 @@ function ClientController(){
 	/**
 	 * Clears previous question information
 	 */
-	this.clearQuestion = function(){
-	  $('#question').html('<h2>Waiting for Question...</h2>');
+	this.clearQuestion = function(type){
+    console.log("Clear Question :: ", type);
+    type = type || ''; 
+    switch(type){
+      case 'stop':
+        $('#question').html('<h2>Presenter closed the session.</h2>');
+        break;
+      default:
+        $('#question').html('<h2>Waiting for Question...</h2>');
+    }
 	  $('#answer').html('');
 	  $('#alert').html('');
 	  $('#send-btn').hide();
