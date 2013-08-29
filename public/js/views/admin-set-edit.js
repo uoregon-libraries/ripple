@@ -26,6 +26,7 @@ $(function(){
     jQuestion1 = $('#qTxt1');
     // Give focus to first querystring.stringify(obj, sep, eq, name);
     setTimeout(function(){
+      popoverClose( choiceBtn.attr('id') );
       jQuestion1.editable("show");
     },200);
   }
@@ -199,7 +200,7 @@ $(function(){
   var popDirection = GLOBALS.dynamicPopoverDirection( choiceBtn, $('#question-choices-wrap') );
   popover( choiceBtn );
   // Open Popover by default
-  if( choiceBtn.is(':onScreen') ) {
+  if( !questions.length ) {
     popoverOpen(choiceBtn, choiceBtn.attr("id"));
     SC.popoverID = choiceBtn.attr("id");
   }
