@@ -7,9 +7,11 @@ $(document).ready(function(){
     , clientStatusBtn = $('#client-status-btn')
     , clearBtn = $('#clear-btn')
     , responseResizerHold = false
-    , windowResizerHold = false;
+    , windowResizerHold = false
+    , initialized = 0;
 
   now.initialize = function(){
+    initialized = 1;
     // Clear Student Questions
     now.distributeClear();
 
@@ -22,6 +24,21 @@ $(document).ready(function(){
     // Load Set if needed
     loadSet();
   }
+  // Send message for initialization that taking exceptionally long
+  setTimeout(function(){
+    if( initialized === 0 ) {
+      var msg = "";
+      $('body').on('click','#reload-btn', function(){
+        location.reload();
+      })
+      // Alert Message
+      msg += "<h1 class='no-bg'>Possible System Issue</h1>";
+      msg += "<p>System is having trouble setting up the room for some reason.</p><br />";
+      msg += "<h6>If the problem persists for 15 seconds, please refresh or close and reopen the session.</h6>"
+      msg += "<button id='reload-btn' class='btn btn-primary'>Refresh</button>";
+      $('#loading').html(msg);
+    }
+  }, 15000);
 
   // Must be available to now or throws errors
   now.clientClearQuestion = function(){};
