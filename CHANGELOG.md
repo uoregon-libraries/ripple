@@ -1,3 +1,30 @@
+## 1.0.5 (September 6, 2013)
+
+* Improved usability of Set Edit UI by removing unnecesary save buttons for each input
+
+* Improved Report Item UI for plugins
+
+* Accessibilty Improvements to add spacebar functionality for all Admin UI buttons
+
+* Bug Fix Set Edit UI 
+** Add button not functioning correctly in last update
+** Imporved focus of cursor
+
+* Bug Fix Improved responsive layout for some admin pages
+
+* Bug Fix Account administration passwords were not saving correctly
+
+* Bug Fix more general style refinements
+
+* System now defaults to production mode if not specified
+
+* Feature Enhancement - Open Response & Cloud question types can now discard answers on fly from UI
+
+* Feature Enhancement - Presenter closing session now alerts clients.
+
+* Feature Enhancement - Warning for slow loading rooms.
+
+
 ## 1.0.4 (July 22, 2013)
 
 * Cleaned code of old comments and comment code for auto-generation of documentation with yuidoc.
