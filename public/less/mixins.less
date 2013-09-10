@@ -12,3 +12,10 @@
     border-color: rgba(0,0,0,.15);
   }
 }
+
+.calcHeight(@adjustment:50px){
+  height: 100%;
+  height: -webkit-calc(~'100% - '@adjustment);
+  height: -moz-calc(~'100% - '@adjustment);
+  height: calc(~'100% - '@adjustment);
+}

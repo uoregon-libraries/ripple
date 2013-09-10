@@ -28,7 +28,7 @@
 .admin-page .question-set-section{margin:10px 0;}.admin-page .question-set-section .well-list{padding:0.75em;}
 .admin-page .question-set-section .well{margin-bottom:9px;background:#CCC;}
 .admin-page #sign-out-title{display:inline-block;overflow:hidden;white-space:nowrap;}
-.admin-page #question-response-wrap{margin-top:1em;position:relative;}.admin-page #question-response-wrap .start-session{margin-bottom:2em;text-align:left;margin-left:0;}
+.admin-page #question-response-wrap{margin-top:1em;position:relative;height:100%;height:-webkit-calc(100% - 50px);height:-moz-calc(100% - 50px);height:calc(100% - 50px);}.admin-page #question-response-wrap .start-session{margin-bottom:2em;text-align:left;margin-left:0;}
 .admin-page #question-response-wrap .add-new-title{color:#DDD;font-size:14px;line-height:18px;font-weight:bold;font-family:inherit;margin-right:1em;}
 .admin-page #question-response-wrap h4.answer-options{margin-bottom:0.5em;}
 .admin-page #question-response-wrap #send-btn-wrap{height:20px;}
