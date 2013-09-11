@@ -1,3 +1,14 @@
+## 1.0.6 (September 10, 2013)
+
+* Major Bug Fix - Changed database configuration for write concern to default of safe:false. This was causing multiple issues including not allowing new users and not allowing new installs because it breaking make db-migrate
+
+* Disabled custom errors that was thought to cause instability
+
+* Minor style changes to improve usability
+
+* Fixed plugin enable / disable function warnings
+
+
 ## 1.0.5 (September 6, 2013)
 
 * Improved usability of Set Edit UI by removing unnecesary save buttons for each input
