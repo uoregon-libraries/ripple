@@ -121,8 +121,8 @@ app.configure(function(){
   app.use( '/', express.static(publicDir) );
   app.use( '/custom', express.static(customDir, 'custom') )
   app.use( '/plugins', express.static(pluginDir, 'plugins') )
-  app.use( comboError );
-  app.use( error404 );
+        // app.use( comboError );
+        // app.use( error404 );
 });
 
 // Setup default error routes
