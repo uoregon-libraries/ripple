@@ -303,8 +303,13 @@ $(function(){
         })
         .editable({
           pk: findFormID,
-          params:{
-            process: 'update-question'
+          params: function(params){
+            // URI Encode Value
+            params.value = encodeURIComponent(params.value);
+            // Add param for routing on admin page
+            params.process = 'update-question';
+
+            return params;
           },
           url: location,
           showbuttons: false,
