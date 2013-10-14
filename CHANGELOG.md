@@ -1,3 +1,10 @@
+## 1.0.7 (October 13, 2013)
+
+* Bug Fix - Removed issues relating to creating a question in a set which contained a % symbol
+
+* Bug Fix - Improved consistent layout of label for multiple choice questions across devices
+
+
 ## 1.0.6 (September 10, 2013)
 
 * Major Bug Fix - Changed database configuration for write concern to default of safe:false. This was causing multiple issues including not allowing new users and not allowing new installs because it breaking make db-migrate
