@@ -17,9 +17,10 @@
 .submitted-answer{font-size:1.5em;font-weight:bold;}
 #answer .btn-primary,#send-button{margin-bottom:20px;}
 #T,#F{font-size:1.5em;}
-.button-answer{position:relative;}
-.input-full-height{display:inline-block;height:100%;}.input-full-height .mc-btn{font-size:1.5em;padding:0.5em 0.75em;}
-.text-wrap{display:inline-block;}
+.button-answer{position:relative;margin-bottom:2em;}
+.input-full-height{display:block;height:100%;position:relative;margin-top:-1.75em;margin-bottom:-3.5em;}.input-full-height .mc-btn{font-size:1.5em;padding:0.5em 0.75em;margin-bottom:0;}
+.lt-ie10 .input-full-height{margin-bottom:-3em;}
+.text-wrap{display:block;width:80%;width:-moz-calc(100% - 4em);width:-webkit-calc(100% - 4em);width:calc(100% - 4em);padding-left:4em;box-sizing:border-box;}
 #open-wrap{margin-top:1em;}
 #open-response{width:90%;}
 #slider-wrap{position:relative;margin:0 2em 3em 2em;}#slider-wrap .label{font-size:1.5em;padding:0.3em;}
@@ -46,4 +47,4 @@
 #message-txt{width:235px;}
 #jGrowl .answer-sent i{font-size:2em;margin-right:0.5em;}
 #jGrowl .answer-sent i.icon-ok-sign{color:green;}
-@media (max-width:767px){.buttonAnswers{width:inherit;margin-right:100px;} #keypad .btn{box-sizing:border-box;width:20%;float:left;}}@media (max-width:400px){.buttonAnswers{margin-right:40px;} #keypad .btn{width:30%;}}
+@media (max-width:767px){.buttonAnswers{width:inherit;margin-right:100px;} #keypad .btn{box-sizing:border-box;width:20%;float:left;}}@media (max-width:400px){.buttonAnswers{margin-right:40px;} #keypad .btn{width:30%;} .text-wrap{clear:left;width:100%;padding:0;margin-top:3em;} .lt-ie10 .text-wrap{margin-top:2.5em;}}

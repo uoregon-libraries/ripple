@@ -86,19 +86,33 @@
 .button-answer{
   /*min-height: 3em;*/
   position: relative;
+  margin-bottom: 2em;
 }
 
 .input-full-height{
-  display: inline-block;
+  display: block;
   height:100%;
+  position: relative;
+  margin-top: -1.75em;
+  margin-bottom: -3.5em;
 
   .mc-btn{
     font-size: 1.5em;
     padding:0.5em 0.75em;
+    margin-bottom:0;
   }
 }
+.lt-ie10 .input-full-height{
+  margin-bottom: -3em;
+}
 .text-wrap{
-  display: inline-block;
+  display: block;
+  width:80%;
+  width:~"-moz-calc(100% - 4em)";
+  width:~"-webkit-calc(100% - 4em)";
+  width:~"calc(100% - 4em)";
+  padding-left: 4em;
+  box-sizing:border-box;
 }
 
 // *----------------------------
@@ -274,5 +288,15 @@
     .btn{
       width:30%;
     }
+  }
+
+  .text-wrap{
+    clear:left;
+    width:100%;
+    padding:0;
+    margin-top:3em;
+  }
+  .lt-ie10 .text-wrap{
+    margin-top:2.5em;
   }
 }

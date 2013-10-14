@@ -166,7 +166,6 @@ RIPPLE.questionType['multiple-choice'].client = function(){
     // Add wrapper
     var html = "<ul id='multiple-choice' class='buttonAnswers'>" + qOptionCum + "</ul>";
     CC.showAnswer(html);
-    CC.alignMCText();
   };
 
   var send = function(elem){
@@ -175,7 +174,6 @@ RIPPLE.questionType['multiple-choice'].client = function(){
   };
 
   var resize = function(){
-    CC.alignMCText();  
   };
 
   return {

@@ -417,45 +417,6 @@ function ClientController(){
     return '<div class="answer-sent"><i class="icon-ok-sign"></i> Answer Sent :: ' + answer + '</div>'
   }
 
-  this.alignMCText = function(){
-    $('#answer .text-wrap').each(function(){
-      if( $(window).width() > 400 ) {
-        var parentWidth = $(this).parent().width()
-          , buttonWidth = $(this).siblings('.input-full-height').width()
-          , txtLeftPadding = 20
-          , txtWidth = parentWidth - ( buttonWidth + txtLeftPadding +5)
-          , txtTopPadding = 0;
-      } else {
-        var txtWidth = '100%'
-          , txtLeftPadding = 0
-          , txtTopPadding = '1em';
-      }
-
-      $(this).css({
-        'width':txtWidth,
-        'padding-left':txtLeftPadding,
-        'padding-top':txtTopPadding
-      });
-    });
-
-    $('#answer .input-full-height').each(function(){
-      var button = $(this).find('input');
-      if( $(window).width() > 400 ) {
-        var parentHeight = $(this).parent().height()
-          , buttonHeight = button.height()
-          , topMargin = -( (parentHeight - buttonHeight) -20);
-
-      } else {
-        topMargin = 0;
-      }
-      button.css({
-        'margin-top':topMargin,
-        'margin-bottom':-topMargin
-      });
-
-    })
-  };
-
   this.buttonAnswerDistribute = function(elem){
     var parent = $(elem).parent()
       , container = $('#answer')
