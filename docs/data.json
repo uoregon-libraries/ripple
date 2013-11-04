@@ -2,7 +2,7 @@
     "project": {
         "name": "ripple-core",
         "description": "Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices.",
-        "version": "1.0.4"
+        "version": "1.0.7"
     },
     "files": {
         "bin/ripple-cli.js": {
@@ -97,6 +97,13 @@
         },
         "lib/room-manager.js": {
             "name": "lib/room-manager.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "plugins/heatmap/js/heatmap.js": {
+            "name": "plugins/heatmap/js/heatmap.js",
             "modules": {},
             "classes": {},
             "fors": {},
@@ -357,7 +364,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/plugins.js",
-            "line": 49,
+            "line": 51,
             "description": "Hooks associated with account authenication",
             "title": "auth"
         },
@@ -409,7 +416,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/plugins.js",
-            "line": 88,
+            "line": 90,
             "description": "Logger API Module handles output to console and logs. It is a direct map of <a href=\"https://github.com/bevry/caterpillar#usage\">Catipillar npm module</a>.",
             "title": "logger"
         },
@@ -422,7 +429,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/plugins.js",
-            "line": 101,
+            "line": 103,
             "description": "Plugin API for Question Type.",
             "title": "question type"
         },
@@ -616,7 +623,7 @@
         },
         {
             "file": "lib/plugins.js",
-            "line": 128,
+            "line": 130,
             "description": "Hook to load plugin config.",
             "itemtype": "event",
             "name": "loadConfig",
@@ -715,6 +722,15 @@
             "class": "plugin-client.client"
         },
         {
+            "file": "plugins/heatmap/js/heatmap.js",
+            "line": 227,
+            "description": "Session params & methods",
+            "return": {
+                "description": "object hooks and params for Session UI"
+            },
+            "class": "plugin-client.client"
+        },
+        {
             "file": "plugins/ldap-auth/lib/ldap-auth.js",
             "line": 1,
             "description": "This module intercepts and modifies the application as follows:\n\n- The main page is modified to provide a login form to enter a room\n- On submission of the presenter form, we first check LDAP for the user's credentials.  If not\n  found, the app does whatever normal local auth it does.  If the user is found, however, we\n  tell the app to skip its normal authentication and send back the user's relevant data.\n- On submit of the room entry form from the main page, we require authentication in a similar\n  manner to the presenter.  We first check LDAP, then do normal local auth, returning user data\n  to the application.",
@@ -728,13 +744,13 @@
         },
         {
             "file": "plugins/ldap-auth/lib/ldap-auth.js",
-            "line": 315,
+            "line": 317,
             "description": "HELPER METHODS",
             "class": "plugin-client.client"
         },
         {
             "file": "plugins/ldap-auth/lib/ldap-auth.js",
-            "line": 386,
+            "line": 388,
             "description": "Stores config data passed in by app",
             "class": "plugin-client.client"
         },
@@ -753,7 +769,7 @@
         },
         {
             "file": "public/js/controllers/clientController.js",
-            "line": 40,
+            "line": 48,
             "description": "Show a Question that came from the presenter",
             "params": [
                 {
@@ -766,7 +782,7 @@
         },
         {
             "file": "public/js/controllers/clientController.js",
-            "line": 70,
+            "line": 78,
             "description": "Hook fired when question is displayed to client",
             "itemtype": "event",
             "name": "displayFn",
@@ -799,7 +815,7 @@
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 71,
+            "line": 74,
             "description": "Increment Value of badges",
             "params": [
                 {
@@ -821,7 +837,7 @@
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 84,
+            "line": 87,
             "description": "Creates the Progress Bar for Multiple Choice and True / False",
             "params": [
                 {
@@ -838,7 +854,7 @@
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 100,
+            "line": 103,
             "description": "Adjust the Progress Bar in value and change display",
             "params": [
                 {
@@ -856,13 +872,13 @@
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 135,
+            "line": 138,
             "description": "Clears the Progress Bar",
             "class": "plugin-client.session"
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 142,
+            "line": 145,
             "description": "Adds Answer Values to Progress Bars",
             "params": [
                 {
@@ -875,7 +891,7 @@
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 168,
+            "line": 171,
             "description": "Creation of Question Response Area",
             "params": [
                 {
@@ -892,7 +908,7 @@
         },
         {
             "file": "public/js/controllers/sessionDisplayController.js",
-            "line": 204,
+            "line": 207,
             "description": "Clear the UI between questions",
             "class": "plugin-client.session"
         },
@@ -906,7 +922,7 @@
         },
         {
             "file": "public/js/controllers/setEditController.js",
-            "line": 44,
+            "line": 45,
             "description": "Add a new question of type defined in params",
             "params": [
                 {
@@ -924,7 +940,7 @@
         },
         {
             "file": "public/js/controllers/setEditController.js",
-            "line": 131,
+            "line": 132,
             "description": "Output to display in question option area",
             "itemtype": "event",
             "name": "displaySetEditFn",
@@ -962,7 +978,7 @@
         },
         {
             "file": "public/js/question-types/slider.js",
-            "line": 268,
+            "line": 269,
             "description": "Client UI Related Functionality",
             "return": {
                 "description": "object Methods and parameters that will be called on the Client UI\n  for Slider Question Type"
@@ -971,7 +987,7 @@
         },
         {
             "file": "public/js/views/admin-session.js",
-            "line": 335,
+            "line": 363,
             "description": "Hook fired when a question type is displayed.",
             "itemtype": "event",
             "name": "displayQuestionFn",
@@ -979,7 +995,7 @@
         },
         {
             "file": "public/js/views/admin-session.js",
-            "line": 343,
+            "line": 371,
             "description": "Property to determine if a question type displays the answer\noption area.",
             "itemtype": "property",
             "name": "displayOptions",
@@ -989,7 +1005,7 @@
         },
         {
             "file": "public/js/views/admin-session.js",
-            "line": 463,
+            "line": 491,
             "description": "Hook fired when the response area is resized on Client UI",
             "itemtype": "event",
             "name": "resizeAnswersFn",
@@ -1004,7 +1020,7 @@
         },
         {
             "file": "public/js/views/client.js",
-            "line": 86,
+            "line": 91,
             "description": "Hook called when client's browser is resized",
             "itemtype": "event",
             "name": "resizeFn",
@@ -1012,7 +1028,7 @@
         },
         {
             "file": "public/js/global.js",
-            "line": 152,
+            "line": 161,
             "description": "Clear the chat count",
             "class": "plugin-server.plugin"
         },
@@ -1344,43 +1360,49 @@
         },
         {
             "file": "app.js",
-            "line": 52,
+            "line": 55,
             "description": "Routing",
             "class": "plugin-server.question"
         },
         {
             "file": "app.js",
-            "line": 70,
+            "line": 73,
             "description": "App Information & Configurations",
             "class": "plugin-server.question"
         },
         {
             "file": "app.js",
-            "line": 160,
+            "line": 163,
             "description": "URIs in use",
             "class": "plugin-server.question"
         },
         {
             "file": "app.js",
-            "line": 219,
+            "line": 222,
             "description": "HTTP Server setup - check for SSL and build redirect from non-SSL if SSL\nhas been set up",
             "class": "plugin-server.question"
         },
         {
             "file": "app.js",
-            "line": 270,
+            "line": 273,
             "description": "Now & Socket IO",
             "class": "plugin-server.question"
         },
         {
             "file": "app.js",
-            "line": 356,
+            "line": 359,
             "description": "Clear Client's UI & Now question variables",
             "class": "plugin-server.question"
         },
         {
             "file": "app.js",
-            "line": 384,
+            "line": 387,
+            "description": "Stop Session sent to client",
+            "class": "plugin-server.question"
+        },
+        {
+            "file": "app.js",
+            "line": 413,
             "description": "Send out a message",
             "params": [
                 {
@@ -1393,7 +1415,7 @@
         },
         {
             "file": "app.js",
-            "line": 400,
+            "line": 429,
             "description": "Send out a question to virtual room",
             "params": [
                 {
@@ -1406,7 +1428,7 @@
         },
         {
             "file": "app.js",
-            "line": 475,
+            "line": 504,
             "description": "Hook fired when a question is distributed.",
             "itemtype": "event",
             "name": "distribute",
@@ -1426,7 +1448,7 @@
         },
         {
             "file": "app.js",
-            "line": 487,
+            "line": 516,
             "description": "Client sent in answer",
             "params": [
                 {
@@ -1439,7 +1461,7 @@
         },
         {
             "file": "app.js",
-            "line": 544,
+            "line": 573,
             "description": "Hook fired when a answer is received.",
             "itemtype": "event",
             "name": "distribute",
@@ -1474,7 +1496,7 @@
         },
         {
             "file": "app.js",
-            "line": 559,
+            "line": 588,
             "description": "Santize Answers",
             "params": [
                 {
@@ -1496,7 +1518,7 @@
         },
         {
             "file": "app.js",
-            "line": 602,
+            "line": 631,
             "description": "Set whether answers can or can not be received",
             "params": [
                 {
@@ -1726,6 +1748,10 @@
             "line": " lib/room-manager.js:82"
         },
         {
+            "message": "Missing item type\nSession params & methods",
+            "line": " plugins/heatmap/js/heatmap.js:227"
+        },
+        {
             "message": "Missing item type\nThis module intercepts and modifies the application as follows:\n\n- The main page is modified to provide a login form to enter a room\n- On submission of the presenter form, we first check LDAP for the user's credentials.  If not\n  found, the app does whatever normal local auth it does.  If the user is found, however, we\n  tell the app to skip its normal authentication and send back the user's relevant data.\n- On submit of the room entry form from the main page, we require authentication in a similar\n  manner to the presenter.  We first check LDAP, then do normal local auth, returning user data\n  to the application.",
             "line": " plugins/ldap-auth/lib/ldap-auth.js:1"
         },
@@ -1735,11 +1761,11 @@
         },
         {
             "message": "Missing item type\nHELPER METHODS",
-            "line": " plugins/ldap-auth/lib/ldap-auth.js:315"
+            "line": " plugins/ldap-auth/lib/ldap-auth.js:317"
         },
         {
             "message": "Missing item type\nStores config data passed in by app",
-            "line": " plugins/ldap-auth/lib/ldap-auth.js:386"
+            "line": " plugins/ldap-auth/lib/ldap-auth.js:388"
         },
         {
             "message": "Missing item type\nControls for Chatting",
@@ -1751,7 +1777,7 @@
         },
         {
             "message": "Missing item type\nShow a Question that came from the presenter",
-            "line": " public/js/controllers/clientController.js:40"
+            "line": " public/js/controllers/clientController.js:48"
         },
         {
             "message": "Missing item type\nModifies the Admin Display",
@@ -1763,35 +1789,35 @@
         },
         {
             "message": "Missing item type\nIncrement Value of badges",
-            "line": " public/js/controllers/sessionDisplayController.js:71"
+            "line": " public/js/controllers/sessionDisplayController.js:74"
         },
         {
             "message": "Missing item type\nCreates the Progress Bar for Multiple Choice and True / False",
-            "line": " public/js/controllers/sessionDisplayController.js:84"
+            "line": " public/js/controllers/sessionDisplayController.js:87"
         },
         {
             "message": "Missing item type\nAdjust the Progress Bar in value and change display",
-            "line": " public/js/controllers/sessionDisplayController.js:100"
+            "line": " public/js/controllers/sessionDisplayController.js:103"
         },
         {
             "message": "Missing item type\nClears the Progress Bar",
-            "line": " public/js/controllers/sessionDisplayController.js:135"
+            "line": " public/js/controllers/sessionDisplayController.js:138"
         },
         {
             "message": "Missing item type\nAdds Answer Values to Progress Bars",
-            "line": " public/js/controllers/sessionDisplayController.js:142"
+            "line": " public/js/controllers/sessionDisplayController.js:145"
         },
         {
             "message": "Missing item type\nCreation of Question Response Area",
-            "line": " public/js/controllers/sessionDisplayController.js:168"
+            "line": " public/js/controllers/sessionDisplayController.js:171"
         },
         {
             "message": "Missing item type\nClear the UI between questions",
-            "line": " public/js/controllers/sessionDisplayController.js:204"
+            "line": " public/js/controllers/sessionDisplayController.js:207"
         },
         {
             "message": "Missing item type\nAdd a new question of type defined in params",
-            "line": " public/js/controllers/setEditController.js:44"
+            "line": " public/js/controllers/setEditController.js:45"
         },
         {
             "message": "Missing item type\nSession UI Related functionality",
@@ -1803,7 +1829,7 @@
         },
         {
             "message": "Missing item type\nClient UI Related Functionality",
-            "line": " public/js/question-types/slider.js:268"
+            "line": " public/js/question-types/slider.js:269"
         },
         {
             "message": "Missing item type\nView for Set Creation",
@@ -1811,7 +1837,7 @@
         },
         {
             "message": "Missing item type\nClear the chat count",
-            "line": " public/js/global.js:152"
+            "line": " public/js/global.js:161"
         },
         {
             "message": "Missing item type\nFeature detection",
@@ -1939,47 +1965,51 @@
         },
         {
             "message": "Missing item type\nRouting",
-            "line": " app.js:52"
+            "line": " app.js:55"
         },
         {
             "message": "Missing item type\nApp Information & Configurations",
-            "line": " app.js:70"
+            "line": " app.js:73"
         },
         {
             "message": "Missing item type\nURIs in use",
-            "line": " app.js:160"
+            "line": " app.js:163"
         },
         {
             "message": "Missing item type\nHTTP Server setup - check for SSL and build redirect from non-SSL if SSL\nhas been set up",
-            "line": " app.js:219"
+            "line": " app.js:222"
         },
         {
             "message": "Missing item type\nNow & Socket IO",
-            "line": " app.js:270"
+            "line": " app.js:273"
         },
         {
             "message": "Missing item type\nClear Client's UI & Now question variables",
-            "line": " app.js:356"
+            "line": " app.js:359"
+        },
+        {
+            "message": "Missing item type\nStop Session sent to client",
+            "line": " app.js:387"
         },
         {
             "message": "Missing item type\nSend out a message",
-            "line": " app.js:384"
+            "line": " app.js:413"
         },
         {
             "message": "Missing item type\nSend out a question to virtual room",
-            "line": " app.js:400"
+            "line": " app.js:429"
         },
         {
             "message": "Missing item type\nClient sent in answer",
-            "line": " app.js:487"
+            "line": " app.js:516"
         },
         {
             "message": "Missing item type\nSantize Answers",
-            "line": " app.js:559"
+            "line": " app.js:588"
         },
         {
             "message": "Missing item type\nSet whether answers can or can not be received",
-            "line": " app.js:602"
+            "line": " app.js:631"
         },
         {
             "message": "Missing item type",
