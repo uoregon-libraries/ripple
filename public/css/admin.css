@@ -32,6 +32,7 @@
 .admin-page #question-response-wrap .add-new-title{color:#DDD;font-size:14px;line-height:18px;font-weight:bold;font-family:inherit;margin-right:1em;}
 .admin-page #question-response-wrap h4.answer-options{margin-bottom:0.5em;}
 .admin-page #question-response-wrap #send-btn-wrap{height:20px;}
+.admin-page #question-response-wrap .set-btns{vertical-align:top;}
 .admin-page #notify{margin-top:1em;}
 .admin-page #type-header{color:#DDD;}.admin-page #type-header i{top:4px;font-size:1.5em;margin-right:10px;vertical-align:middle;}
 .admin-page #qTxt{height:250px;width:100%;max-width:100%;box-sizing:border-box;}

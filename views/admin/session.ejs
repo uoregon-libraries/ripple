@@ -66,14 +66,14 @@ var setQuestions = {}
             , prevBtnTitle = "Previous " + btnText
             , nextBtnTitle = "Next " + btnText;
         %>
-        <label for="set-prev-btn" class="accessibility-label"><%= prevBtnTitle %></label> 
-        <button href="#" id="set-prev-btn" class="btn btn-submit" title="<%= prevBtnTitle %>" tabindex="0" rel="tooltip" data-placement="bottom">
-          <i class="icon-chevron-left"></i>
-        </button>
-        <label for="set-next-btn" class="accessibility-label"><%= nextBtnTitle %></label> 
-        <button href="#" id="set-next-btn" class="btn btn-submit" title="<%= nextBtnTitle %>" tabindex="0" rel="tooltip" data-placement="bottom">
-          <i class="icon-chevron-right"></i>
-        </button>
+        <div class="set-btns btn-group pull-right">
+          <button href="#" id="set-prev-btn" class="btn btn-submit" title="<%= prevBtnTitle %>" tabindex="0" rel="tooltip" data-placement="bottom">
+            <i class="icon-chevron-left"></i>
+          </button>
+          <button href="#" id="set-next-btn" class="btn btn-submit" title="<%= nextBtnTitle %>" tabindex="0" rel="tooltip" data-placement="bottom">
+            <i class="icon-chevron-right"></i>
+          </button>
+        </div>
         <!-- Add A Question Bar -->
         <div class="span12 span-center start-session row">
           
