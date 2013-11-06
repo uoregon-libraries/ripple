@@ -24,11 +24,6 @@ $(function(){
 		wireUpQuestions();
     // Set jQuestion not that they are all on screen
     jQuestion1 = $('#qTxt1');
-    // Give focus to first querystring.stringify(obj, sep, eq, name);
-    setTimeout(function(){
-      popoverClose( choiceBtn.attr('id') );
-      jQuestion1.editable("show");
-    },200);
   }
 
   //hide button choices div
