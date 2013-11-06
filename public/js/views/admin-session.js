@@ -106,7 +106,6 @@ $(document).ready(function(){
     // Show Stop & Clear btn
     clientStatusBtn.show();
     clearBtn.show();
-
   });
 
   // Clear Question
@@ -458,6 +457,8 @@ $(document).ready(function(){
         title = "Minimize Responses"
         addClass = iconMin;
         removeClass = iconMax;
+        // Show Question
+        $('#question-sent').show();
         break;
       case "min":
         // Make parent auto height
@@ -469,6 +470,8 @@ $(document).ready(function(){
         title = "Expand Responses"
         addClass = iconMax;
         removeClass = iconMin;
+        // Show Question
+        $('#question-sent').hide();
         break;
     }
 

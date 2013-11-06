@@ -79,6 +79,7 @@ function SessionMainController() {
     $('#qOptions .tally, #responses').html("");
     that.clearTotal()
     DISPLAY.total('0');
+    $('#question-sent').html( "Q?: " + $("#question textarea").val() );
   };
 
   this.recieveAnswer = function(clientID, name, answer){

@@ -40,6 +40,9 @@ function SessionDisplayController () {
   this.responsesAppend = function(output){
     that.append(output, '#responses');
   }
+  this.questionSent = function(output){
+    that.update(output, '#question-sent');
+  }
 
   this.total = function(output){
     that.update(output, '#total');
@@ -221,6 +224,7 @@ function SessionDisplayController () {
       $('#qOptions .tally').html("");
     }
     that.responses('');
+    that.questionSent('');
     that.total('0');
     if( status !== 'clear') $('#qTxt').data("wysihtml5").editor.setValue("");
 

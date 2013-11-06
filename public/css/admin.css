@@ -41,6 +41,7 @@
 .admin-page #qOptions .tally{margin-left:1em;}
 .admin-page #qOptions .scale-values,.admin-page #qOptions .submit-values{line-height:2em;}
 .admin-page #response-wrap.max{position:absolute;top:0;left:0;width:95%;width:-moz-calc(100% - 40px);width:-webkit-calc(100% - 40px);width:calc(100% - 40px);height:100%;margin-top:0;}
+.admin-page #response-wrap #question-sent{display:none;font-size:1.5em;font-weight:bold;margin-bottom:1em;}
 .admin-page #response-wrap #graphWrap{width:100%;}
 .admin-page #response-wrap #polling-controls{position:absolute;right:19px;}
 .admin-page #response-wrap #total{margin-left:0.5em;font-size:1.25em;margin-top:3px;}
