@@ -42,7 +42,7 @@ var responses = <%- JSON.stringify(locals.docArray) %>;
           , qOptionsHtml = ""
           , currType = questionTypesObj[ qType ] ? questionTypesObj[ qType ] : {}
           , qTypeTitle = currType.title ? currType.title : qType.charAt(0).toUpperCase() + qType.slice(1)
-          , qIcon = currType.icon ? currType.icon : "icon-question-sign"
+          , qIcon = (currType.icon || currType.iconTxt) ? currType.icon : "icon-question-sign"
           , qIconTxt = currType.iconTxt ? currType.iconTxt : ''
           , labelCnt = qCNT + 1;
 
