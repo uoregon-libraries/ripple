@@ -321,6 +321,11 @@ $(document).ready(function(){
         displayQuestion( type );
         $('#set-questions').val(0);
       });
+      // Close Popover if open
+      $(document).on('focusout', '.wysihtml5-toolbar a[data-wysihtml5-command="bold"], #set-next-btn', function(){
+        popoverClose();
+        choicePopoverOpen = false;
+      });
 
       // Previous & Next Button actions
       $('#set-prev-btn').on('click keypress', function(e){
