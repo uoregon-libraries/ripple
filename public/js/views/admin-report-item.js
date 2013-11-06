@@ -22,4 +22,9 @@ $(document).ready(function(){
     $this.removeClass(removeChev).addClass(addChev);
   });
   $(responseClass).hide();
+
+  $('#back-btn').on('click keypress', function(e){
+    if( !isKeypressEnter(e) ) return false;
+    window.history.back();
+  })
 });

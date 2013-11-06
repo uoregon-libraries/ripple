@@ -110,6 +110,7 @@
 .admin-page .report-list,.admin-page .set-list{margin-left:0px;}.admin-page .report-list .btn,.admin-page .set-list .btn{margin-top:-0.625em;white-space:nowrap;}
 .admin-page .set-list-view-btn{margin-right:1em;margin-top:0.5em;}
 .admin-page #report-list-wrap .question-cnt{margin-right:2em;}
+.admin-page #report-header-wrap{margin-left:2em;}
 .admin-page #report-item-wrap #csv-link{width:100%;text-align:right;}
 .admin-page #report-item-wrap .q-type-label i{color:#A6A6A6;}
 .admin-page #report-item-wrap .question-title{font-weight:bold;}
