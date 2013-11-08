@@ -142,6 +142,7 @@ $(function(){
     .on('click keypress', '.btn-add-question', function(e){
       // Stop Reload of page for button
       if(keyCode(e) !== 9 ) e.preventDefault();
+      SC.params('activeInput', $(this));
     });
 
   jQuestions
@@ -332,9 +333,11 @@ $(function(){
         })
         .on('hidden', function(e, reason){
           // Check for which element is in focus and thus active
+          //   Was conflicting with Add Question Popover so commented out
           var isActiveInput = SC.params('activeInput') === $(this);
           var focusElem = ( isActiveInput ) ? $(this) : SC.params('activeInput');
           focusElem.focus();
+          if( focusElem.hasClass('btn-add-question') ) popoverToggle(focusElem);
         })
      
     $('body '+formID)
@@ -428,6 +431,7 @@ $(function(){
   }
 
   function popoverToggle(e){
+    if( !e || !e.hasOwnProperty('currentTarget') ) return;
     var itemID = e.currentTarget.id
       , $currentTarget = $(e.currentTarget);
     position = $currentTarget.attr('data-panel-position') ? $currentTarget.attr('data-panel-position') : "";
