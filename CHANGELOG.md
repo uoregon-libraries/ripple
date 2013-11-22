@@ -1,3 +1,16 @@
+## 1.0.8 (November 22, 2013)
+
+* Fixes #1 - Reinstituted error handling to stop error throwning when a resource with a cache buster (&_########) is requested
+
+* Room expirer timer is restarted upon re-entry into a session
+
+* Bug Fix - % causing Set Edit saves to throw error
+
+* Bug Fix - Css for multiple choice text on client UI in webkit browsers
+
+* UX Enhancements to Session, Set Edit, & Report Item UIs
+
+
 ## 1.0.7 (October 13, 2013)
 
 * Bug Fix - Removed issues relating to creating a question in a set which contained a % symbol
