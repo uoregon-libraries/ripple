@@ -1,6 +1,8 @@
 Ripple
 ======
 
+**NOTE**: Ripple is no longer maintained or supported by the University of Oregon Libraries.
+
 Ripple is an interactive audience response system that allows presenters to survey audience members in real time communication through their mobile devices. The project is maintained by the [Interactive Media Group](http://interactivemedia.uoregon.edu/) of Univeristy of Oregon Libraries.
 
 [Ripple Website](http://ripple-core.uoregon.edu/)
